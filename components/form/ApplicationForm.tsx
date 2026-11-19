@@ -10,7 +10,7 @@ import { BOARDS, ageOptions, buildSchemas, errorMap, gradeOptions, STUDENT_FIELD
 import { generateLeadId } from "@/lib/leadId";
 import { metaCookies, readAttribution } from "@/lib/attribution";
 import { trackLead } from "@/lib/track";
-import { Button, buttonClass } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { CheckboxField, SelectField, TextField } from "./fields";
 
 type Values = {
@@ -241,7 +241,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
 
   if (program && program.status === "sold_out") {
     return (
-      <div className="rounded-[14px] border-2 border-navy bg-offwhite p-6 text-navy">
+      <div className="rounded-[14px] border border-bone/10 bg-ink-soft p-8 text-bone">
         <p className="display text-4xl">{f.soldOut}</p>
       </div>
     );
@@ -257,7 +257,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
       ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="relative scroll-mt-24 rounded-[14px] border-2 border-navy bg-offwhite p-5 text-navy shadow-[8px_8px_0_0_var(--color-coral)] sm:p-8"
+      className="relative scroll-mt-24 rounded-[14px] bg-bone p-6 text-ink shadow-[0_30px_80px_-20px_rgb(0_0_0/0.6)] sm:p-10"
       aria-describedby="form-status"
     >
       {/* Honeypot: hidden from people, tempting to bots */}
@@ -268,16 +268,16 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
 
       {showHousePicker && step === 1 ? (
         <fieldset className="mb-8">
-          <legend className="heavy text-xl">{f.pickHouse}</legend>
-          <p className="mt-1 text-sm text-navy-muted">{f.pickHouseHint}</p>
+          <legend className="text-xl font-semibold">{f.pickHouse}</legend>
+          <p className="mt-1 text-sm text-ink-muted">{f.pickHouseHint}</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {pickerHouses.map((h) => {
               const selected = programId === h.id;
               return (
                 <label
                   key={h.id}
-                  className={`flex cursor-pointer flex-col rounded-[14px] border-2 border-navy p-4 transition-colors ${
-                    selected ? "bg-navy text-offwhite shadow-hard-sm" : "bg-stone hover:bg-mint/40"
+                  className={`flex cursor-pointer flex-col rounded-[10px] border p-4 transition-colors ${
+                    selected ? "border-ink bg-ink text-bone" : "border-ink/15 bg-linen hover:border-ink/40"
                   }`}
                 >
                   <input
@@ -288,24 +288,24 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
                     onChange={() => choosePlan(h.id)}
                     className="sr-only"
                   />
-                  <span className={`display text-3xl ${selected ? "text-coral" : ""}`}>{h.houseShort}</span>
+                  <span className={`display text-3xl ${selected ? "text-mint" : ""}`}>{h.houseShort}</span>
                   <span className="mt-1 text-sm font-semibold">{h.title}</span>
                 </label>
               );
             })}
           </div>
-          {errors.house ? <p className="mt-2 text-sm font-semibold text-coral-deep">{errors.house}</p> : null}
+          {errors.house ? <p className="mt-2 text-sm font-semibold text-[#b3261e]">{errors.house}</p> : null}
         </fieldset>
       ) : null}
 
       <div className="flex items-center justify-between gap-3">
-        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">
+        <p className="label text-ink-muted">
           {f.stepOf(step, totalSteps)} · {step === 1 ? f.stepStudent : f.stepParent}
         </p>
-        {program && !preset ? <p className="font-mono text-xs font-bold uppercase tracking-[0.12em]">{program.houseName}</p> : null}
+        {program && !preset ? <p className="label text-ink">{program.houseName}</p> : null}
       </div>
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-stone" aria-hidden="true">
-        <div className="h-full rounded-full bg-coral transition-[width] duration-300" style={{ width: step === 1 ? "50%" : "100%" }} />
+      <div className="mt-4 h-px overflow-hidden bg-ink/12" aria-hidden="true">
+        <div className="h-full bg-ink transition-[width] duration-500" style={{ width: step === 1 ? "50%" : "100%" }} />
       </div>
 
       {step === 1 ? (
@@ -331,7 +331,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
             </div>
           ) : null}
           <div className="sm:col-span-2">
-            <Button type="submit" variant="coral" size="lg" className="w-full">
+            <Button type="submit" variant="ink" size="lg" className="w-full">
               {f.next}
             </Button>
           </div>
@@ -349,10 +349,10 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
             .
           </CheckboxField>
           <div className="flex flex-col-reverse gap-3 sm:flex-row">
-            <Button type="button" variant="light" onClick={() => { setStep(1); setErrors({}); }} className="sm:w-40">
+            <Button type="button" variant="ghost" onClick={() => { setStep(1); setErrors({}); }} className="sm:w-40">
               {f.back}
             </Button>
-            <Button type="submit" variant="coral" size="lg" className="flex-1" disabled={status === "sending"} aria-busy={status === "sending"}>
+            <Button type="submit" variant="ink" size="lg" className="flex-1" disabled={status === "sending"} aria-busy={status === "sending"}>
               {status === "sending" ? f.sending : mode === "booking" ? "Book a seat" : "Apply for Summer 2027"}
             </Button>
           </div>
@@ -361,11 +361,11 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
 
       <div id="form-status" aria-live="polite" className="mt-4">
         {status === "error" && serverMsg ? (
-          <div className="rounded-[10px] border-2 border-navy bg-yellow p-4">
+          <div className="rounded-[10px] border border-ink/15 bg-linen p-5">
             <p className="text-sm font-bold">{serverMsg}</p>
-            <a href={whatsappLink(whatsappText)} className={`${buttonClass("navy", "md")} mt-3`} target="_blank" rel="noopener">
+            <ButtonLink href={whatsappLink(whatsappText)} variant="ink" className="mt-4" target="_blank" rel="noopener">
               WhatsApp us
-            </a>
+            </ButtonLink>
           </div>
         ) : null}
       </div>

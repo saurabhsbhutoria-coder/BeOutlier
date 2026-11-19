@@ -41,7 +41,7 @@ export default function DesignersPage() {
         ]}
       />
 
-      <Section tone="light">
+      <Section tone="ink">
         <Heading label="What it is" index="01" lines={[]} className="!mb-6" />
         <Reveal>
           <p className="heavy max-w-5xl text-2xl leading-[1.15] sm:text-4xl">
@@ -51,7 +51,7 @@ export default function DesignersPage() {
         </Reveal>
       </Section>
 
-      <Section tone="stone">
+      <Section tone="deep">
         <Heading label="The four days" index="02" lines={[]} className="!mb-6" />
         <DayPlan
           days={[
@@ -63,12 +63,12 @@ export default function DesignersPage() {
         />
       </Section>
 
-      <Section tone="navy">
+      <Section tone="ink">
         <Heading label="What you build" index="03" lines={[]} tone="mint" className="!mb-6" />
         <p className="heavy max-w-4xl text-2xl leading-tight sm:text-4xl">
           An architectural project for a real space in Goa, and an artistic piece made with your own hands.
         </p>
-        <p className="display mt-8 text-4xl text-coral sm:text-6xl">
+        <p className="display mt-8 text-4xl text-sand sm:text-6xl">
           It stays in Goa. That&apos;s the point of building it for Goa.
         </p>
       </Section>
@@ -77,7 +77,7 @@ export default function DesignersPage() {
 
       <AfterDark index="05" />
 
-      <Section tone="stone">
+      <Section tone="deep">
         <Heading
           label="Who you build with"
           index="06"
@@ -99,7 +99,7 @@ export default function DesignersPage() {
         ]}
       />
 
-      <Section tone="light">
+      <Section tone="ink">
         <Heading label="How you get in" index="08" lines={[]} className="!mb-6" />
         <AdmissionSteps variant="short" />
       </Section>

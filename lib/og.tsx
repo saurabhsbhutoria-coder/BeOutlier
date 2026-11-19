@@ -1,11 +1,20 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const ogSize = { width: 1200, height: 630 };
 
-/** Brand share card: coral or navy ground, stacked headline. */
-export function ogCard({ eyebrow, lines, dark = false }: { eyebrow: string; lines: string[]; dark?: boolean }) {
-  const ground = dark ? "#1B1F4B" : "#F47171";
-  const ink = dark ? "#FAFAF7" : "#1B1F4B";
+let logoData: string | null = null;
+function logo(): string {
+  if (!logoData) {
+    const png = readFileSync(join(process.cwd(), "public/brand/logo.png"));
+    logoData = `data:image/png;base64,${png.toString("base64")}`;
+  }
+  return logoData;
+}
+
+/** Brand share card: charcoal ground, the real logo, mint label, stacked headline. */
+export function ogCard({ eyebrow, lines }: { eyebrow: string; lines: string[]; dark?: boolean }) {
   return new ImageResponse(
     (
       <div
@@ -15,34 +24,25 @@ export function ogCard({ eyebrow, lines, dark = false }: { eyebrow: string; line
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: ground,
-          color: ink,
+          background: "#25282A",
+          color: "#F7F4EF",
           padding: 72,
           fontFamily: "sans-serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            fontSize: 44,
-            fontWeight: 900,
-            color: "#FAFAF7",
-            textShadow: dark ? "4px 4px 0 #F47171" : "4px 4px 0 #1B1F4B",
-          }}
-        >
-          BE OUTLIER
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logo()} width={330} height={74} alt="" />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: 4, marginBottom: 20, color: dark ? "#5FD9B6" : ink }}>
-            {eyebrow}
+          <div style={{ fontSize: 24, fontWeight: 600, letterSpacing: 5, marginBottom: 24, color: "#6CD4B1" }}>
+            {`[ ${eyebrow} ]`}
           </div>
           {lines.map((l) => (
-            <div key={l} style={{ fontSize: 92, fontWeight: 900, lineHeight: 0.95, letterSpacing: -2 }}>
+            <div key={l} style={{ fontSize: 88, fontWeight: 900, lineHeight: 0.95, letterSpacing: -1 }}>
               {l}
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", fontSize: 28, fontWeight: 700 }}>beoutlier.in</div>
+        <div style={{ display: "flex", fontSize: 24, color: "#D9CBB8" }}>beoutlier.in</div>
       </div>
     ),
     ogSize,

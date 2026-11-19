@@ -1,60 +1,63 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { statusBadge, type Status } from "@/content/programs";
 
-/** "/ THE HOUSES · 03" monospace label */
+/** "[ 03 ]  THE HOUSES" section label */
 export function Eyebrow({
   label,
   index,
-  tone = "navy",
+  tone = "ink",
   className = "",
 }: {
   label: string;
   index?: string;
-  tone?: "navy" | "mint" | "light" | "coral";
+  tone?: "ink" | "mint" | "light" | "sand";
   className?: string;
 }) {
   const color = {
-    navy: "text-navy-muted",
+    ink: "text-ink/75",
     mint: "text-mint",
-    light: "text-offwhite/80",
-    coral: "text-coral",
+    light: "text-bone/60",
+    sand: "text-sand",
   }[tone];
   return (
-    <p className={`font-mono text-xs font-bold uppercase tracking-[0.18em] ${color} ${className}`}>
-      / {label}
-      {index ? ` · ${index}` : ""}
+    <p className={`label flex flex-wrap items-center gap-x-3 gap-y-1 ${color} ${className}`}>
+      {index ? (
+        <>
+          <span>[ {index} ]</span>
+          <span>{label}</span>
+        </>
+      ) : (
+        <span>[ {label} ]</span>
+      )}
     </p>
   );
 }
 
-/** BE OUTLIER wordmark: Anton, white with a navy offset shadow (or navy on light). */
-export function Wordmark({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {
+/** The BeOutlier logo (transparent cut of the original). Use on dark grounds. */
+export function Logo({ className = "h-8", priority = false }: { className?: string; priority?: boolean }) {
   return (
-    <span
-      className={`display inline-block text-2xl tracking-[0.01em] ${
-        tone === "dark"
-          ? "text-offwhite [text-shadow:3px_3px_0_var(--color-coral)]"
-          : "text-offwhite [text-shadow:3px_3px_0_var(--color-navy)]"
-      } ${className}`}
-    >
-      BE OUTLIER
-    </span>
+    <Image
+      src="/brand/logo.webp"
+      alt="Be Outlier. Think.Learn.Create"
+      width={1200}
+      height={269}
+      priority={priority}
+      className={`w-auto ${className}`}
+    />
   );
 }
+
+/** @deprecated use Logo */
+export const Wordmark = Logo;
 
 export function StatusBadge({ status, className = "" }: { status: Status; className?: string }) {
   const text = statusBadge[status];
   if (!text) return null;
-  const tone =
-    status === "sold_out"
-      ? "bg-offwhite text-navy"
-      : status === "waitlist"
-        ? "bg-mint text-navy"
-        : "bg-yellow text-navy";
+  const tone = status === "sold_out" ? "border-bone/30 text-bone/70" : "border-mint/50 text-mint";
   return (
-    <span
-      className={`inline-flex items-center rounded-full border-2 border-navy px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.14em] ${tone} ${className}`}
-    >
+    <span className={`label inline-flex items-center gap-2 rounded-full border bg-ink px-3 py-1 !text-[10px] ${tone} ${className}`}>
+      <span className="size-1.5 rounded-full bg-current" aria-hidden="true" />
       {text}
     </span>
   );
@@ -64,8 +67,8 @@ export function StatusBadge({ status, className = "" }: { status: Status; classN
 export function Tag({ children, tone = "light" }: { children: ReactNode; tone?: "light" | "dark" }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.12em] ${
-        tone === "light" ? "border-navy/30 text-navy" : "border-offwhite/40 text-offwhite"
+      className={`label inline-flex items-center rounded-full border px-3 py-1 !text-[10px] ${
+        tone === "light" ? "border-ink/20 text-ink" : "border-bone/25 text-bone"
       }`}
     >
       {children}
@@ -73,11 +76,11 @@ export function Tag({ children, tone = "light" }: { children: ReactNode; tone?: 
   );
 }
 
-/** A visible placeholder for content still to come. Easy to spot, never fake. */
+/** A visible placeholder for content still to come. Quiet, but easy to spot. Never fake. */
 export function Placeholder({ children, block = false }: { children: ReactNode; block?: boolean }) {
   if (block) {
     return (
-      <div className="flex min-h-40 items-center justify-center rounded-[14px] border-2 border-dashed border-current p-6 text-center font-mono text-xs font-bold uppercase tracking-[0.14em] opacity-80">
+      <div className="label flex h-full min-h-40 items-center justify-center rounded-[14px] border border-dashed border-current/25 p-6 text-center !text-[10px] opacity-60">
         {children}
       </div>
     );
@@ -94,19 +97,20 @@ export function Section({
   ...rest
 }: {
   id?: string;
-  tone?: "light" | "stone" | "navy" | "coral" | "mint";
+  tone?: "light" | "linen" | "ink" | "deep" | "sand" | "mint";
   className?: string;
   children: ReactNode;
 } & React.HTMLAttributes<HTMLElement>) {
   const tones = {
-    light: "bg-offwhite text-navy on-light",
-    stone: "bg-stone text-navy on-light",
-    navy: "bg-navy text-offwhite",
-    coral: "bg-coral text-navy on-coral",
-    mint: "bg-mint text-navy on-light",
+    light: "bg-bone text-ink on-light",
+    linen: "bg-linen text-ink on-light",
+    ink: "bg-ink text-bone",
+    deep: "bg-ink-deep text-bone",
+    sand: "bg-sand text-ink on-sand",
+    mint: "bg-mint text-ink on-light",
   };
   return (
-    <section id={id} className={`${tones[tone]} py-16 sm:py-24 ${className}`} {...rest}>
+    <section id={id} className={`${tones[tone]} py-20 sm:py-32 ${className}`} {...rest}>
       <div className="shell">{children}</div>
     </section>
   );

@@ -47,7 +47,7 @@ export default function FoundersPage() {
         ]}
       />
 
-      <Section tone="light">
+      <Section tone="ink">
         <Heading label="What it is" index="01" lines={[]} className="!mb-6" />
         <Reveal>
           <p className="heavy max-w-5xl text-2xl leading-[1.15] sm:text-4xl">
@@ -58,9 +58,9 @@ export default function FoundersPage() {
         </Reveal>
       </Section>
 
-      <PhotoStrip photos={fleaMarketPhotos} className="bg-offwhite pb-16" />
+      <PhotoStrip photos={fleaMarketPhotos} className="bg-ink pb-20 sm:pb-32" />
 
-      <Section tone="navy">
+      <Section tone="ink">
         <Heading label="The 10 days" index="02" lines={["8 masterclasses.", "1 Demo Day.", "1 flea market."]} tone="mint" />
         <NumberedList
           tone="dark"
@@ -79,7 +79,7 @@ export default function FoundersPage() {
         />
       </Section>
 
-      <Section tone="stone">
+      <Section tone="deep">
         <Heading label="Every day" index="03" lines={[]} className="!mb-6" />
         <div className="grid gap-4 sm:grid-cols-3">
           {[
@@ -87,16 +87,16 @@ export default function FoundersPage() {
             { time: "1 pm to 2 pm", block: "Lunch", text: "Bring your tiffin, or opt into our meal plan." },
             { time: "2 pm to 4 pm", block: "Workshop", text: "Apply it to your own brand, that same day." },
           ].map((r) => (
-            <div key={r.block} className="rounded-[14px] border-2 border-navy bg-offwhite p-5 shadow-hard-navy">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-navy-muted">{r.time}</p>
-              <p className="display mt-2 text-4xl">{r.block}</p>
-              <p className="mt-2 font-medium">{r.text}</p>
+            <div key={r.block} className="rounded-[14px] border border-bone/10 bg-ink-soft p-7 sm:p-8">
+              <p className="label text-mint">{r.time}</p>
+              <p className="display mt-6 text-5xl">{r.block}</p>
+              <p className="mt-3 leading-relaxed text-bone/70">{r.text}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section tone="light">
+      <Section tone="ink">
         <Heading label="What you walk away with" index="04" lines={[]} className="!mb-6" />
         <ol className="grid gap-4 lg:grid-cols-5">
           {[
@@ -106,27 +106,27 @@ export default function FoundersPage() {
             ["A shot at the prize pool.", "The best brands get scouted by investors."],
             ["The Outliers network.", "Alumni, mentors and every cohort after you."],
           ].map(([title, text], i) => (
-            <li key={title} className="rounded-[14px] bg-navy p-5 text-offwhite shadow-hard">
+            <li key={title} className="rounded-[14px] bg-ink p-5 text-bone">
               <span className="display text-4xl text-mint">{i + 1}</span>
               <p className="heavy mt-2 text-lg leading-tight">{title}</p>
-              <p className="mt-2 text-sm leading-snug text-offwhite/85">{text}</p>
+              <p className="mt-2 text-sm leading-snug text-bone/85">{text}</p>
             </li>
           ))}
         </ol>
         <p className="display mt-12 max-w-4xl text-4xl sm:text-6xl">
-          Some teams sell out. Some lose money. <span className="text-coral-deep">Every team knows why.</span>
+          Some teams sell out. Some lose money. <span className="text-mint">Every team knows why.</span>
         </p>
       </Section>
 
-      <Section tone="stone">
+      <Section tone="deep">
         <Heading label="Who you learn from" index="05" lines={["People who have built things."]} />
-        <p className="heavy -mt-4 mb-8 text-xl">1 mentor for every 9 students.</p>
+        <p className="-mt-6 mb-12 text-xl text-sand">1 mentor for every 9 students.</p>
         <FacesGrid people={peopleFor("founders", "mentor")} />
       </Section>
 
-      <div className="bg-offwhite">
+      <div className="bg-ink">
         <div className="shell pt-10">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">/ Previously hosted at · 06</p>
+          <p className="label text-mint">[ 06 ] &nbsp;Previously hosted at</p>
         </div>
         <Marquee
           tone="mint"
@@ -135,14 +135,14 @@ export default function FoundersPage() {
         />
       </div>
 
-      <Section tone="light">
+      <Section tone="ink">
         <Heading label="Campuses for 2027" index="07" lines={[]} className="!mb-6" />
-        <div className="overflow-x-auto rounded-[14px] border-2 border-navy">
+        <div className="overflow-x-auto rounded-[14px] border border-bone/10">
           <table className="w-full min-w-[560px] text-left">
-            <thead className="bg-navy text-offwhite">
+            <thead className="bg-ink-soft text-bone">
               <tr>
                 {["City", "Campus", "Dates", "Fee"].map((h) => (
-                  <th key={h} scope="col" className="p-4 font-mono text-xs font-bold uppercase tracking-[0.14em]">
+                  <th key={h} scope="col" className="label p-5 text-bone/50">
                     {h}
                   </th>
                 ))}
@@ -154,8 +154,8 @@ export default function FoundersPage() {
                 const fees = list.map((c) => (c.fee ? formatINR(c.fee) : null)).filter(Boolean);
                 const dates = list.map((c) => c.dates).filter(Boolean);
                 return (
-                  <tr key={city} className="border-t border-navy/15 align-top">
-                    <th scope="row" className="heavy p-4 text-lg">
+                  <tr key={city} className="border-t border-bone/10 align-top">
+                    <th scope="row" className="display p-5 text-2xl">
                       {city}
                     </th>
                     <td className="p-4 font-medium">
@@ -171,25 +171,25 @@ export default function FoundersPage() {
         </div>
       </Section>
 
-      <Section tone="stone">
+      <Section tone="deep">
         <Heading label="How you get in" index="08" lines={[]} className="!mb-6" />
         <AdmissionSteps variant="full" extraLine="Every campus, same bar." />
       </Section>
 
-      <Section tone="navy">
+      <Section tone="ink">
         <Heading label="The flea market" index="09" lines={["Shop what the next", "generation built."]} tone="mint" />
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <p className="heavy text-2xl leading-tight sm:text-3xl">
             Open to all. Bring family. The students set the prices. You decide what sells out.
           </p>
           {fleaMarketVideo ? (
-            <div className="relative aspect-video overflow-hidden rounded-[14px] border-2 border-offwhite/20 shadow-hard">
+            <div className="relative aspect-video overflow-hidden rounded-[14px] border border-bone/20">
               <LazyVideo src={fleaMarketVideo.mp4} poster={fleaMarketVideo.poster} label="The flea market" className="absolute inset-0 size-full object-cover" />
             </div>
           ) : (
             <div className="grid grid-cols-3 gap-3">
               {fleaMarketPhotos.map((photo) => (
-                <div key={photo.src} className="relative aspect-[3/4] overflow-hidden rounded-[14px] border-2 border-offwhite/20">
+                <div key={photo.src} className="relative aspect-[3/4] overflow-hidden rounded-[14px] border border-bone/20">
                   <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 1024px) 15vw, 30vw" className="object-cover" />
                 </div>
               ))}

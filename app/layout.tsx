@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Archivo_Black, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Anton, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
@@ -7,19 +7,7 @@ import { GoogleAnalytics } from "@/components/tracking/GoogleAnalytics";
 import { AttributionCapture } from "@/components/tracking/AttributionCapture";
 
 const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton", display: "swap" });
-const archivo = Archivo_Black({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-archivo",
-  display: "swap",
-});
 const inter = Inter_Tight({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-  weight: ["500", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -37,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1b1f4b",
+  themeColor: "#25282a",
   width: "device-width",
   initialScale: 1,
 };
@@ -54,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en-IN"
       data-mode="student"
       data-scroll-behavior="smooth"
-      className={`no-js ${anton.variable} ${archivo.variable} ${inter.variable} ${mono.variable}`}
+      className={`no-js ${anton.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

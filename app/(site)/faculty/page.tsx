@@ -15,14 +15,14 @@ export default function FacultyPage() {
   const partners = people.filter((p) => p.role === "partner");
   return (
     <PlaceholderPage eyebrow="Faculty" title="Faculty" blocks={["[FACULTY INTRO: TO BE WRITTEN]", "[PARTNERS: TO BE WRITTEN]"]}>
-      <Section tone="stone">
-        <Eyebrow label="Mentors" />
+      <Section tone="deep">
+        <Eyebrow label="Mentors" tone="mint" />
         <Stack lines={["Not teachers.", "People who have done it."]} className="mt-4 mb-10 text-5xl sm:text-7xl" />
         <FacesGrid people={mentors} />
       </Section>
-      <Section tone="light">
-        <Eyebrow label="Partners" />
-        <p className="heavy mt-4 mb-10 text-2xl">The Houses of Goa team, founded by architect Gerard da Cunha.</p>
+      <Section tone="ink">
+        <Eyebrow label="Partners" tone="mint" />
+        <p className="mt-6 mb-12 text-2xl text-sand">The Houses of Goa team, founded by architect Gerard da Cunha.</p>
         <FacesGrid people={partners} />
       </Section>
     </PlaceholderPage>

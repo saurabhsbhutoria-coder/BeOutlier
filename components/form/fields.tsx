@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
 const inputBase =
-  "block w-full min-h-12 rounded-[10px] border-2 bg-offwhite px-4 text-base text-navy placeholder:text-navy-muted/70 focus:outline-none focus-visible:outline-none focus:ring-4 focus:ring-mint/60";
+  "block w-full min-h-12 rounded-[6px] border bg-white px-4 text-base text-ink placeholder:text-ink-muted/60 transition-colors focus:outline-none focus-visible:outline-none focus:border-ink focus:ring-2 focus:ring-mint/50";
 
 function borderFor(error?: string) {
-  return error ? "border-coral-deep" : "border-navy";
+  return error ? "border-[#b3261e]" : "border-ink/20";
 }
 
 function Shell({
@@ -24,18 +24,18 @@ function Shell({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-sm font-bold text-navy">
+      <label htmlFor={id} className="text-[13px] font-semibold text-ink">
         {label}
-        {optional ? <span className="ml-2 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-navy-muted">Optional</span> : null}
+        {optional ? <span className="ml-2 label !text-[10px] text-ink-muted">Optional</span> : null}
       </label>
       {children}
       {hint && !error ? (
-        <p id={`${id}-hint`} className="text-sm text-navy-muted">
+        <p id={`${id}-hint`} className="text-sm text-ink-muted">
           {hint}
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="flex items-start gap-1.5 text-sm font-semibold text-coral-deep">
+        <p id={`${id}-error`} className="flex items-start gap-1.5 text-sm font-semibold text-[#b3261e]">
           <svg aria-hidden="true" viewBox="0 0 16 16" className="mt-0.5 size-4 shrink-0">
             <circle cx="8" cy="8" r="7" fill="currentColor" />
             <path d="M8 4v5M8 11.2v.6" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" />
@@ -104,7 +104,7 @@ export function TextField({
       {prefix ? (
         <div className="flex">
           <span
-            className={`inline-flex min-h-12 items-center rounded-l-[10px] border-2 bg-stone px-3 font-mono text-base font-bold ${borderFor(error)}`}
+            className={`inline-flex min-h-12 items-center rounded-l-[6px] border bg-linen px-3 text-base font-semibold ${borderFor(error)}`}
             aria-hidden="true"
           >
             {prefix}
@@ -191,7 +191,7 @@ export function CheckboxField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className={`flex cursor-pointer items-start gap-3 rounded-[10px] border-2 bg-stone p-4 ${borderFor(error)}`}
+        className={`flex cursor-pointer items-start gap-3 rounded-[6px] border bg-linen p-4 ${borderFor(error)}`}
       >
         <input
           id={id}
@@ -201,12 +201,12 @@ export function CheckboxField({
           onChange={(e) => onChange(e.target.checked)}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? `${id}-error` : undefined}
-          className="mt-0.5 size-6 shrink-0 accent-navy"
+          className="mt-0.5 size-5 shrink-0 accent-ink"
         />
-        <span className="text-sm leading-snug font-semibold text-navy">{children}</span>
+        <span className="text-sm leading-snug font-semibold text-ink">{children}</span>
       </label>
       {error ? (
-        <p id={`${id}-error`} className="text-sm font-semibold text-coral-deep">
+        <p id={`${id}-error`} className="text-sm font-semibold text-[#b3261e]">
           {error}
         </p>
       ) : null}

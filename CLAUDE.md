@@ -377,19 +377,23 @@ Student name, age, school, parent's phone, city.
 
 ## 13. Decisions and brand tokens (added 19 November 2026)
 
-**Brand tokens** (from the BeOutlier One Pager design; full set lives in Claude Design)
+**Brand tokens** (updated 20 November 2026: elite, dark first, MU20 as the feel reference)
 
 | Token | Hex | Use |
 |---|---|---|
-| Navy | #1B1F4B | Primary text, dark grounds, offset shadows |
-| Coral | #F47171 | Loud grounds, accents (navy text only on coral) |
-| Mint | #5FD9B6 | Accent, highlights on navy |
-| Yellow | #F4D35E | Underline highlight on key words |
-| Off white | #FAFAF7 | Page ground |
-| Stone | #F2F1EC | Stat and info cards |
-| Navy muted | #4A4F75 | Labels, secondary text |
+| Ink (charcoal) | #25282A | Primary ground |
+| Ink deep | #1A1C1E | Alternate dark sections, footer |
+| Ink soft | #2F3336 | Cards on dark |
+| Mint | #6CD4B1 | The one sharp accent: labels, key numbers, hover |
+| Sand | #D9CBB8 | Warm accent text on dark, the parents section ground |
+| Bone | #F7F4EF | Type on dark, form cards |
+| White | #FFFFFF | Inputs |
 
-Fonts: Anton (display, uppercase), Archivo Black (subheads, numbers), Inter Tight (body). Card radius 14px. Wordmark: BE OUTLIER in Anton, white with a 4px navy offset shadow. Tagline: Think.Learn.Create
+Not used: #E99A62 (orange), and the old coral, yellow and navy UI colours.
+
+Logo: the original BeOutlier logo (white letters, dark extrusion, Think.Learn.Create tag). Files in public/brand: logo.webp and logo.png are the transparent cut for dark grounds, logo-original-mint.webp is the source. Never place it on white or bone.
+
+Type: Anton for headlines (uppercase, stacked). Inter Tight for everything else, including the small bracketed labels like [ 03 ] THE HOUSES. No offset shadows, no rotated tiles, no highlighter marks. Hairline borders, square split buttons with an arrow box.
 
 **Forms (every program)**
 Student name, age, grade, school, board, city, parent name, phone number, email. Founders adds preferred campus. Hackathon adds the optional friends field. A consent checkbox is required to submit.

@@ -21,7 +21,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <section className="bg-navy text-offwhite">
+      <section className="bg-ink text-bone">
         <div className="shell py-16 sm:py-24">
           <Eyebrow label={program?.title ?? "Summer 2027"} tone="mint" />
           {isBooking ? (
@@ -32,7 +32,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
               </p>
               {paymentUrl && program ? (
                 <div className="mt-8">
-                  <ButtonLink href={paymentUrl} variant="coral" size="lg" onDark>
+                  <ButtonLink href={paymentUrl} variant="mint" size="lg">
                     {t.booking.payCta(feeText(program.fee) ?? "")}
                   </ButtonLink>
                 </div>
@@ -47,7 +47,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
                 {t.apply.steps.map((s, i) => (
                   <li
                     key={s}
-                    className={`rounded-[14px] border-2 p-4 ${i === 0 ? "border-mint bg-mint text-navy" : "border-offwhite/20"}`}
+                    className={`rounded-[14px] border p-4 ${i === 0 ? "border-mint bg-mint text-ink" : "border-bone/20"}`}
                   >
                     <span className="display text-3xl">{i + 1}</span>
                     <p className="mt-1 font-semibold">{s}</p>
@@ -57,7 +57,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
               <LeadReference label="Application reference" />
             </>
           )}
-          <p className="mt-8 text-sm text-offwhite/80">
+          <p className="mt-8 text-sm text-bone/80">
             <a href={site.whatsapp.href} className="underline underline-offset-4 hover:text-mint">
               WhatsApp {site.whatsapp.display}
             </a>
@@ -66,19 +66,19 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
       </section>
 
       {isBooking && engineers ? (
-        <Section tone="coral">
-          <Eyebrow label={t.houseOfEngineersEyebrow} index={engineers.houseName ?? ""} tone="navy" className="!text-navy" />
+        <Section tone="sand">
+          <Eyebrow label={t.houseOfEngineersEyebrow} index={engineers.houseName ?? ""} tone="ink" />
           <Stack lines={[engineers.tagline]} className="mt-4 max-w-4xl text-5xl sm:text-7xl" />
-          <p className="mt-5 font-mono text-sm font-bold uppercase tracking-[0.1em]">{detailsLine(engineers)}</p>
+          <p className="label mt-6 leading-relaxed text-ink/70">{detailsLine(engineers)}</p>
           <div className="mt-8">
-            <ButtonLink href={engineers.route} variant="navy" size="lg">
+            <ButtonLink href={engineers.route} variant="ink" size="lg">
               Enter the house
             </ButtonLink>
           </div>
         </Section>
       ) : (
-        <Section tone="light">
-          <ButtonLink href="/" variant="navy">
+        <Section tone="deep">
+          <ButtonLink href="/" variant="light">
             {t.back}
           </ButtonLink>
         </Section>

@@ -1,4 +1,4 @@
-import { Wordmark } from "@/components/ui/bits";
+import { Logo } from "@/components/ui/bits";
 import { LandingFooter } from "@/components/layout/Footer";
 
 /** Landing pages: standalone. No menu, one button, one form. */
@@ -7,13 +7,13 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
     <>
       <a
         href="#apply"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-md focus:bg-mint focus:px-4 focus:py-2 focus:text-navy"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-md focus:bg-mint focus:px-4 focus:py-2 focus:text-ink"
       >
         Skip to the form
       </a>
-      <header className="border-b-2 border-navy bg-navy text-offwhite">
-        <div className="shell flex h-14 items-center">
-          <Wordmark />
+      <header className="border-b border-bone/10 bg-ink text-bone">
+        <div className="shell flex h-16 items-center">
+          <Logo className="h-7 sm:h-8" priority />
         </div>
       </header>
       <main id="main">{children}</main>

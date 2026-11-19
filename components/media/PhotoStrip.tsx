@@ -21,7 +21,7 @@ export function PhotoStrip({ photos, className = "" }: { photos: Photo[]; classN
           set.map((p, i) => (
             <div
               key={`${half}-${i}`}
-              className="relative h-56 w-48 shrink-0 overflow-hidden rounded-[14px] border-2 border-navy sm:h-72 sm:w-64"
+              className="relative h-56 w-48 shrink-0 overflow-hidden rounded-[14px] border border-ink sm:h-72 sm:w-64"
             >
               <Image src={p.src} alt="" fill sizes="(min-width: 640px) 256px, 192px" className="object-cover" />
             </div>

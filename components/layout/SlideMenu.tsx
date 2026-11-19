@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { mainNav, site } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -11,6 +12,10 @@ export function SlideMenu() {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  // The header uses backdrop blur, which would trap a fixed overlay inside it,
+  // so the overlay is portalled to <body>.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -51,22 +56,23 @@ export function SlideMenu() {
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-controls="site-menu"
-        className="inline-flex size-11 items-center justify-center rounded-[10px] border-2 border-offwhite/30 hover:border-mint"
+        className="inline-flex size-10 items-center justify-center rounded-[3px] border border-bone/25 transition-colors hover:border-mint hover:text-mint"
       >
         <span className="sr-only">Open menu</span>
         <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true">
-          <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" strokeWidth="2.5" />
+          <path d="M0 3h20M0 11h20" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       </button>
+      {mounted ? createPortal(
       <div
-        className={`fixed inset-0 z-50 transition-opacity duration-200 ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`fixed inset-0 z-[60] overflow-hidden transition-opacity duration-200 ${open ? "opacity-100" : "pointer-events-none opacity-0"}`}
         aria-hidden={!open}
       >
         <button
           type="button"
           tabIndex={-1}
           aria-hidden="true"
-          className="absolute inset-0 bg-navy/60"
+          className="absolute inset-0 bg-ink-deep/70 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         />
         <div
@@ -75,7 +81,7 @@ export function SlideMenu() {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-coral p-6 text-navy shadow-[-8px_0_0_0_var(--color-navy)] transition-transform duration-300 ${
+          className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col border-l border-bone/10 bg-ink-deep p-6 text-bone transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -83,18 +89,18 @@ export function SlideMenu() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="inline-flex size-11 items-center justify-center rounded-[10px] border-2 border-navy"
+              className="inline-flex size-10 items-center justify-center rounded-[3px] border border-bone/25 hover:border-mint hover:text-mint"
             >
               <span className="sr-only">Close menu</span>
               <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" strokeWidth="2.5" />
+                <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" strokeWidth="1.5" />
               </svg>
             </button>
           </div>
           <nav aria-label="Main" className="mt-6">
             <ul className="flex flex-col gap-1">
               <li>
-                <Link href="/" className="display block py-1 text-5xl hover:text-offwhite">
+                <Link href="/" className="display block border-b border-bone/10 py-3 text-4xl transition-colors hover:text-mint">
                   Home
                 </Link>
               </li>
@@ -102,7 +108,7 @@ export function SlideMenu() {
                 <li key={n.href}>
                   <Link
                     href={n.href}
-                    className="display block py-1 text-5xl hover:text-offwhite"
+                    className="display block border-b border-bone/10 py-3 text-4xl transition-colors hover:text-mint"
                     aria-current={pathname === n.href ? "page" : undefined}
                   >
                     {n.label}
@@ -112,17 +118,19 @@ export function SlideMenu() {
             </ul>
           </nav>
           <div className="mt-auto flex flex-col gap-4">
-            <ButtonLink href="/apply" variant="navy" size="lg">
+            <ButtonLink href="/apply" variant="light" size="lg">
               {site.primaryCta}
             </ButtonLink>
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.12em]">
+            <p className="label text-bone/70">
               <a href={site.whatsapp.href} className="underline underline-offset-4">
                 WhatsApp {site.whatsapp.display}
               </a>
             </p>
           </div>
         </div>
-      </div>
+      </div>,
+      document.body,
+      ) : null}
     </>
   );
 }

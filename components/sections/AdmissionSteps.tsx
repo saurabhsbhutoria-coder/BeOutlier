@@ -14,36 +14,30 @@ const FULL = [
 export function AdmissionSteps({
   variant = "full",
   extraLine,
-  tone = "light",
+  tone = "dark",
 }: {
   variant?: "full" | "short";
   extraLine?: string;
   tone?: "light" | "dark";
 }) {
   const dark = tone === "dark";
+  const line = dark ? "border-bone/10" : "border-ink/12";
   return (
-    <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+    <div className="grid gap-16 lg:grid-cols-[1.25fr_1fr] lg:items-end">
       <div>
         {variant === "full" ? (
           <Stack lines={["Applying takes 5 minutes.", "Getting in doesn't."]} className="text-5xl sm:text-7xl" />
         ) : (
           <Stack lines={["Same four steps."]} className="text-5xl sm:text-7xl" />
         )}
-        <ol className="mt-8 grid gap-3 sm:grid-cols-2">
+        <ol className={`mt-12 border-t ${line}`}>
           {FULL.map((s, i) => (
-            <li
-              key={s.title}
-              className={`flex gap-4 rounded-[14px] border-2 p-4 sm:p-5 ${
-                dark ? "border-offwhite/20 bg-navy-soft" : "border-navy bg-offwhite"
-              }`}
-            >
-              <span className={`display text-4xl ${dark ? "text-coral" : "text-coral-deep"}`}>{i + 1}</span>
+            <li key={s.title} className={`grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b py-5 ${line}`}>
+              <span className={`label ${dark ? "text-mint" : "text-mint-deep"}`}>0{i + 1}</span>
               <span>
-                <span className="heavy block text-lg leading-tight">{s.title}</span>
+                <span className="text-xl font-semibold leading-tight">{s.title}</span>
                 {variant === "full" && s.text ? (
-                  <span className={`mt-1 block text-base leading-snug ${dark ? "text-offwhite/80" : "text-navy-muted"}`}>
-                    {s.text}
-                  </span>
+                  <span className={`ml-2 text-base ${dark ? "text-bone/60" : "text-ink-muted"}`}>{s.text}</span>
                 ) : null}
               </span>
             </li>
@@ -51,22 +45,19 @@ export function AdmissionSteps({
         </ol>
       </div>
       <figure>
-        <div
-          className="grid grid-cols-10 gap-1.5 sm:gap-2"
-          role="img"
-          aria-label="100 dots, 15 lit: 15 out of 100 applicants get in"
-        >
+        <div className="grid grid-cols-10 gap-2 sm:gap-2.5" role="img" aria-label="100 dots, 15 lit: 15 out of 100 applicants get in">
           {Array.from({ length: 100 }).map((_, i) => (
             <span
               key={i}
               className={`aspect-square rounded-full ${
-                i < 15 ? "bg-mint ring-2 ring-navy" : dark ? "bg-offwhite/15" : "bg-navy/15"
+                i < 15 ? "bg-mint shadow-[0_0_12px_rgb(108_212_177/0.45)]" : dark ? "bg-bone/10" : "bg-ink/10"
               }`}
             />
           ))}
         </div>
-        <figcaption className="display mt-6 text-4xl sm:text-5xl">
-          85 out of 100 won&apos;t make it.{extraLine ? <span className={`block ${dark ? "text-coral" : "text-coral-deep"}`}>{extraLine}</span> : null}
+        <figcaption className="display mt-8 text-4xl sm:text-5xl">
+          85 out of 100 won&apos;t make it.
+          {extraLine ? <span className={`block ${dark ? "text-sand" : "text-sand-deep"}`}>{extraLine}</span> : null}
         </figcaption>
       </figure>
     </div>

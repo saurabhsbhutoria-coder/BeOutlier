@@ -20,16 +20,16 @@ export function PlaceholderPage({
 }) {
   return (
     <>
-      <section className="on-coral bg-coral text-navy">
+      <section className="relative isolate overflow-hidden border-b border-bone/10 bg-ink text-bone">
         <div className="shell py-14 sm:py-20">
-          <Eyebrow label={eyebrow} className="!text-navy" />
+          <Eyebrow label={eyebrow} tone="mint" />
           <Stack as="h1" lines={[title]} className="mt-4 text-6xl sm:text-8xl" />
           <div className="mt-6 max-w-2xl">
             <Placeholder>[INTRO LINE: TO BE WRITTEN]</Placeholder>
           </div>
         </div>
       </section>
-      <Section tone="light">
+      <Section tone="ink">
         <div className="grid gap-6 sm:grid-cols-2">
           {blocks.map((b) => (
             <Placeholder key={b} block>
@@ -39,8 +39,8 @@ export function PlaceholderPage({
         </div>
       </Section>
       {children}
-      <Section tone="navy">
-        <ButtonLink href="/apply" variant="coral" size="lg" onDark>
+      <Section tone="deep" className="border-t border-bone/10">
+        <ButtonLink href="/apply" variant="light" size="lg">
           {site.primaryCta}
         </ButtonLink>
       </Section>

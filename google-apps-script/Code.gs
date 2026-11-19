@@ -96,7 +96,7 @@ function setup() {
   var statusCol = HEADERS.indexOf('status') + 1;
   var rule = SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).setAllowInvalid(false).build();
   sheet.getRange(2, statusCol, sheet.getMaxRows() - 1, 1).setDataValidation(rule);
-  sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold').setBackground('#1B1F4B').setFontColor('#FAFAF7');
+  sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold').setBackground('#25282A').setFontColor('#F7F4EF');
   sheet.setFrozenRows(1);
 
   var funnel = ss.getSheetByName('Funnel') || ss.insertSheet('Funnel');
@@ -137,14 +137,14 @@ function setup() {
   ];
   funnel.getRange(h, 1, 2, 6).setValues(hack);
 
-  funnel.getRange(1, 1, 1, 6).setFontWeight('bold').setBackground('#1B1F4B').setFontColor('#FAFAF7');
-  funnel.getRange(h, 1, 1, 6).setFontWeight('bold').setBackground('#1B1F4B').setFontColor('#FAFAF7');
+  funnel.getRange(1, 1, 1, 6).setFontWeight('bold').setBackground('#25282A').setFontColor('#F7F4EF');
+  funnel.getRange(h, 1, 1, 6).setFontWeight('bold').setBackground('#25282A').setFontColor('#F7F4EF');
   funnel.getRange(t, 1, 1, 6).setFontWeight('bold');
   funnel.setColumnWidth(1, 300);
 
   var over = SpreadsheetApp.newConditionalFormatRule()
     .whenFormulaSatisfied('=$E2>0.15')
-    .setBackground('#F47171')
+    .setBackground('#D9CBB8')
     .setRanges([funnel.getRange(2, 1, rows.length - 1, 6)])
     .build();
   funnel.setConditionalFormatRules([over]);
@@ -160,17 +160,17 @@ function sendTeamEmail_(lead, props) {
 
   var rows = HEADERS.filter(function (h) { return h !== 'status' && h !== 'notes'; }).map(function (h) {
     var v = lead[h] == null ? '' : String(lead[h]);
-    return '<tr><th align="left" style="padding:6px 12px;border-bottom:1px solid #e5e4de;font:600 12px monospace;color:#4A4F75;text-transform:uppercase">' +
-      esc_(h) + '</th><td style="padding:6px 12px;border-bottom:1px solid #e5e4de;font:14px Arial,sans-serif;color:#1B1F4B">' + esc_(v) + '</td></tr>';
+    return '<tr><th align="left" style="padding:6px 12px;border-bottom:1px solid #e5e4de;font:600 12px monospace;color:#62686B;text-transform:uppercase">' +
+      esc_(h) + '</th><td style="padding:6px 12px;border-bottom:1px solid #e5e4de;font:14px Arial,sans-serif;color:#25282A">' + esc_(v) + '</td></tr>';
   }).join('');
 
   var html =
-    '<div style="font-family:Arial,sans-serif;color:#1B1F4B">' +
+    '<div style="font-family:Arial,sans-serif;color:#25282A">' +
     '<p style="font-size:18px;font-weight:bold;margin:0 0 12px">' + esc_(lead.program) + ': ' + esc_(lead.student_name) + ', ' + esc_(lead.city) + '</p>' +
-    '<p style="margin:0 0 16px"><a href="' + wa + '" style="display:inline-block;background:#5FD9B6;color:#1B1F4B;font-weight:bold;padding:10px 16px;border-radius:8px;text-decoration:none;border:2px solid #1B1F4B">WhatsApp ' +
+    '<p style="margin:0 0 16px"><a href="' + wa + '" style="display:inline-block;background:#6CD4B1;color:#25282A;font-weight:bold;padding:10px 16px;border-radius:8px;text-decoration:none;border:2px solid #25282A">WhatsApp ' +
     esc_(lead.parent_name) + ' on ' + esc_(lead.parent_whatsapp) + '</a></p>' +
     '<table cellspacing="0" style="border-collapse:collapse;border:1px solid #e5e4de">' + rows + '</table>' +
-    '<p style="font-size:12px;color:#4A4F75;margin-top:16px">Move the status in the Leads tab as the application progresses.</p>' +
+    '<p style="font-size:12px;color:#62686B;margin-top:16px">Move the status in the Leads tab as the application progresses.</p>' +
     '</div>';
 
   MailApp.sendEmail({
@@ -213,15 +213,15 @@ function sendParentEmail_(lead, props) {
   }
 
   var button = isBooking && lead._payment_url
-    ? '<p style="margin:20px 0"><a href="' + esc_(lead._payment_url) + '" style="display:inline-block;background:#F47171;color:#1B1F4B;font-weight:bold;padding:12px 18px;border-radius:8px;text-decoration:none;border:2px solid #1B1F4B">Pay ' + esc_(lead._fee || '') + ' and lock the seat</a></p>'
+    ? '<p style="margin:20px 0"><a href="' + esc_(lead._payment_url) + '" style="display:inline-block;background:#D9CBB8;color:#25282A;font-weight:bold;padding:12px 18px;border-radius:8px;text-decoration:none;border:2px solid #25282A">Pay ' + esc_(lead._fee || '') + ' and lock the seat</a></p>'
     : '';
 
   var html =
-    '<div style="font-family:Arial,sans-serif;color:#1B1F4B;max-width:560px">' +
+    '<div style="font-family:Arial,sans-serif;color:#25282A;max-width:560px">' +
     '<p style="font:bold 22px Impact,Arial Narrow,sans-serif;letter-spacing:0.5px;margin:0 0 20px">BE OUTLIER</p>' +
     lines.map(function (l) { return '<p style="font-size:15px;line-height:1.5;margin:0 0 14px">' + esc_(l) + '</p>'; }).join('') +
     button +
-    '<p style="font-size:15px;margin:20px 0 0">BeOutlier<br><span style="color:#4A4F75">Think.Learn.Create</span></p>' +
+    '<p style="font-size:15px;margin:20px 0 0">BeOutlier<br><span style="color:#62686B">Think.Learn.Create</span></p>' +
     '</div>';
 
   MailApp.sendEmail({

@@ -7,23 +7,23 @@ export function ParentsBlock() {
   const all = dropOrder.map((id) => getProgram(id)).filter(Boolean) as Program[];
   return (
     <div className="grid gap-5 lg:grid-cols-2">
-      <div className="rounded-[14px] border-2 border-navy bg-offwhite p-6">
-        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">Fees</p>
-        <ul className="mt-4 divide-y divide-navy/15">
+      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+        <p className="label text-ink-muted">Fees</p>
+        <ul className="mt-4 divide-y divide-ink/10">
           {all.map((p) => (
             <li key={p.id} className="flex items-baseline justify-between gap-4 py-3">
               <span className="font-semibold">{p.title}</span>
-              <span className="heavy whitespace-nowrap">
+              <span className="whitespace-nowrap font-semibold">
                 {feeText(p.fee) ?? <Placeholder>{microcopy.placeholders.fee}</Placeholder>}
               </span>
             </li>
           ))}
         </ul>
-        <p className="mt-3 text-sm text-navy-muted">Residentials: stay and meals included.</p>
+        <p className="mt-3 text-sm text-ink-muted">Residentials: stay and meals included.</p>
       </div>
-      <div className="rounded-[14px] border-2 border-navy bg-offwhite p-6">
-        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">Safety and supervision</p>
-        <ul className="mt-4 flex flex-col gap-3 font-medium">
+      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+        <p className="label text-ink-muted">Safety and supervision</p>
+        <ul className="mt-5 flex flex-col gap-4 leading-relaxed">
           <li>
             <span className="heavy">Every program.</span> 1 mentor for every 9 students.
           </li>
@@ -36,9 +36,9 @@ export function ParentsBlock() {
           </li>
         </ul>
       </div>
-      <div className="rounded-[14px] border-2 border-navy bg-offwhite p-6">
-        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">What your child brings home</p>
-        <ul className="mt-4 flex flex-col gap-3 font-medium">
+      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+        <p className="label text-ink-muted">What your child brings home</p>
+        <ul className="mt-5 flex flex-col gap-4 leading-relaxed">
           <li>
             <span className="heavy">Founders.</span> Their own brand. Their profits. Their journal.
           </li>
@@ -50,8 +50,8 @@ export function ParentsBlock() {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col gap-4 rounded-[14px] border-2 border-navy bg-offwhite p-6">
-        <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-navy-muted">Testimonials</p>
+      <div className="flex flex-col gap-4 rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+        <p className="label text-ink-muted">Testimonials</p>
         <Placeholder block>{microcopy.placeholders.testimonials}</Placeholder>
       </div>
     </div>
