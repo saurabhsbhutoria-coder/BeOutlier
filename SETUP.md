@@ -1,0 +1,167 @@
+# BeOutlier website: setup guide
+
+Plain steps, in order. Each one takes a few minutes. You need: a Google account (ideally the Google Workspace account behind team@beoutlier.in), a GitHub account, a Vercel account, and the GoDaddy login for beoutlier.in.
+
+---
+
+## 1. Create the Google Sheet and paste in the script
+
+1. Go to sheets.google.com and create a blank sheet. Name it **BeOutlier Leads**.
+2. In the sheet, open **Extensions > Apps Script**.
+3. Delete everything in the editor. Open `google-apps-script/Code.gs` from this project, copy all of it, and paste it in.
+4. Click the gear icon (**Project Settings**), tick **Show "appsscript.json" manifest file in editor**. Go back to the editor, open `appsscript.json`, and replace its contents with `google-apps-script/appsscript.json` from this project.
+5. Click **Save** (the disk icon).
+
+## 2. Set the script properties
+
+1. In Apps Script, click the gear icon (**Project Settings**). Scroll to **Script Properties**. Click **Add script property** twice:
+   - `SHARED_SECRET`: a long random password. To make one, run this in PowerShell and copy the result:
+     ```powershell
+     -join ((48..57)+(65..90)+(97..122) | Get-Random -Count 40 | ForEach-Object {[char]$_})
+     ```
+   - `TEAM_EMAIL`: where new lead alerts go. For example `team@beoutlier.in`. Several addresses can be separated with commas.
+2. Click **Save script properties**. Keep the secret somewhere safe: you need it again in step 4.
+
+## 3. Run setup and deploy the script as a web app
+
+1. In the editor, pick `setup` from the function menu at the top and click **Run**.
+2. Google asks for permission. Click **Review permissions**, pick your account, then **Advanced > Go to project** and **Allow**. (It needs to edit this one sheet and send email as you.)
+3. Check the sheet: you now have a **Leads** tab with headers and a **Funnel** tab.
+4. Click **Deploy > New deployment**. Click the gear next to "Select type" and choose **Web app**.
+   - Description: `Leads v1`
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Click **Deploy** and copy the **Web app URL** (it ends in `/exec`).
+
+If you ever change `Code.gs`, use **Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy**. The URL stays the same.
+
+Email limits: a free Gmail account sends about 100 emails a day, Google Workspace about 1,500. Each lead sends two emails, so use the Workspace account.
+
+## 4. Add the environment variables in Vercel
+
+You will paste these in step 5. Have them ready:
+
+| Name | Value |
+|---|---|
+| `APPS_SCRIPT_URL` | The web app URL from step 3 |
+| `APPS_SCRIPT_SECRET` | The same secret as `SHARED_SECRET` in step 2 |
+| `NEXT_PUBLIC_SITE_URL` | `https://beoutlier.in` |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Events Manager > your Pixel > the ID number |
+| `META_CAPI_TOKEN` | Events Manager > your Pixel > Settings > Conversions API > **Generate access token** |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics > Admin > Data streams > your web stream > Measurement ID (`G-...`) |
+| `NEXT_PUBLIC_HACKATHON_PAYMENT_URL` | The payment page link from your gateway (Razorpay Payment Page, Cashfree, or similar) for ₹10,000. Leave empty until ready: the thank you page then says you will call to confirm. |
+| `META_TEST_EVENT_CODE` (optional) | Events Manager > Test events > the code. Only while testing. Delete it afterwards. |
+
+Any tracking value you leave empty simply switches that tracking off. The site still works.
+
+## 5. Push to GitHub and deploy on Vercel
+
+1. On github.com, signed in as **saurabhsbhutoria-coder**, click **New repository**. Name it `beoutlier`, set it to **Private**, and do not add a README. Click **Create repository**.
+2. In PowerShell, inside the `beoutlier` folder, tell Git who you are (once per computer). Use the email on your GitHub account, or the private noreply address shown under GitHub > Settings > Emails:
+   ```powershell
+   git config --global user.name "Your Name"
+   ```
+   ```powershell
+   git config --global user.email "you@example.com"
+   ```
+3. Save the first version and send it to GitHub:
+   ```powershell
+   git add -A
+   ```
+   ```powershell
+   git commit -m "BeOutlier website"
+   ```
+   ```powershell
+   git remote add origin https://github.com/saurabhsbhutoria-coder/beoutlier.git
+   ```
+   ```powershell
+   git push -u origin main
+   ```
+   A browser window asks you to sign in to GitHub the first time.
+4. On vercel.com, click **Add New > Project**, connect GitHub, and import `beoutlier`.
+5. Before clicking Deploy, open **Environment Variables** and add every value from step 4.
+6. Click **Deploy**. In about a minute you get a `...vercel.app` link. Open it on your phone.
+
+Use the **Pro** plan for this project: the free Hobby plan is for non commercial use only.
+
+Every time you push to GitHub from now on, Vercel redeploys automatically.
+
+## 6. Connect the GoDaddy domain
+
+1. In Vercel: **Project > Settings > Domains > Add**. Add `beoutlier.in`, then add `www.beoutlier.in` and set it to redirect to `beoutlier.in`.
+2. Vercel shows the DNS records it wants. Use exactly what it shows. Usually:
+
+   | Type | Name | Value |
+   |---|---|---|
+   | A | `@` | `76.76.21.21` |
+   | CNAME | `www` | `cname.vercel-dns.com` |
+
+3. In GoDaddy: **My Products > beoutlier.in > DNS**. Delete any existing **A** record for `@` and any **CNAME** for `www` (often a GoDaddy "parked" record). Add the two records above. Leave MX records alone: they are your email.
+4. Wait. It usually works within an hour, sometimes up to 48 hours. Vercel shows a green tick when it is done, and adds the HTTPS certificate on its own.
+
+## 7. Test on a phone
+
+1. On your phone, open `https://beoutlier.in/hackathon?utm_source=test&utm_campaign=setup`.
+2. Fill the form with your own email and phone number. Submit.
+3. Check, within a minute:
+   - A new row in the **Leads** tab, with `utm_source` = `test`.
+   - The team alert email (subject starts `New lead:`), with a WhatsApp button.
+   - The parent confirmation email in your inbox.
+   - Meta Events Manager > Test events (if you set `META_TEST_EVENT_CODE`): a **Lead** from both Browser and Server, marked as deduplicated.
+4. Repeat once on `/founders`. Then delete the test rows from the sheet.
+
+If the form shows "Something broke on our side", open Vercel > your project > **Logs** and search `LEAD_FORWARD_FAILED`. The full lead is in that log line, so nothing is lost. The usual causes are a wrong `APPS_SCRIPT_URL`, a secret that does not match, or a script that was not redeployed after an edit.
+
+You can also send a test lead from your computer:
+```powershell
+$env:TEST_EMAIL="you@example.com"; npm run test:submit -- https://beoutlier.in hackathon
+```
+
+## 8. Change a program's status, seats, fee or dates
+
+Everything lives in `content/programs.ts`. Open it on GitHub (click the file, then the pencil icon), edit, and click **Commit changes**. Vercel redeploys in about a minute.
+
+- **Status**: change `status: "open"` to `"closing_soon"`, `"waitlist"` or `"sold_out"`. Badges and buttons update on every page. `sold_out` also closes that program's form.
+- **Seats left**: change `seats: { total: 51, left: null }` to, for example, `left: 12`. The site then shows "12 of 51 seats left." Type it by hand from the Funnel tab. Never guess.
+- **Founders campuses, dates and fees**: in the `campuses` list, set `dates: "1 to 10 May"` and `fee: 25000` for each campus. The `[DATES]` and `[FEE]` placeholders disappear on their own.
+- **Photos and videos**: drop files in `public/media/...` and list them in `content/media.ts`.
+- **Mentor faces**: put photos in `public/media/people/` and add entries in `content/people.ts`.
+
+The **Funnel** tab shows applications, offers (rows moved to `Selected` or `Enrolled`) and the offer rate per program. It turns red if any program goes over 15%.
+
+---
+
+## Checklist: what BeOutlier still needs to provide
+
+**Brand and media**
+- [ ] Logo SVG (full wordmark and a small mark) into `public/brand/`. The site uses a text wordmark until then.
+- [ ] Home hero video (vertical or 4:5, muted) and a still frame for the poster
+- [ ] Flea market video for Home section 02 and the Founders page
+- [ ] Student photos for the Hackathon, Engineers and Designers pages (their heroes show a placeholder today)
+- [ ] Student Reels (9:16) with the number to overlay on each, for Home section 05
+- [ ] Final brand tokens from Claude Design, if they differ from the One Pager colours used here
+
+**People**
+- [ ] Mentor faces with one line each: Hackathon, Founders, Engineers, Home
+- [ ] Houses of Goa team faces with one line each
+- [ ] Alumni faces with what each built
+- [ ] Parent testimonials (real, with permission)
+
+**Facts**
+- [ ] Founders: the 3 more Mumbai campuses and 3 more Pune campuses, dates and fee per campus
+- [ ] Hackathon payment gateway link
+- [ ] "Face unlock door" uses the banned word "unlock". It is kept word for word from the brief. Confirm or rename.
+
+**Copy still to write**
+- [ ] The Code, Faculty, For Parents and For Schools pages
+- [ ] Review every line in `content/microcopy.ts` (marked DRAFT): form labels, errors, thank you pages, footer line, 404
+- [ ] Review both email texts in `google-apps-script/Code.gs`
+
+**Legal (before ads go live)**
+- [ ] Lawyer review of `/privacy` and `/terms`, then fill every `[PLACEHOLDER]` there: legal entity, retention period, grievance officer, refund policy, media consent, liability, jurisdiction
+- [ ] Decide on a cookie consent approach
+
+**Accounts**
+- [ ] Meta Pixel ID and Conversions API token
+- [ ] GA4 measurement ID
+- [ ] Vercel Pro plan
