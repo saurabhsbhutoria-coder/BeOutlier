@@ -70,6 +70,11 @@
   .on-coral :focus-visible {
     outline-color: var(--color-navy);
   }
+  @media (min-width: 1024px) {
+    .hero-split :focus-visible {
+      outline-color: var(--color-navy);
+    }
+  }
   h1,
   h2,
   h3 {

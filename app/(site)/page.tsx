@@ -12,7 +12,8 @@ import { AdmissionSteps } from "@/components/sections/AdmissionSteps";
 import { ParentStudentToggle } from "@/components/mode/ParentStudentToggle";
 import { dropOrder, feeText, getProgram, houses, type Program } from "@/content/programs";
 import { peopleFor } from "@/content/people";
-import { fleaMarketPhotos, fleaMarketVideo, heroVideos, reels } from "@/content/media";
+import { fleaMarketPhotos, fleaMarketVideo, homeHero, reels } from "@/content/media";
+import { HeroVideo } from "@/components/media/HeroVideo";
 import { microcopy } from "@/content/microcopy";
 import { site } from "@/content/site";
 import { ParentsBlock } from "@/components/sections/ParentsBlock";
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const hackathon = getProgram("hackathon");
   const summer = houses();
-  const heroVideo = heroVideos.home;
+  /** Once a desktop video is set in content/media.ts, desktop goes full bleed too. */
+  const fullBleedDesktop = Boolean(homeHero.desktop);
 
   return (
     <>
@@ -38,11 +40,35 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="on-coral overflow-hidden bg-coral text-navy parent:bg-offwhite">
-        <div className="shell grid gap-10 py-12 sm:py-16 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:py-24">
-          <div>
-            <Eyebrow label="Summer 2027" index="Mumbai · Pune · Goa" className="!text-navy" />
+      {/* Hero: video background with the title layered on it. Phone uses the
+          vertical video; desktop keeps the coral split layout until a desktop video is set. */}
+      <section
+        className={`relative overflow-hidden bg-navy text-offwhite ${
+          fullBleedDesktop ? "" : "hero-split lg:bg-coral lg:text-navy lg:parent:bg-offwhite"
+        }`}
+      >
+        {homeHero.mobile || homeHero.desktop ? (
+          <div className={fullBleedDesktop ? "" : "lg:hidden"}>
+            <HeroVideo mobile={homeHero.mobile} desktop={homeHero.desktop} />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-b from-navy/55 via-navy/45 to-navy/95"
+            />
+          </div>
+        ) : null}
+        <div
+          className={`shell relative grid min-h-[calc(100svh-11rem)] content-end gap-10 py-10 sm:py-16 ${
+            fullBleedDesktop
+              ? "lg:min-h-[85svh] lg:py-24"
+              : "lg:min-h-0 lg:grid-cols-[1.3fr_1fr] lg:content-center lg:items-center lg:py-24"
+          }`}
+        >
+          <div className="[text-shadow:0_2px_18px_rgb(27_31_75/0.55)] lg:[text-shadow:none]">
+            <Eyebrow
+              label="Summer 2027"
+              index="Mumbai · Pune · Goa"
+              className={fullBleedDesktop ? "!text-mint" : "!text-mint lg:!text-navy"}
+            />
             <Stack
               as="h1"
               lines={["A school", "beyond", "classrooms."]}
@@ -52,37 +78,34 @@ export default function HomePage() {
               Experiential learning for India&apos;s outlier teenagers.
             </p>
             <div className="mt-8">
-              <ButtonLink href="/apply" variant="navy" size="lg">
-                {site.primaryCta}
-              </ButtonLink>
+              <span className={fullBleedDesktop ? "" : "lg:hidden"}>
+                <ButtonLink href="/apply" variant="coral" size="lg" onDark>
+                  {site.primaryCta}
+                </ButtonLink>
+              </span>
+              {fullBleedDesktop ? null : (
+                <span className="hidden lg:inline-block">
+                  <ButtonLink href="/apply" variant="navy" size="lg">
+                    {site.primaryCta}
+                  </ButtonLink>
+                </span>
+              )}
             </div>
           </div>
-          <div className="relative">
-            {heroVideo ? (
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[14px] border-2 border-navy shadow-[8px_8px_0_0_var(--color-navy)]">
-                <LazyVideo src={heroVideo.mp4} poster={heroVideo.poster} label="Students at BeOutlier" eager className="absolute inset-0 size-full object-cover" />
-              </div>
-            ) : (
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-2">
-                {fleaMarketPhotos.map((ph, i) => (
-                  <div
-                    key={ph.src}
-                    className={`relative aspect-[3/4] overflow-hidden rounded-[14px] border-2 border-navy ${
-                      i === 0 ? "lg:col-span-2 lg:aspect-[16/11]" : ""
-                    } ${i === 1 ? "rotate-[-1.5deg] parent:rotate-0" : ""} ${i === 2 ? "rotate-[1.5deg] parent:rotate-0" : ""}`}
-                  >
-                    <Image
-                      src={ph.src}
-                      alt={ph.alt}
-                      fill
-                      priority={i === 0}
-                      sizes="(min-width: 1024px) 30vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+          <div className={fullBleedDesktop ? "hidden" : "relative hidden lg:block"}>
+            {/* Desktop only, so phones never download these */}
+            <div className="grid grid-cols-2 gap-3">
+              {fleaMarketPhotos.map((ph, i) => (
+                <div
+                  key={ph.src}
+                  className={`relative aspect-[3/4] overflow-hidden rounded-[14px] border-2 border-navy ${
+                    i === 0 ? "col-span-2 aspect-[16/11]" : ""
+                  } ${i === 1 ? "rotate-[-1.5deg] parent:rotate-0" : ""} ${i === 2 ? "rotate-[1.5deg] parent:rotate-0" : ""}`}
+                >
+                  <Image src={ph.src} alt={ph.alt} fill loading="lazy" sizes="30vw" className="object-cover" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

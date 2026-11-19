@@ -38,7 +38,20 @@ export const fleaMarketPhotos: Photo[] = [
   },
 ];
 
-/** Hero videos per page. Add an mp4 and a poster still, then set these. */
+/**
+ * Home hero background. Muted loop, text layered on top.
+ * mobile: vertical (9:16). desktop: horizontal (16:9). Until a desktop video
+ * is set, desktop keeps the coral layout with the photo collage.
+ * Compress before adding: 480x854 (mobile) or 1280x720 (desktop), no audio, H.264, under ~6 MB.
+ */
+export const homeHero: {
+  mobile?: { mp4: string; poster: string };
+  desktop?: { mp4: string; poster: string };
+} = {
+  mobile: { mp4: "/media/home/hero-mobile.mp4", poster: "/media/home/hero-mobile-poster.jpg" },
+};
+
+/** Hero videos per landing page. Add an mp4 and a poster still, then set these. */
 export const heroVideos: Partial<Record<"home" | "hackathon" | "founders" | "engineers" | "designers", { mp4: string; poster: string }>> = {};
 
 /** The flea market video for Home section 02 and Founders. */
