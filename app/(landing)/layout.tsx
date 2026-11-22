@@ -11,7 +11,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
       >
         Skip to the form
       </a>
-      <header className="border-b border-bone/10 bg-ink text-bone">
+      <header className="border-b border-ink/15 bg-mint text-ink">
         <div className="shell flex h-16 items-center">
           <Logo className="h-7 sm:h-8" priority />
         </div>

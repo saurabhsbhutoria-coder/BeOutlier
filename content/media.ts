@@ -39,6 +39,27 @@ export const fleaMarketPhotos: Photo[] = [
 ];
 
 /**
+ * Photo behind each house panel (Home section 03 and /programs).
+ * Engineers and Designers use 2025 flea market photos as stand ins until
+ * real photos from those programs exist. Replace them as soon as possible,
+ * ideally with photos at least 1600px wide.
+ */
+export const houseImages: Record<"founders" | "engineers" | "designers", { src: string; alt: string }> = {
+  founders: {
+    src: "/media/founders/flea-market-juices.jpg",
+    alt: "Three students selling bottled juices they made at their stall",
+  },
+  engineers: {
+    src: "/media/home/hero-mobile-poster.jpg",
+    alt: "Students at a BeOutlier event",
+  },
+  designers: {
+    src: "/media/founders/flea-market-stall.jpg",
+    alt: "Students explaining their product to visitors at their stall",
+  },
+};
+
+/**
  * Home hero background. Muted loop, text layered on top.
  * mobile: vertical (9:16). desktop: horizontal (16:9). Until a desktop video
  * is set, desktop keeps the coral layout with the photo collage.

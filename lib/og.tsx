@@ -13,7 +13,7 @@ function logo(): string {
   return logoData;
 }
 
-/** Brand share card: charcoal ground, the real logo, mint label, stacked headline. */
+/** Brand share card: mint ground, the real logo, mint label, stacked headline. */
 export function ogCard({ eyebrow, lines }: { eyebrow: string; lines: string[]; dark?: boolean }) {
   return new ImageResponse(
     (
@@ -24,8 +24,8 @@ export function ogCard({ eyebrow, lines }: { eyebrow: string; lines: string[]; d
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#25282A",
-          color: "#F7F4EF",
+          background: "#6CD4B1",
+          color: "#25282A",
           padding: 72,
           fontFamily: "sans-serif",
         }}
@@ -33,8 +33,8 @@ export function ogCard({ eyebrow, lines }: { eyebrow: string; lines: string[]; d
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logo()} width={330} height={74} alt="" />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 24, fontWeight: 600, letterSpacing: 5, marginBottom: 24, color: "#6CD4B1" }}>
-            {`[ ${eyebrow} ]`}
+          <div style={{ fontSize: 24, fontWeight: 600, letterSpacing: 5, marginBottom: 24, color: "#25282A" }}>
+            {`● ${eyebrow}`}
           </div>
           {lines.map((l) => (
             <div key={l} style={{ fontSize: 88, fontWeight: 900, lineHeight: 0.95, letterSpacing: -1 }}>
@@ -42,7 +42,7 @@ export function ogCard({ eyebrow, lines }: { eyebrow: string; lines: string[]; d
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", fontSize: 24, color: "#D9CBB8" }}>beoutlier.in</div>
+        <div style={{ display: "flex", fontSize: 24, color: "#25282A" }}>beoutlier.in</div>
       </div>
     ),
     ogSize,

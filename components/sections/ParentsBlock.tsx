@@ -7,7 +7,7 @@ export function ParentsBlock() {
   const all = dropOrder.map((id) => getProgram(id)).filter(Boolean) as Program[];
   return (
     <div className="grid gap-5 lg:grid-cols-2">
-      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+      <div className="border-t border-ink bg-transparent pt-6 pb-2">
         <p className="label text-ink-muted">Fees</p>
         <ul className="mt-4 divide-y divide-ink/10">
           {all.map((p) => (
@@ -21,7 +21,7 @@ export function ParentsBlock() {
         </ul>
         <p className="mt-3 text-sm text-ink-muted">Residentials: stay and meals included.</p>
       </div>
-      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+      <div className="border-t border-ink bg-transparent pt-6 pb-2">
         <p className="label text-ink-muted">Safety and supervision</p>
         <ul className="mt-5 flex flex-col gap-4 leading-relaxed">
           <li>
@@ -36,7 +36,7 @@ export function ParentsBlock() {
           </li>
         </ul>
       </div>
-      <div className="rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+      <div className="border-t border-ink bg-transparent pt-6 pb-2">
         <p className="label text-ink-muted">What your child brings home</p>
         <ul className="mt-5 flex flex-col gap-4 leading-relaxed">
           <li>
@@ -50,7 +50,7 @@ export function ParentsBlock() {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col gap-4 rounded-[14px] border border-ink/10 bg-bone/60 p-7 sm:p-8">
+      <div className="flex flex-col gap-4 border-t border-ink bg-transparent pt-6 pb-2">
         <p className="label text-ink-muted">Testimonials</p>
         <Placeholder block>{microcopy.placeholders.testimonials}</Placeholder>
       </div>

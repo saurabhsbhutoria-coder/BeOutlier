@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Eyebrow, Section, Stack } from "@/components/ui/bits";
-import { DropCard, HouseCard } from "@/components/sections/Cards";
+import { DropCard } from "@/components/sections/Cards";
+import { HousePanels } from "@/components/sections/HousePanels";
 import { getProgram, houses } from "@/content/programs";
+import { houseImages } from "@/content/media";
 
 export const metadata: Metadata = {
   title: "Programs",
@@ -11,20 +13,21 @@ export const metadata: Metadata = {
 
 export default function ProgramsPage() {
   const hackathon = getProgram("hackathon");
+  const panels = houses().map((p) => ({ program: p, image: houseImages[p.house as keyof typeof houseImages] }));
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-bone/10 bg-ink text-bone">
-        <div className="shell py-14 sm:py-20">
-          <Eyebrow label="Programs" tone="mint" />
-          <Stack as="h1" lines={["Summer 2027.", "Three houses.", "Pick one."]} className="mt-4 text-6xl sm:text-8xl" />
+      <section className="bg-mint text-ink">
+        <div className="shell py-16 sm:py-24">
+          <Eyebrow label="Programs" />
+          <Stack
+            as="h1"
+            lines={["Summer 2027.", "Three houses.", "Pick one."]}
+            className="mt-8 text-[3.4rem] sm:text-8xl lg:text-[clamp(110px,10vw,170px)]"
+          />
         </div>
       </section>
-      <Section tone="deep">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {houses().map((p, i) => (
-            <HouseCard key={p.id} program={p} index={i + 1} />
-          ))}
-        </div>
+      <Section tone="white">
+        <HousePanels panels={panels} />
       </Section>
       {hackathon ? (
         <Section tone="ink">

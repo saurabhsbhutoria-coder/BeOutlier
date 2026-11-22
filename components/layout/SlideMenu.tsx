@@ -56,7 +56,7 @@ export function SlideMenu() {
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-controls="site-menu"
-        className="inline-flex size-10 items-center justify-center rounded-[3px] border border-bone/25 transition-colors hover:border-mint hover:text-mint"
+        className="inline-flex size-10 items-center justify-center border border-ink/40 transition-colors hover:border-ink hover:bg-ink hover:text-mint"
       >
         <span className="sr-only">Open menu</span>
         <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true">
@@ -72,7 +72,7 @@ export function SlideMenu() {
           type="button"
           tabIndex={-1}
           aria-hidden="true"
-          className="absolute inset-0 bg-ink-deep/70 backdrop-blur-sm"
+          className="absolute inset-0 bg-ink/50"
           onClick={() => setOpen(false)}
         />
         <div
@@ -81,7 +81,7 @@ export function SlideMenu() {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col border-l border-bone/10 bg-ink-deep p-6 text-bone transition-transform duration-300 ${
+          className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-ink p-6 text-white on-dark transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -89,7 +89,7 @@ export function SlideMenu() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="inline-flex size-10 items-center justify-center rounded-[3px] border border-bone/25 hover:border-mint hover:text-mint"
+              className="inline-flex size-10 items-center justify-center border border-white/30 hover:border-mint hover:text-mint"
             >
               <span className="sr-only">Close menu</span>
               <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
@@ -100,7 +100,7 @@ export function SlideMenu() {
           <nav aria-label="Main" className="mt-6">
             <ul className="flex flex-col gap-1">
               <li>
-                <Link href="/" className="display block border-b border-bone/10 py-3 text-4xl transition-colors hover:text-mint">
+                <Link href="/" className="display block border-b border-white/15 py-3 text-4xl transition-[color,padding] duration-300 hover:pl-3 hover:text-mint">
                   Home
                 </Link>
               </li>
@@ -108,7 +108,7 @@ export function SlideMenu() {
                 <li key={n.href}>
                   <Link
                     href={n.href}
-                    className="display block border-b border-bone/10 py-3 text-4xl transition-colors hover:text-mint"
+                    className="display block border-b border-white/15 py-3 text-4xl transition-[color,padding] duration-300 hover:pl-3 hover:text-mint"
                     aria-current={pathname === n.href ? "page" : undefined}
                   >
                     {n.label}
@@ -118,10 +118,10 @@ export function SlideMenu() {
             </ul>
           </nav>
           <div className="mt-auto flex flex-col gap-4">
-            <ButtonLink href="/apply" variant="light" size="lg">
+            <ButtonLink href="/apply" variant="mint" size="lg">
               {site.primaryCta}
             </ButtonLink>
-            <p className="label text-bone/70">
+            <p className="label text-white/70">
               <a href={site.whatsapp.href} className="underline underline-offset-4">
                 WhatsApp {site.whatsapp.display}
               </a>

@@ -42,7 +42,7 @@ export default function EngineersPage() {
         ]}
       />
 
-      <Section tone="ink">
+      <Section tone="white">
         <Heading label="What it is" index="01" lines={[]} className="!mb-6" />
         <Reveal>
           <p className="heavy max-w-5xl text-2xl leading-[1.15] sm:text-4xl">
@@ -53,7 +53,7 @@ export default function EngineersPage() {
         </Reveal>
       </Section>
 
-      <Section tone="deep">
+      <Section tone="linen">
         <Heading label="The four days" index="02" lines={[]} className="!mb-6" />
         <DayPlan
           days={[
@@ -69,30 +69,30 @@ export default function EngineersPage() {
         <Heading label="What you could build" index="03" lines={[]} tone="mint" className="!mb-6" />
         <ul className="flex flex-wrap gap-3">
           {["Self driving rover", "Gesture controlled robotic arm", "Face recognition lock", "Smart sorting machine"].map((b) => (
-            <li key={b} className="rounded-full border border-bone/20 px-6 py-3 text-lg font-medium transition-colors hover:border-mint hover:text-mint">
+            <li key={b} className="border border-white/30 px-6 py-3 text-lg font-medium transition-colors hover:border-mint hover:bg-mint hover:text-ink">
               {b}
             </li>
           ))}
         </ul>
-        <p className="display mt-8 text-4xl text-sand sm:text-5xl">Your team picks one.</p>
+        <p className="display mt-10 text-4xl text-mint sm:text-6xl">Your team picks one.</p>
       </Section>
 
       <BeforeYouStart index="04" />
 
       <AfterDark index="05" />
 
-      <Section tone="ink">
+      <Section tone="white">
         <Heading label="What you walk away with" index="06" lines={[]} className="!mb-6" />
         <ul className="grid gap-4 sm:grid-cols-3">
           {["A working robot, yours to keep.", "Four days of campus life.", "A team you built it with."].map((t) => (
-            <li key={t} className="display rounded-[14px] bg-sand p-8 text-4xl text-ink sm:text-5xl">
+            <li key={t} className="display bg-mint p-8 text-4xl text-ink sm:text-5xl">
               {t}
             </li>
           ))}
         </ul>
       </Section>
 
-      <Section tone="deep">
+      <Section tone="linen">
         <Heading label="Who you build with" index="07" lines={["IIT Bombay students", "who build this for fun."]} />
         <FacesGrid people={peopleFor("engineers", "mentor")} />
       </Section>
@@ -110,7 +110,7 @@ export default function EngineersPage() {
         ]}
       />
 
-      <Section tone="ink">
+      <Section tone="linen">
         <Heading label="How you get in" index="09" lines={[]} className="!mb-6" />
         <AdmissionSteps variant="short" />
       </Section>

@@ -1,12 +1,12 @@
 import { Heading } from "./Landing";
 import { InfoTable } from "@/components/ui/Lists";
-import { Section, Stack } from "@/components/ui/bits";
+import { Eyebrow, Section, Stack } from "@/components/ui/bits";
 
 /** "Before you start" and "After dark", shared word for word by both residentials. */
 export function BeforeYouStart({ index }: { index: string }) {
   return (
-    <Section tone="deep" className="border-y border-bone/10">
-      <p className="label text-mint">[ {index} ] &nbsp;Before you start</p>
+    <Section tone="linen">
+      <Eyebrow label="Before you start" index={index} />
       <p className="display mt-8 max-w-5xl text-4xl sm:text-7xl">
         No experience needed. Bring the curiosity. We bring the rest.
       </p>
@@ -26,7 +26,7 @@ export function AfterDark({ index }: { index: string }) {
 
 export function ParentsTable({ index, rows }: { index: string; rows: { label: string; value: string }[] }) {
   return (
-    <Section tone="deep">
+    <Section tone="white">
       <Heading label="For parents" index={index} lines={[]} className="!mb-6" />
       <InfoTable caption="Details for parents" rows={rows} />
     </Section>

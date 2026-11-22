@@ -31,12 +31,12 @@ export function StickyApplyBar({ label, target = "apply" }: { label: string; tar
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-bone/10 bg-ink/95 p-3 backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 sm:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-ink/15 bg-mint p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 sm:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
       aria-hidden={!show}
     >
-      <ButtonLink href={`#${target}`} tabIndex={show ? 0 : -1} variant="light" size="lg" className="w-full">
+      <ButtonLink href={`#${target}`} tabIndex={show ? 0 : -1} variant="ink" size="lg" className="w-full">
         {label}
       </ButtonLink>
     </div>

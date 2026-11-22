@@ -29,13 +29,13 @@ export function ParentStudentToggle({ className = "" }: { className?: string }) 
   const t = microcopy.toggle;
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <span className="label text-bone/50" id="mode-label">
+      <span className="label text-ink/70" id="mode-label">
         {t.label}
       </span>
       <div
         role="radiogroup"
         aria-labelledby="mode-label"
-        className="inline-flex rounded-full border border-bone/15 bg-ink-soft p-1"
+        className="inline-flex border border-ink"
       >
         {(["student", "parent"] as Mode[]).map((m) => (
           <button
@@ -44,8 +44,8 @@ export function ParentStudentToggle({ className = "" }: { className?: string }) 
             role="radio"
             aria-checked={mode === m}
             onClick={() => choose(m)}
-            className={`label min-h-9 rounded-full px-5 !text-[11px] transition-colors ${
-              mode === m ? "bg-bone text-ink" : "text-bone/70 hover:text-bone"
+            className={`label min-h-10 px-5 !text-[11px] transition-colors ${
+              mode === m ? "bg-ink text-mint" : "text-ink hover:bg-ink/5"
             }`}
           >
             {m === "student" ? t.student : t.parent}

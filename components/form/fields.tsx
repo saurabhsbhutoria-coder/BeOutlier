@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 const inputBase =
-  "block w-full min-h-12 rounded-[6px] border bg-white px-4 text-base text-ink placeholder:text-ink-muted/60 transition-colors focus:outline-none focus-visible:outline-none focus:border-ink focus:ring-2 focus:ring-mint/50";
+  "block w-full min-h-12 border bg-white px-4 text-base text-ink placeholder:text-ink-muted/60 transition-colors focus:outline-none focus-visible:outline-none focus:border-ink focus:ring-2 focus:ring-mint/50";
 
 function borderFor(error?: string) {
   return error ? "border-[#b3261e]" : "border-ink/20";
@@ -104,7 +104,7 @@ export function TextField({
       {prefix ? (
         <div className="flex">
           <span
-            className={`inline-flex min-h-12 items-center rounded-l-[6px] border bg-linen px-3 text-base font-semibold ${borderFor(error)}`}
+            className={`inline-flex min-h-12 items-center border bg-linen px-3 text-base font-semibold ${borderFor(error)}`}
             aria-hidden="true"
           >
             {prefix}
@@ -191,7 +191,7 @@ export function CheckboxField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className={`flex cursor-pointer items-start gap-3 rounded-[6px] border bg-linen p-4 ${borderFor(error)}`}
+        className={`flex cursor-pointer items-start gap-3 border bg-linen p-4 ${borderFor(error)}`}
       >
         <input
           id={id}

@@ -21,7 +21,7 @@ export default function TheCodePage() {
         "[WHAT YOU CAN EXPECT FROM US: TO BE WRITTEN]",
       ]}
     >
-      <Section tone="deep">
+      <Section tone="linen">
         <AdmissionSteps variant="full" />
       </Section>
     </PlaceholderPage>

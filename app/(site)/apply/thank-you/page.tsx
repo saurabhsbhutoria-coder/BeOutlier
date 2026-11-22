@@ -21,9 +21,9 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <section className="bg-ink text-bone">
+      <section className="bg-mint text-ink">
         <div className="shell py-16 sm:py-24">
-          <Eyebrow label={program?.title ?? "Summer 2027"} tone="mint" />
+          <Eyebrow label={program?.title ?? "Summer 2027"} />
           {isBooking ? (
             <>
               <Stack as="h1" lines={[t.booking.title]} className="mt-4 text-6xl sm:text-8xl" />
@@ -32,7 +32,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
               </p>
               {paymentUrl && program ? (
                 <div className="mt-8">
-                  <ButtonLink href={paymentUrl} variant="mint" size="lg">
+                  <ButtonLink href={paymentUrl} variant="ink" size="lg">
                     {t.booking.payCta(feeText(program.fee) ?? "")}
                   </ButtonLink>
                 </div>
@@ -47,7 +47,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
                 {t.apply.steps.map((s, i) => (
                   <li
                     key={s}
-                    className={`rounded-[14px] border p-4 ${i === 0 ? "border-mint bg-mint text-ink" : "border-bone/20"}`}
+                    className={`border p-4 ${i === 0 ? "border-ink bg-ink text-mint" : "border-ink/30"}`}
                   >
                     <span className="display text-3xl">{i + 1}</span>
                     <p className="mt-1 font-semibold">{s}</p>
@@ -57,7 +57,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
               <LeadReference label="Application reference" />
             </>
           )}
-          <p className="mt-8 text-sm text-bone/80">
+          <p className="mt-8 text-sm">
             <a href={site.whatsapp.href} className="underline underline-offset-4 hover:text-mint">
               WhatsApp {site.whatsapp.display}
             </a>
@@ -77,8 +77,8 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
           </div>
         </Section>
       ) : (
-        <Section tone="deep">
-          <ButtonLink href="/" variant="light">
+        <Section tone="white">
+          <ButtonLink href="/" variant="ink">
             {t.back}
           </ButtonLink>
         </Section>

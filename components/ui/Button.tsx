@@ -2,63 +2,48 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
 /**
- * Split button: a solid label block plus a square arrow box that fills with
- * mint on hover. Square corners, wide tracking. Minimum 48px tap target.
+ * Square block button with an arrow that slides on hover.
  *
- * light: bone label, for dark grounds (the default primary)
- * ink:   charcoal label, for light grounds
- * mint:  mint label, the single loud accent, for dark grounds
- * ghost: outline only, no arrow (secondary actions)
+ * ink:   charcoal with mint text. The signature, for white, mint and sand grounds.
+ * mint:  mint with charcoal text, for charcoal grounds.
+ * white: white with charcoal text, for charcoal or photo grounds.
+ * ghost: outline in the current colour, for secondary actions.
+ * ("light" and "sand" are kept as aliases of ink for older call sites.)
  */
-type Variant = "light" | "ink" | "mint" | "ghost" | "sand";
+type Variant = "ink" | "mint" | "white" | "ghost" | "light" | "sand";
 type Size = "md" | "lg";
 
-const label: Record<Variant, string> = {
-  light: "bg-bone text-ink",
-  sand: "bg-sand text-ink",
-  ink: "bg-ink text-bone",
-  mint: "bg-mint text-ink",
-  ghost: "border border-current/30 bg-transparent",
+const variants: Record<Variant, string> = {
+  ink: "bg-ink text-mint border-ink hover:bg-ink-soft",
+  light: "bg-ink text-mint border-ink hover:bg-ink-soft",
+  sand: "bg-ink text-mint border-ink hover:bg-ink-soft",
+  mint: "bg-mint text-ink border-mint hover:bg-white hover:border-white",
+  white: "bg-white text-ink border-white hover:bg-mint hover:border-mint",
+  ghost: "bg-transparent text-current border-current/40 hover:border-current",
 };
 
-const box: Record<Variant, string> = {
-  light: "border-bone/35 text-bone",
-  sand: "border-sand/45 text-sand",
-  ink: "border-ink/30 text-ink",
-  mint: "border-mint/45 text-mint",
-  ghost: "",
+const sizes: Record<Size, string> = {
+  md: "min-h-12 px-5 text-[14px] gap-3",
+  lg: "min-h-14 px-7 text-[15px] gap-4",
 };
 
-const sizes: Record<Size, { label: string; box: string }> = {
-  md: { label: "min-h-12 px-5 text-[12px]", box: "w-12" },
-  lg: { label: "min-h-14 px-7 text-[13px]", box: "w-14" },
-};
-
-export function buttonClass(variant: Variant = "light", size: Size = "md", _onDark = false, extra = "") {
+export function buttonClass(variant: Variant = "ink", size: Size = "md", _onDark = false, extra = "") {
   void _onDark;
-  return `group inline-flex items-stretch select-none font-semibold uppercase tracking-[0.16em] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none ${extra}`;
+  return `group inline-flex items-center justify-center border font-semibold tracking-[0.01em] select-none transition-[background-color,border-color,color,transform] duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-50 ${variants[variant]} ${sizes[size]} ${extra}`;
 }
 
-function Inner({ variant, size, arrow, children }: { variant: Variant; size: Size; arrow: boolean; children: ReactNode }) {
-  const s = sizes[size];
+function Arrow() {
   return (
-    <>
-      <span
-        className={`flex flex-1 items-center justify-center rounded-l-[3px] ${arrow ? "" : "rounded-r-[3px]"} text-center transition-colors duration-200 ${label[variant]} ${s.label}`}
-      >
-        {children}
-      </span>
-      {arrow ? (
-        <span
-          aria-hidden="true"
-          className={`flex shrink-0 items-center justify-center rounded-r-[3px] border border-l-0 transition-colors duration-200 group-hover:border-mint group-hover:bg-mint group-hover:text-ink ${box[variant]} ${s.box}`}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" strokeWidth="1.6" />
-          </svg>
-        </span>
-      ) : null}
-    </>
+    <svg
+      aria-hidden="true"
+      width="16"
+      height="12"
+      viewBox="0 0 16 12"
+      fill="none"
+      className="shrink-0 transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-1"
+    >
+      <path d="M0 6h14M9 1l5 5-5 5" stroke="currentColor" strokeWidth="1.6" />
+    </svg>
   );
 }
 
@@ -74,20 +59,20 @@ interface Common {
 
 export function ButtonLink({
   href,
-  variant = "light",
+  variant = "ink",
   size = "md",
   onDark,
-  arrow,
+  arrow = true,
   className = "",
   children,
   ...rest
 }: Common & { href: string } & Omit<ComponentProps<"a">, "href" | "className" | "children">) {
   const cls = buttonClass(variant, size, onDark, className);
-  const showArrow = arrow ?? variant !== "ghost";
   const inner = (
-    <Inner variant={variant} size={size} arrow={showArrow}>
-      {children}
-    </Inner>
+    <>
+      <span>{children}</span>
+      {arrow ? <Arrow /> : null}
+    </>
   );
   if (href.startsWith("#") || href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
     return (
@@ -104,20 +89,18 @@ export function ButtonLink({
 }
 
 export function Button({
-  variant = "light",
+  variant = "ink",
   size = "md",
   onDark,
-  arrow,
+  arrow = true,
   className = "",
   children,
   ...rest
 }: Common & Omit<ComponentProps<"button">, "className" | "children">) {
-  const showArrow = arrow ?? variant !== "ghost";
   return (
     <button className={buttonClass(variant, size, onDark, className)} {...rest}>
-      <Inner variant={variant} size={size} arrow={showArrow}>
-        {children}
-      </Inner>
+      <span>{children}</span>
+      {arrow ? <Arrow /> : null}
     </button>
   );
 }

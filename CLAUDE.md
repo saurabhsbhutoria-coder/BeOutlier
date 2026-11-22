@@ -377,23 +377,26 @@ Student name, age, school, parent's phone, city.
 
 ## 13. Decisions and brand tokens (added 19 November 2026)
 
-**Brand tokens** (updated 20 November 2026: elite, dark first, MU20 as the feel reference)
+**Brand tokens** (updated 22 November 2026: light, BeOutlier specific; inspired by the "BeOutlier Summer 2027" reference, without its loader, quiz or orange)
 
 | Token | Hex | Use |
 |---|---|---|
-| Ink (charcoal) | #25282A | Primary ground |
-| Ink deep | #1A1C1E | Alternate dark sections, footer |
-| Ink soft | #2F3336 | Cards on dark |
-| Mint | #6CD4B1 | The one sharp accent: labels, key numbers, hover |
-| Sand | #D9CBB8 | Warm accent text on dark, the parents section ground |
-| Bone | #F7F4EF | Type on dark, form cards |
-| White | #FFFFFF | Inputs |
+| White | #FFFFFF | Main ground |
+| Ink (charcoal) | #25282A | Type, dark bands (hackathon drop, The Outliers, After dark, footer), buttons |
+| Mint | #6CD4B1 | Header, hero and close bands, the outlier dot, button text on ink |
+| Mint deep | #2A7D62 | Mint for text on white |
+| Sand | #D9CBB8 | Parents band, form band |
+| Linen | #F3EEE6 | Quiet alternate band |
 
-Not used: #E99A62 (orange), and the old coral, yellow and navy UI colours.
+Not used: #E99A62 (orange).
 
-Logo: the original BeOutlier logo (white letters, dark extrusion, Think.Learn.Create tag). Files in public/brand: logo.webp and logo.png are the transparent cut for dark grounds, logo-original-mint.webp is the source. Never place it on white or bone.
+Motif: the outlier. A single mint dot that stands apart: it prefixes every section label, replaces the full stop in the hero line, and is the hero of the "How you get in" graph (a crowd of dots and the one that breaks away).
 
-Type: Anton for headlines (uppercase, stacked). Inter Tight for everything else, including the small bracketed labels like [ 03 ] THE HOUSES. No offset shadows, no rotated tiles, no highlighter marks. Hairline borders, square split buttons with an arrow box.
+Logo: the original BeOutlier logo. public/brand/logo.webp and logo.png are the transparent cut; it sits on mint (its native ground) or charcoal, never on white.
+
+Type: Anton for headlines (uppercase, stacked). Inter Tight for everything else. Square corners, hairline rules, ink block buttons with mint text and a sliding arrow.
+
+Houses: expandable panels. Desktop: side by side, hover or focus widens one and brings its photo to colour. Phone: stacked bars, tap to open, one always open. Engineers and Designers use flea market photos as stand ins until real program photos exist.
 
 **Forms (every program)**
 Student name, age, grade, school, board, city, parent name, phone number, email. Founders adds preferred campus. Hackathon adds the optional friends field. A consent checkbox is required to submit.

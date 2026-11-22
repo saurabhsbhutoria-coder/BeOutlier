@@ -15,8 +15,8 @@ export function LeadReference({ label }: { label: string }) {
   }, []);
   if (!id) return null;
   return (
-    <p className="label mt-10 text-bone/60">
-      {label}: <span className="whitespace-nowrap text-mint">{id}</span>
+    <p className="label mt-10">
+      {label}: <span className="whitespace-nowrap text-ink underline decoration-ink/30 underline-offset-4">{id}</span>
     </p>
   );
 }

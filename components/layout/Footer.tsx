@@ -6,7 +6,7 @@ import { microcopy } from "@/content/microcopy";
 
 function Contacts() {
   return (
-    <ul className="flex flex-col gap-3 text-sm text-bone/80">
+    <ul className="flex flex-col gap-3 text-sm text-white/80">
       <li>
         <a href={site.whatsapp.href} className="transition-colors hover:text-mint">
           WhatsApp {site.whatsapp.display}
@@ -28,14 +28,14 @@ function Contacts() {
 
 function Legal() {
   return (
-    <ul className="label flex flex-wrap gap-x-6 gap-y-2 !text-[10px] text-bone/50">
+    <ul className="label flex flex-wrap gap-x-6 gap-y-2 !text-[10px] text-white/50">
       <li>
-        <Link href="/privacy" className="transition-colors hover:text-bone">
+        <Link href="/privacy" className="transition-colors hover:text-white">
           Privacy
         </Link>
       </li>
       <li>
-        <Link href="/terms" className="transition-colors hover:text-bone">
+        <Link href="/terms" className="transition-colors hover:text-white">
           Terms
         </Link>
       </li>
@@ -47,7 +47,7 @@ function Legal() {
 function Column({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="label text-bone/45">[ {title} ]</p>
+      <p className="label flex items-center gap-2 text-mint"><span className="dot" aria-hidden="true" />{title}</p>
       <div className="mt-5">{children}</div>
     </div>
   );
@@ -56,13 +56,13 @@ function Column({ title, children }: { title: string; children: React.ReactNode 
 export function Footer() {
   const hackathon = programs.find((p) => p.id === "hackathon");
   return (
-    <footer className="border-t border-bone/10 bg-ink-deep text-bone">
+    <footer className="on-dark bg-ink text-white">
       <div className="shell grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo className="h-10 sm:h-12" />
         </div>
         <Column title="Summer 2027">
-          <ul className="flex flex-col gap-3 text-sm text-bone/80">
+          <ul className="flex flex-col gap-3 text-sm text-white/80">
             {houses().map((h) => (
               <li key={h.id}>
                 <Link href={h.route} className="transition-colors hover:text-mint">
@@ -80,7 +80,7 @@ export function Footer() {
           </ul>
         </Column>
         <Column title="BeOutlier">
-          <ul className="flex flex-col gap-3 text-sm text-bone/80">
+          <ul className="flex flex-col gap-3 text-sm text-white/80">
             {mainNav.map((n) => (
               <li key={n.href}>
                 <Link href={n.href} className="transition-colors hover:text-mint">
@@ -94,7 +94,7 @@ export function Footer() {
           <Contacts />
         </Column>
       </div>
-      <div className="border-t border-bone/10">
+      <div className="border-t border-white/15">
         <div className="shell flex flex-col gap-4 py-7 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-sand">{microcopy.footer.joke}</p>
           <Legal />
@@ -107,7 +107,7 @@ export function Footer() {
 /** Landing pages: no menu, no outbound navigation. Contact and legal only. */
 export function LandingFooter() {
   return (
-    <footer className="border-t border-bone/10 bg-ink-deep pb-24 text-bone sm:pb-0">
+    <footer className="on-dark bg-ink pb-24 text-white sm:pb-0">
       <div className="shell flex flex-col gap-8 py-14 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <Logo className="h-9" />

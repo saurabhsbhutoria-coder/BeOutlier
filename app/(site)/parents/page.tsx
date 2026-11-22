@@ -23,7 +23,7 @@ export default function ParentsPage() {
         <p className="heavy mt-5 mb-10 text-xl sm:text-2xl">Fees. Safety. Supervision. What your child brings home.</p>
         <ParentsBlock />
       </Section>
-      <Section tone="deep">
+      <Section tone="white">
         <AdmissionSteps variant="full" />
       </Section>
     </PlaceholderPage>

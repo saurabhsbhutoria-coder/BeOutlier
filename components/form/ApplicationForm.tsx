@@ -241,7 +241,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
 
   if (program && program.status === "sold_out") {
     return (
-      <div className="rounded-[14px] border border-bone/10 bg-ink-soft p-8 text-bone">
+      <div className="border border-ink bg-white p-8 text-ink">
         <p className="display text-4xl">{f.soldOut}</p>
       </div>
     );
@@ -257,7 +257,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
       ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="relative scroll-mt-24 rounded-[14px] bg-bone p-6 text-ink shadow-[0_30px_80px_-20px_rgb(0_0_0/0.6)] sm:p-10"
+      className="relative scroll-mt-24 border border-ink bg-white p-6 text-ink sm:p-10"
       aria-describedby="form-status"
     >
       {/* Honeypot: hidden from people, tempting to bots */}
@@ -276,8 +276,8 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
               return (
                 <label
                   key={h.id}
-                  className={`flex cursor-pointer flex-col rounded-[10px] border p-4 transition-colors ${
-                    selected ? "border-ink bg-ink text-bone" : "border-ink/15 bg-linen hover:border-ink/40"
+                  className={`flex cursor-pointer flex-col border p-4 transition-colors ${
+                    selected ? "border-ink bg-ink text-white" : "border-ink/20 bg-white hover:border-ink"
                   }`}
                 >
                   <input
@@ -361,7 +361,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
 
       <div id="form-status" aria-live="polite" className="mt-4">
         {status === "error" && serverMsg ? (
-          <div className="rounded-[10px] border border-ink/15 bg-linen p-5">
+          <div className="border border-ink/15 bg-linen p-5">
             <p className="text-sm font-bold">{serverMsg}</p>
             <ButtonLink href={whatsappLink(whatsappText)} variant="ink" className="mt-4" target="_blank" rel="noopener">
               WhatsApp us

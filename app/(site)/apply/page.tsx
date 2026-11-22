@@ -15,15 +15,15 @@ export default async function ApplyPage({ searchParams }: { searchParams: Promis
   const initialHouse = initial && initial.house ? (initial.id as ProgramId) : undefined;
 
   return (
-    <section className="bg-ink text-bone">
+    <section className="bg-mint text-ink">
       <div className="shell grid gap-10 py-12 sm:py-20 lg:grid-cols-[1fr_1.15fr] lg:items-start">
         <div className="lg:sticky lg:top-24">
-          <Eyebrow label="Admissions" index="Summer 2027" tone="mint" />
+          <Eyebrow label="Admissions" index="Summer 2027" />
           <Stack as="h1" lines={["Apply for", "Summer 2027."]} className="mt-4 text-6xl sm:text-8xl" />
-          <p className="mt-6 text-xl leading-snug text-sand sm:text-2xl">
+          <p className="mt-6 text-xl font-medium leading-snug sm:text-2xl">
             Applying takes 5 minutes. Getting in doesn&apos;t.
           </p>
-          <ol className="label mt-10 flex flex-col gap-3 border-l border-bone/15 pl-5 text-bone/60">
+          <ol className="label mt-10 flex flex-col gap-3 border-l border-ink pl-5">
             <li>1. Apply.</li>
             <li>2. Aptitude test.</li>
             <li>3. Screening call.</li>

@@ -39,7 +39,7 @@ export default function HackathonPage() {
         ]}
       />
 
-      <Section tone="ink">
+      <Section tone="white">
         <Heading label="What you build" index="01" lines={["Arduino circuits plus AI.", "Your team picks one:"]} />
         <Reveal>
           <ProjectGrid
@@ -53,14 +53,14 @@ export default function HackathonPage() {
         </Reveal>
       </Section>
 
-      <Section tone="deep" className="border-y border-bone/10">
-        <p className="label text-mint">[ 02 ] &nbsp;Before you start</p>
+      <Section tone="linen">
+        <p className="label flex items-center gap-2.5"><span className="dot" aria-hidden="true" />Before you start <span className="opacity-55">· 02</span></p>
         <p className="mt-8 max-w-4xl text-2xl font-medium leading-snug sm:text-4xl">
           No coding or electronics needed. We teach you everything and hand you every part before the build begins.
         </p>
       </Section>
 
-      <Section tone="deep">
+      <Section tone="white">
         <Heading label="The two days" index="03" lines={[]} className="!mb-6" />
         <DayPlan
           days={[
@@ -72,18 +72,18 @@ export default function HackathonPage() {
 
       <Section tone="ink">
         <Heading label="What the best teams get" index="04" lines={[]} tone="mint" className="!mb-6" />
-        <Stack lines={["An internship."]} className="text-5xl text-sand sm:text-8xl" />
-        <p className="mt-8 max-w-3xl text-2xl leading-snug text-sand sm:text-4xl">
+        <Stack lines={["An internship."]} className="text-6xl text-mint sm:text-9xl" />
+        <p className="display mt-8 max-w-4xl text-3xl sm:text-5xl">
           A day inside IIT Bombay with the students who build for Techfest.
         </p>
       </Section>
 
-      <Section tone="ink">
+      <Section tone="linen">
         <Heading label="Who you build with" index="05" lines={["IIT Bombay students", "who build this for fun."]} />
         <FacesGrid people={peopleFor("hackathon", "mentor")} />
       </Section>
 
-      <Section tone="deep">
+      <Section tone="white">
         <Heading label="For parents" index="06" lines={[]} className="!mb-6" />
         <InfoTable
           caption="Hackathon details for parents"

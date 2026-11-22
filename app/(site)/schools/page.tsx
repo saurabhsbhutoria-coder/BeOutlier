@@ -21,12 +21,12 @@ export default function SchoolsPage() {
         "[PARTNER SCHOOL LOGOS: TO BE ADDED WITH PERMISSION]",
       ]}
     >
-      <Section tone="deep">
-        <Eyebrow label="Admissions" tone="mint" />
+      <Section tone="linen">
+        <Eyebrow label="Admissions" />
         <p className="heavy mt-4 max-w-3xl text-2xl leading-tight sm:text-3xl">
           BeOutlier decides admission at every campus. Partner schools only collect fees.
         </p>
-        <Eyebrow label="Previously hosted at" tone="mint" className="mt-16" />
+        <Eyebrow label="Previously hosted at" className="mt-16" />
         <p className="heavy mt-4 max-w-3xl text-xl leading-snug">
           DSB International School. The Green Acres Academy. The NEXT School. Goregaon Sports Club.
         </p>
