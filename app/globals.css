@@ -191,23 +191,6 @@
   animation-play-state: paused;
 }
 
-/* Outlier graph: the pulse ring around the one that stands apart */
-@keyframes outlier-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.55;
-  }
-  100% {
-    transform: scale(3.2);
-    opacity: 0;
-  }
-}
-.outlier-pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: outlier-pulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -217,8 +200,7 @@
     transform: none;
     transition: none;
   }
-  .marquee-track,
-  .outlier-pulse {
+  .marquee-track {
     animation: none !important;
   }
   *,

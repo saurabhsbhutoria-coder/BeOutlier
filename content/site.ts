@@ -35,3 +35,15 @@ export const mainNav = [
   { href: "/parents", label: "For Parents" },
   { href: "/schools", label: "For Schools" },
 ] as const;
+
+/**
+ * IIT Bombay tag on the Robotics Hackathon block.
+ * NOTE: CLAUDE.md section 2 says never use the IIT Bombay logo and to write
+ * "IIT Bombay students". This tag was requested on 22 November 2026; set
+ * showLogo to false to fall back to the text tag only.
+ */
+export const iitBombayTag = {
+  showLogo: true,
+  logo: "/brand/partners/iit-bombay.png",
+  text: "Mentored by IIT Bombay alumni",
+} as const;

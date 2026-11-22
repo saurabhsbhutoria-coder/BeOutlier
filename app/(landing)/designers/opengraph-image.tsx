@@ -1,6 +1,6 @@
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "Design and Architecture Residential. Four days in Goa.";
+export const alt = "Design and Architecture Fellowship. Four days in Goa.";
 export const size = ogSize;
 export const contentType = "image/png";
 

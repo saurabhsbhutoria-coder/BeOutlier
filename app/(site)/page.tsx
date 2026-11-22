@@ -3,34 +3,61 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, Stack } from "@/components/ui/bits";
 import { Reveal } from "@/components/ui/Reveal";
+import { CountUp } from "@/components/ui/CountUp";
 import { Marquee } from "@/components/media/Marquee";
-import { ReelsFeed } from "@/components/media/ReelsFeed";
 import { LazyVideo } from "@/components/media/LazyVideo";
 import { HeroVideo } from "@/components/media/HeroVideo";
+import { VideoSlider } from "@/components/media/VideoSlider";
 import { DropCard, TopStrip } from "@/components/sections/Cards";
 import { HousePanels } from "@/components/sections/HousePanels";
 import { FacesGrid } from "@/components/sections/FacesGrid";
 import { AdmissionSteps } from "@/components/sections/AdmissionSteps";
-import { ParentsBlock } from "@/components/sections/ParentsBlock";
+import { ParentsComparison } from "@/components/sections/ParentsComparison";
+import { Certificate } from "@/components/sections/Certificate";
 import { ParentStudentToggle } from "@/components/mode/ParentStudentToggle";
 import { getProgram, houses } from "@/content/programs";
 import { peopleFor } from "@/content/people";
-import { fleaMarketPhotos, fleaMarketVideo, homeHero, houseImages, reels } from "@/content/media";
-import { microcopy } from "@/content/microcopy";
+import {
+  fleaMarketPhotos,
+  homeHero,
+  houseImages,
+  parentTestimonials,
+  storyVideo,
+  studentInterviews,
+} from "@/content/media";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: { absolute: "BeOutlier. A school beyond classrooms." },
-  description: "Experiential learning for India's outlier teenagers. Summer 2027. Three houses. Pick one.",
+  description: "Experiential learning for India's curious teenagers. Summer 2027. Three houses. Pick one.",
   alternates: { canonical: "/" },
 };
 
 /** The full stop as the outlier: a mint dot. */
-function OutlierStop() {
+function OutlierStop({ onMint = false }: { onMint?: boolean }) {
   return (
-    <span aria-hidden="true" className="ml-[0.06em] inline-block size-[0.2em] rounded-full bg-mint align-baseline ring-[0.03em] ring-ink/40" />
+    <span
+      aria-hidden="true"
+      className={`ml-[0.06em] inline-block size-[0.2em] rounded-full align-baseline ${
+        onMint ? "bg-ink" : "bg-mint ring-[0.03em] ring-ink/40"
+      }`}
+    />
   );
 }
+
+const STATS: { to: number; prefix?: string; suffix?: string; label: string }[] = [
+  { to: 18, label: "Brands built by students" },
+  { to: 5, prefix: "₹", suffix: "L+", label: "Earned by their brands" },
+  { to: 45, label: "Outliers in the community" },
+  { to: 15, suffix: "%", label: "Acceptance rate" },
+];
+
+const TAKE_HOME = [
+  "The project you built. Yours to keep.",
+  "A documentation journal.",
+  "A detailed evaluation report.",
+  "Access to the Level 2 Accelerator program.",
+];
 
 export default function HomePage() {
   const hackathon = getProgram("hackathon");
@@ -86,7 +113,7 @@ export default function HomePage() {
             </h1>
             <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-[1fr_auto] lg:items-end">
               <p className="max-w-md text-xl font-medium leading-snug sm:text-2xl lg:text-3xl">
-                Experiential learning for India&apos;s outlier teenagers.
+                Experiential learning for India&apos;s curious teenagers.
               </p>
               <div>
                 <span className={fullBleedDesktop ? "" : "lg:hidden"}>
@@ -117,17 +144,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Marquee tone="ink" text="Not a summer camp. Not a coaching class. Not an online course. A school." />
+      <Marquee tone="ink" text="Not just a summer camp. Not a course. A community. An experiential school." />
 
-      {/* Sections reorder in parent mode: For parents first, then the houses. */}
+      {/* Sections reorder in parent mode: parents first, then the houses and the proof. */}
       <div className="flex flex-col">
-        {hackathon ? (
-          <Section tone="ink" className="border-t border-white/10 parent:order-3">
-            <DropCard program={hackathon} eyebrow={`Drop · ${hackathon.datesLine}`} />
-          </Section>
-        ) : null}
-
-        <Section tone="white" className="parent:order-4">
+        <Section tone="white" className="parent:order-9">
           <Reveal>
             <Eyebrow label="01" />
             <Stack
@@ -145,44 +166,68 @@ export default function HomePage() {
           </Reveal>
         </Section>
 
-        <Section tone="mint" className="overflow-hidden parent:order-5">
-          <Eyebrow label="Where it started" index="02" />
-          <div className="mt-6 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-20">
+        {/* 02. Where it started: the vision, the story, and the video in its own frame */}
+        <Section tone="mint" className="parent:order-6">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-20">
             <div>
-              <p className="display text-[11rem] leading-[0.8] sm:text-[18rem] lg:text-[22rem]">45</p>
-              <p className="display mt-8 max-w-xl text-4xl sm:text-5xl">
-                In 2025, 45 teenagers built brands from scratch in 10 days.
-              </p>
-              <div className="mt-8 grid max-w-md gap-4 text-lg sm:text-xl">
-                <p>They sourced, priced, pitched and sold to strangers.</p>
-                <p className="font-semibold">Some sold out. Some lost money. Every one of them knows why.</p>
+              <Eyebrow label="Where it started" index="02" />
+              <h2 className="display mt-8 text-[2.9rem] leading-[0.92] sm:text-7xl lg:text-[clamp(72px,6.4vw,112px)]">
+                A generation of problem solvers and change makers who dare to question, and create.
+              </h2>
+              <div className="mt-12 grid max-w-2xl gap-6 border-t border-ink pt-8 sm:grid-cols-2 sm:gap-10">
+                <p className="display text-3xl leading-[1] sm:text-4xl">
+                  In 2025, 45 teenagers built brands from scratch in 10 days.
+                </p>
+                <div className="grid gap-4 text-lg leading-snug">
+                  <p>They sourced, priced, pitched and sold to strangers.</p>
+                  <p className="font-semibold">Some sold out. Some lost money. Every one of them knows why.</p>
+                </div>
               </div>
             </div>
-            {fleaMarketVideo ? (
-              <div className="grain relative aspect-[4/5] overflow-hidden bg-ink">
+            <figure className="mx-auto w-full max-w-sm lg:max-w-none">
+              <div className="grain relative aspect-[9/14] overflow-hidden border border-ink bg-ink">
                 <LazyVideo
-                  src={fleaMarketVideo.mp4}
-                  poster={fleaMarketVideo.poster}
-                  label="The 2025 flea market"
+                  src={storyVideo.mp4}
+                  poster={storyVideo.poster}
+                  label="The 2025 flea market, where students sold the brands they built"
                   className="absolute inset-0 size-full object-cover"
                 />
               </div>
-            ) : (
-              <div>
-                <div className="grain relative aspect-[4/5] overflow-hidden bg-ink">
-                  <Image
-                    src={fleaMarketPhotos[2].src}
-                    alt={fleaMarketPhotos[2].alt}
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="label mt-4 !text-[10px] text-ink/60">{microcopy.placeholders.video}</p>
-              </div>
-            )}
+              <figcaption className="label mt-3 flex items-center gap-2.5">
+                <span className="dot" aria-hidden="true" />
+                Flea market · Summer 2025 · Mumbai
+              </figcaption>
+            </figure>
           </div>
         </Section>
+
+        {/* The numbers */}
+        <section className="border-b border-ink/15 bg-white text-ink parent:order-7" aria-label="BeOutlier in numbers">
+          <div className="shell">
+            <dl className="grid grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`flex flex-col-reverse gap-2 py-10 sm:py-14 ${i % 2 === 1 ? "border-l border-ink/15 pl-5 sm:pl-8" : ""} ${
+                    i >= 2 ? "border-t border-ink/15 lg:border-t-0" : ""
+                  } ${i === 2 ? "lg:border-l lg:pl-8" : ""}`}
+                >
+                  <dt className="label text-ink-muted">{s.label}</dt>
+                  <dd className="display text-6xl leading-none sm:text-8xl">
+                    <CountUp to={s.to} prefix={s.prefix} suffix={s.suffix} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        {/* The closest opportunity, just before the houses */}
+        {hackathon ? (
+          <Section tone="ink" className="parent:order-8">
+            <DropCard program={hackathon} eyebrow="Next up · Robotics Hackathon" />
+          </Section>
+        ) : null}
 
         <Section tone="white" className="parent:order-2" id="houses">
           <Eyebrow label="The houses" index="03" />
@@ -193,56 +238,92 @@ export default function HomePage() {
           <HousePanels panels={panels} />
         </Section>
 
-        <Section tone="linen" className="parent:order-6">
+        <Section tone="linen" className="parent:order-10">
           <Eyebrow label="Who you build with" index="04" />
           <Stack lines={["Not teachers.", "People who have done it."]} className="mt-8 mb-14 text-5xl sm:text-8xl" />
           <FacesGrid people={peopleFor("home", "mentor")} />
         </Section>
 
-        <Section tone="ink" className="parent:order-7">
-          <Eyebrow label="The Outliers" index="05" tone="mint" />
-          <div className="mt-6 flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
-            <p className="display text-[9rem] leading-[0.8] text-mint sm:text-[16rem]">150+</p>
-            <p className="display max-w-md pb-3 text-4xl sm:text-5xl">Outliers so far. This is what they made.</p>
+        <Section tone="ink" className="parent:order-11">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <Eyebrow label="In their words" index="05" tone="mint" />
+              <Stack lines={["Hear it from", "the Outliers."]} className="mt-8 text-5xl sm:text-8xl" />
+            </div>
+            <p className="max-w-xs text-lg text-white/70">Five students. Unscripted.</p>
           </div>
-          <div className="mt-16">
-            <ReelsFeed items={reels} />
-          </div>
-          <div className="mt-14">
-            <FacesGrid people={peopleFor("home", "alumni")} tone="dark" />
+          <div className="mt-12">
+            <VideoSlider items={studentInterviews} label="Student interviews" placeholder="Student interview" tone="dark" />
           </div>
         </Section>
 
-        <Section tone="white" className="parent:order-8">
-          <Eyebrow label="How you get in" index="06" />
+        <Section tone="white" className="parent:order-3">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <Eyebrow label="Parent testimonials" index="06" />
+              <Stack lines={["Parents, in their", "own words."]} className="mt-8 text-5xl sm:text-8xl" />
+            </div>
+          </div>
+          <div className="mt-12">
+            <VideoSlider items={parentTestimonials} label="Parent testimonials" placeholder="Parent testimonial" />
+          </div>
+        </Section>
+
+        <Section tone="linen" className="parent:order-4">
+          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
+            <div>
+              <Eyebrow label="What you take home" index="07" />
+              <Stack lines={["Proof of work.", "Not proof of", "attendance."]} className="mt-8 text-5xl sm:text-7xl" />
+              <p className="mt-6 max-w-md text-xl leading-snug">
+                A certificate backed by what you built and how it was evaluated. The kind of proof that makes a profile
+                stand out.
+              </p>
+              <ul className="mt-10 border-t border-ink">
+                {TAKE_HOME.map((t, i) => (
+                  <li key={t} className="flex items-baseline gap-5 border-b border-ink/20 py-4">
+                    <span className="display w-8 shrink-0 text-2xl text-mint-deep">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="text-lg font-medium">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Reveal>
+              <Certificate className="lg:rotate-[-1.2deg]" />
+            </Reveal>
+          </div>
+        </Section>
+
+        <Section tone="white" className="parent:order-5">
+          <Eyebrow label="How you get in" index="08" />
           <div className="mt-10">
             <AdmissionSteps variant="full" />
           </div>
         </Section>
 
         <Section tone="sand" id="parents" className="parent:order-1">
-          <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <Eyebrow label="For parents" index="07" />
+              <Eyebrow label="For parents" index="09" />
               <Stack lines={["Everything you'd ask", "us on a call."]} className="mt-8 text-5xl sm:text-7xl" />
-              <p className="mt-6 max-w-sm text-xl sm:text-2xl">Fees. Safety. Supervision. What your child brings home.</p>
-              <div className="mt-10">
-                <ButtonLink href="/parents" variant="ink">
-                  For Parents
-                </ButtonLink>
-              </div>
+              <p className="mt-6 max-w-xl text-xl sm:text-2xl">Fees. Safety. Supervision. What your child brings home.</p>
             </div>
-            <ParentsBlock />
+            <ButtonLink href="/parents" variant="ink">
+              For Parents
+            </ButtonLink>
           </div>
+          <ParentsComparison />
         </Section>
 
-        <section className="bg-mint text-ink parent:order-9">
+        <section className="bg-mint text-ink parent:order-12">
           <div className="shell py-28 sm:py-44">
-            <Eyebrow label="08" />
-            <Stack
-              lines={["Not everyone gets in.", "That's the point."]}
-              className="mt-8 max-w-6xl text-[3.4rem] sm:text-8xl lg:text-[clamp(110px,11vw,190px)]"
-            />
+            <Eyebrow label="10" />
+            <h2 className="display mt-8 max-w-6xl text-[3.6rem] leading-[0.9] sm:text-8xl lg:text-[clamp(110px,11vw,190px)]">
+              <span className="block">Average is crowded.</span>
+              <span className="block">
+                Be an Outlier<span className="sr-only">.</span>
+                <OutlierStop onMint />
+              </span>
+            </h2>
             <div className="mt-14">
               <ButtonLink href="/apply" variant="ink" size="lg">
                 {site.primaryCta}

@@ -123,7 +123,7 @@ Everything lives in `content/programs.ts`. Open it on GitHub (click the file, th
 
 - **Status**: change `status: "open"` to `"closing_soon"`, `"waitlist"` or `"sold_out"`. Badges and buttons update on every page. `sold_out` also closes that program's form.
 - **Seats left**: change `seats: { total: 51, left: null }` to, for example, `left: 12`. The site then shows "12 of 51 seats left." Type it by hand from the Funnel tab. Never guess.
-- **Founders campuses, dates and fees**: in the `campuses` list, set `dates: "1 to 10 May"` and `fee: 25000` for each campus. The `[DATES]` and `[FEE]` placeholders disappear on their own.
+- **Founders campuses, dates and fees**: in the `campuses` list, set `dates: "1 to 10 May"` for each campus (the fee is ₹40,000, already set). The `[DATES]` placeholder disappears on its own.
 - **Photos and videos**: drop files in `public/media/...` and list them in `content/media.ts`.
 - **Mentor faces**: put photos in `public/media/people/` and add entries in `content/people.ts`.
 

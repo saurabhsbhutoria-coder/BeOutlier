@@ -80,3 +80,27 @@ export const fleaMarketVideo: { mp4: string; poster: string } | null = null;
 
 /** Student Reels for Home section 05 (vertical 9:16). */
 export const reels: Reel[] = [];
+
+/** "Where it started": the same flea market video as the phone hero, in its own frame. */
+export const storyVideo: { mp4: string; poster: string } = {
+  mp4: "/media/home/hero-mobile.mp4",
+  poster: "/media/home/hero-mobile-poster.jpg",
+};
+
+/**
+ * Video slots for the two sliders. Leave src empty and the card shows a
+ * visible placeholder. Vertical (9:16) clips, compressed under ~8 MB each,
+ * with a poster still. name and line are shown under each video.
+ */
+export interface VideoSlot {
+  src?: string;
+  poster?: string;
+  name?: string;
+  line?: string;
+}
+
+/** Home: student interviews, 5 videos. */
+export const studentInterviews: VideoSlot[] = [{}, {}, {}, {}, {}];
+
+/** Home: parent testimonials, 5 videos. */
+export const parentTestimonials: VideoSlot[] = [{}, {}, {}, {}, {}];

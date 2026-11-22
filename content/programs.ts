@@ -32,8 +32,12 @@ export interface Campus {
   fee: number | null;
 }
 
+export type Format = "Day scholar" | "Residential" | "Day event";
+
 export interface Program {
   id: ProgramId;
+  /** Day scholar or residential. A type, never part of the name. */
+  format: Format;
   house: House | null;
   houseName: string | null;
   /** Short name used on House cards ("Founders") */
@@ -66,6 +70,7 @@ export interface Program {
 export const programs: Program[] = [
   {
     id: "hackathon",
+    format: "Day event",
     house: null,
     houseName: null,
     houseShort: null,
@@ -88,6 +93,7 @@ export const programs: Program[] = [
   },
   {
     id: "founders",
+    format: "Day scholar",
     house: "founders",
     houseName: "House of Founders",
     houseShort: "Founders",
@@ -100,7 +106,7 @@ export const programs: Program[] = [
     cities: ["Mumbai", "Pune"],
     venue: null,
     eligibility: { kind: "grade", min: 6, max: 12 },
-    fee: { kind: "from", amount: 25000 },
+    fee: { kind: "fixed", amount: 40000 },
     seats: { total: null, left: null },
     selective: true,
     status: "open",
@@ -108,10 +114,10 @@ export const programs: Program[] = [
     route: "/founders",
     season: "summer-2027",
     campuses: [
-      { id: "mumbai-lower-parel", city: "Mumbai", name: "Lower Parel", dates: null, fee: null },
-      { id: "mumbai-chembur", city: "Mumbai", name: "Chembur", dates: null, fee: null },
-      { id: "mumbai-kandivali", city: "Mumbai", name: "Kandivali", dates: null, fee: null },
-      { id: "pune-amanora", city: "Pune", name: "Amanora", dates: null, fee: null },
+      { id: "mumbai-lower-parel", city: "Mumbai", name: "Lower Parel", dates: null, fee: 40000 },
+      { id: "mumbai-chembur", city: "Mumbai", name: "Chembur", dates: null, fee: 40000 },
+      { id: "mumbai-kandivali", city: "Mumbai", name: "Kandivali", dates: null, fee: 40000 },
+      { id: "pune-amanora", city: "Pune", name: "Amanora", dates: null, fee: 40000 },
     ],
     image: {
       src: "/media/founders/flea-market-jars.jpg",
@@ -120,10 +126,11 @@ export const programs: Program[] = [
   },
   {
     id: "engineers",
+    format: "Residential",
     house: "engineers",
     houseName: "House of Engineers",
     houseShort: "Engineers",
-    title: "Robotics Residential",
+    title: "Robotics Fellowship",
     tagline: "Four days on a university campus. One robot you built yourself.",
     cardLine: "Build a working robot with IIT Bombay students. Take it home.",
     duration: "4 days",
@@ -142,10 +149,11 @@ export const programs: Program[] = [
   },
   {
     id: "designers",
+    format: "Residential",
     house: "designers",
     houseName: "House of Designers",
     houseShort: "Designers",
-    title: "Design and Architecture Residential",
+    title: "Design and Architecture Fellowship",
     tagline: "Four days in Goa. Learn architecture by building it.",
     cardLine: "Learn architecture by building it, with the Houses of Goa.",
     duration: "4 days",
@@ -182,7 +190,7 @@ export function formatINR(amount: number): string {
   return "₹" + amount.toLocaleString("en-IN");
 }
 
-/** "From ₹25,000", "₹40,000", or null when not announced. */
+/** "₹40,000", "From ₹X" for a range, or null when not announced. */
 export function feeText(fee: Fee): string | null {
   if (fee.kind === "fixed") return formatINR(fee.amount);
   if (fee.kind === "from") return `From ${formatINR(fee.amount)}`;
@@ -196,7 +204,8 @@ export function eligibilityText(e: Eligibility): string {
 
 /** The card details line, matching CLAUDE.md: "4 days. FLAME University, Pune. Last week of May. Ages 14 to 19. ₹40,000" */
 export function detailsLine(p: Program): string {
-  const parts = [p.duration, p.placeLine, p.datesLine, eligibilityText(p.eligibility), feeText(p.fee)];
+  const format = p.format === "Day event" ? null : p.format;
+  const parts = [p.duration, format, p.placeLine, p.datesLine, eligibilityText(p.eligibility), feeText(p.fee)];
   return parts.filter(Boolean).join(". ");
 }
 

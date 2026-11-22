@@ -1,6 +1,6 @@
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "Robotics Residential. Four days on a university campus. One robot you built yourself.";
+export const alt = "Robotics Fellowship. Four days on a university campus. One robot you built yourself.";
 export const size = ogSize;
 export const contentType = "image/png";
 

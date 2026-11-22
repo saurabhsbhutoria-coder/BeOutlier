@@ -16,9 +16,9 @@ import { heroVideos } from "@/content/media";
 const program = getProgram("engineers");
 
 export const metadata: Metadata = {
-  title: "Robotics Residential. Four days on a university campus.",
+  title: "Robotics Fellowship. Four days on a university campus.",
   description:
-    "Robotics Residential. House of Engineers. FLAME University, Pune. Last week of May. Ages 14 to 19. Built with IIT Bombay students. 15% get in.",
+    "Robotics Fellowship. House of Engineers. Residential. FLAME University, Pune. Last week of May. Ages 14 to 19. Built with IIT Bombay students. 15% get in.",
   alternates: { canonical: "/engineers" },
 };
 
@@ -36,7 +36,7 @@ export default function EngineersPage() {
         lines={["Four days on a", "university campus.", "One robot you", "built yourself."]}
         video={heroVideos.engineers}
         facts={[
-          `${p.title}. ${p.houseName}. ${p.venue}.`,
+          `${p.title}. ${p.houseName}. ${p.format}. ${p.venue}.`,
           `${p.datesLine}. ${eligibilityText(p.eligibility)}. Built with IIT Bombay students.`,
           `${fee}. Stay and meals included. 15% get in.`,
         ]}

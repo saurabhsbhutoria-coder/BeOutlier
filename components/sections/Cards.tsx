@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/bits";
 import { ctaLabel, detailsLine, eligibilityText, feeText, seatsText, type Program } from "@/content/programs";
+import { iitBombayTag } from "@/content/site";
 
 /** Home top strip: "Robotics Hackathon. Mumbai. 26 and 27 December. 51 seats. [Book a seat]" */
 export function TopStrip({ program }: { program: Program }) {
@@ -27,20 +29,41 @@ export function TopStrip({ program }: { program: Program }) {
   );
 }
 
+/** "Mentored by IIT Bombay alumni" tag, with the logo when enabled in content/site.ts. */
+export function IitBombayTag({ className = "" }: { className?: string }) {
+  return (
+    <p className={`inline-flex items-center gap-4 border-l-4 border-mint bg-white py-2.5 pr-6 pl-3 text-ink ${className}`}>
+      {iitBombayTag.showLogo ? (
+        <Image src={iitBombayTag.logo} alt="IIT Bombay" width={52} height={51} className="size-12 shrink-0 sm:size-14" />
+      ) : (
+        <span className="dot ml-2" aria-hidden="true" />
+      )}
+      <span className="text-base font-semibold leading-tight sm:text-xl">{iitBombayTag.text}</span>
+    </p>
+  );
+}
+
+/** Weekday for a date like 26 December 2026, computed, never hardcoded. */
+function weekday(day: number, monthIndex: number, year: number) {
+  return new Date(Date.UTC(year, monthIndex, day)).toLocaleDateString("en-IN", { weekday: "short", timeZone: "UTC" });
+}
+
 /**
- * The latest drop, pinned first. Sits on a charcoal band: big title,
- * the facts on hairlines, the seat count and one button.
+ * The Robotics Hackathon: the closest opportunity. Charcoal band, the title and
+ * the IIT Bombay tag on the left; on the right a mint container with the dates
+ * up front, then venue, hours, ages, fee, seats and the button.
  */
 export function DropCard({ program, eyebrow }: { program: Program; eyebrow: string }) {
   const seats = seatsText(program);
+  const days = [26, 27];
   const facts: [string, string][] = [
-    ["Dates", program.datesLine ?? ""],
     ["Venue", program.venue ?? program.placeLine],
+    ["Timings", "10 am to 7 pm, both days"],
     ["Ages", eligibilityText(program.eligibility)],
-    ["Fee", feeText(program.fee) ?? ""],
+    ["Fee", `${feeText(program.fee) ?? ""}. All parts and meals included`],
   ];
   return (
-    <article className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-end lg:gap-20">
+    <article className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20">
       <div>
         <div className="flex flex-wrap items-center gap-3">
           <p className="label flex items-center gap-2.5 text-mint">
@@ -49,26 +72,42 @@ export function DropCard({ program, eyebrow }: { program: Program; eyebrow: stri
           </p>
           <StatusBadge status={program.status} />
         </div>
-        <h2 className="display mt-8 text-[clamp(56px,10vw,150px)]">{program.title}</h2>
-        <p className="display mt-6 text-3xl text-mint sm:text-4xl">{program.tagline}</p>
+        <h2 className="display mt-8 text-[clamp(56px,9vw,140px)]">{program.title}</h2>
+        <p className="display mt-5 text-3xl text-mint sm:text-4xl">{program.tagline}</p>
+        <p className="mt-6 max-w-md text-lg text-white/75">Robotics and AI Hackathon. No experience needed. Open to all.</p>
+        <IitBombayTag className="mt-8" />
       </div>
-      <div>
-        <dl className="border-t border-white/20">
+
+      <div className="bg-mint p-6 text-ink sm:p-9">
+        <p className="label flex items-center gap-2.5">
+          <span className="dot" aria-hidden="true" />
+          {program.placeLine}. December 2026
+        </p>
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          {days.map((d) => (
+            <div key={d} className="border border-ink bg-white px-5 py-4">
+              <p className="label !text-[11px] text-ink-muted">{weekday(d, 11, 2026)}</p>
+              <p className="display mt-1 text-7xl leading-none sm:text-8xl">{d}</p>
+              <p className="label mt-2">December</p>
+            </div>
+          ))}
+        </div>
+        <dl className="mt-6 border-t border-ink">
           {facts.map(([k, v]) => (
-            <div key={k} className="flex justify-between gap-6 border-b border-white/20 py-3.5">
-              <dt className="label text-white/55">{k}</dt>
+            <div key={k} className="flex justify-between gap-6 border-b border-ink/25 py-3">
+              <dt className="label text-ink/70">{k}</dt>
               <dd className="text-right font-medium">{v}</dd>
             </div>
           ))}
         </dl>
-        {seats ? (
-          <p className="mt-7 flex items-baseline gap-3">
-            <span className="display text-7xl text-mint sm:text-8xl">{program.seats.left ?? program.seats.total}</span>
-            <span className="label text-white/70">{seats.replace(/^\d+\s*/, "")}</span>
-          </p>
-        ) : null}
-        <div className="mt-7">
-          <ButtonLink href={program.route} variant="mint" size="lg">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-5">
+          {seats ? (
+            <p className="flex items-baseline gap-2.5">
+              <span className="display text-6xl">{program.seats.left ?? program.seats.total}</span>
+              <span className="label">{seats.replace(/^d+s*/, "")}</span>
+            </p>
+          ) : null}
+          <ButtonLink href={program.route} variant="ink" size="lg">
             {ctaLabel(program)}
           </ButtonLink>
         </div>

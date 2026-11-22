@@ -1,5 +1,5 @@
 import { Stack } from "@/components/ui/bits";
-import { OutlierGraph } from "./OutlierGraph";
+import { SelectionGraphic } from "./SelectionGraphic";
 
 const FULL = [
   { title: "Apply.", text: "" },
@@ -8,10 +8,7 @@ const FULL = [
   { title: "A letter.", text: "Selected or not. If not, come back next year." },
 ];
 
-/**
- * The four admission steps beside the outlier graph: a crowd of dots and the
- * one that breaks away. Caption: "85 out of 100 won't make it."
- */
+/** The four admission steps beside the "85 out of 100" selection graphic. */
 export function AdmissionSteps({
   variant = "full",
   extraLine,
@@ -24,7 +21,7 @@ export function AdmissionSteps({
   const dark = tone === "dark";
   const line = dark ? "border-white/15" : "border-ink/15";
   return (
-    <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
+    <div className="grid gap-16 lg:grid-cols-[1.25fr_0.75fr] lg:items-start lg:gap-24">
       <div>
         {variant === "full" ? (
           <Stack lines={["Applying takes 5 minutes.", "Getting in doesn't."]} className="text-5xl sm:text-7xl" />
@@ -47,15 +44,12 @@ export function AdmissionSteps({
           ))}
         </ol>
       </div>
-      <figure>
-        <OutlierGraph tone={tone} />
-        <figcaption className="display mt-8 text-4xl sm:text-5xl">
-          85 out of 100 won&apos;t make it.
-          {extraLine ? (
-            <span className={`block ${dark ? "text-mint" : "text-mint-deep"}`}>{extraLine}</span>
-          ) : null}
-        </figcaption>
-      </figure>
+      <div className="lg:pt-4">
+        <SelectionGraphic tone={tone} />
+        {extraLine ? (
+          <p className={`display mt-8 text-3xl sm:text-4xl ${dark ? "text-mint" : "text-mint-deep"}`}>{extraLine}</p>
+        ) : null}
+      </div>
     </div>
   );
 }

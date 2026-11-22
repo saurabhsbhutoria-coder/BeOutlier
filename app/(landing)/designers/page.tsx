@@ -16,9 +16,9 @@ import { heroVideos } from "@/content/media";
 const program = getProgram("designers");
 
 export const metadata: Metadata = {
-  title: "Design and Architecture Residential. Four days in Goa.",
+  title: "Design and Architecture Fellowship. Four days in Goa.",
   description:
-    "Design and Architecture Residential. House of Designers. In collaboration with the Houses of Goa. First week of June. Ages 14 to 19. 15% get in.",
+    "Design and Architecture Fellowship. House of Designers. Residential. In collaboration with the Houses of Goa. First week of June. Ages 14 to 19. 15% get in.",
   alternates: { canonical: "/designers" },
 };
 
@@ -36,7 +36,7 @@ export default function DesignersPage() {
         lines={["Four days in Goa.", "Learn architecture", "by building it."]}
         video={heroVideos.designers}
         facts={[
-          `${p.title}. ${p.houseName}. In collaboration with the Houses of Goa.`,
+          `${p.title}. ${p.houseName}. ${p.format}. In collaboration with the Houses of Goa.`,
           `${p.datesLine}. ${eligibilityText(p.eligibility)}. ${fee}. Stay and meals included. 15% get in.`,
         ]}
       />

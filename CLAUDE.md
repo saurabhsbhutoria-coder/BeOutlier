@@ -41,8 +41,8 @@ Main site: Home, The Code, Programs, Faculty, For Parents, For Schools.
 Landing pages:
 1. /hackathon — Robotics Hackathon
 2. /founders — Founders Fellowship (House of Founders)
-3. /engineers — Robotics Residential, FLAME (House of Engineers)
-4. /designers — Design and Architecture Residential, Goa (House of Designers)
+3. /engineers — Robotics Fellowship, FLAME (House of Engineers). Residential.
+4. /designers — Design and Architecture Fellowship, Goa (House of Designers). Residential.
 
 ## 6. Admissions (Summer 2027 programs)
 
@@ -67,11 +67,11 @@ Robotics Hackathon. Mumbai. 26 and 27 December. 51 seats. [Book a seat] → /hac
 
 **Hero**
 A school beyond classrooms.
-Experiential learning for India's outlier teenagers.
+Experiential learning for India's curious teenagers.
 [Apply for Summer 2027]
 
 **Ticker**
-Not a summer camp. Not a coaching class. Not an online course. A school.
+Not just a summer camp. Not a course. A community. An experiential school.
 
 **01**
 Teenagers know a lot.
@@ -90,9 +90,9 @@ Summer 2027. Three houses. Pick one.
 
 | House | Program | What you do | Details | Link |
 |---|---|---|---|---|
-| Founders | Founders Fellowship | Build a brand. Pitch investors. Sell it at a live flea market. | 10 days. Mumbai and Pune. Grades 6 to 12. From ₹25,000 | /founders |
-| Engineers | Robotics Residential | Build a working robot with IIT Bombay students. Take it home. | 4 days. FLAME University, Pune. Last week of May. Ages 14 to 19. ₹40,000 | /engineers |
-| Designers | Design and Architecture Residential | Learn architecture by building it, with the Houses of Goa. | 4 days. Goa. First week of June. Ages 14 to 19. ₹40,000 | /designers |
+| Founders | Founders Fellowship | Build a brand. Pitch investors. Sell it at a live flea market. | 10 days. Day scholar. Mumbai and Pune. Grades 6 to 12. ₹40,000 | /founders |
+| Engineers | Robotics Fellowship | Build a working robot with IIT Bombay students. Take it home. | 4 days. FLAME University, Pune. Last week of May. Ages 14 to 19. ₹40,000 | /engineers |
+| Designers | Design and Architecture Fellowship | Learn architecture by building it, with the Houses of Goa. | 4 days. Goa. First week of June. Ages 14 to 19. ₹40,000 | /designers |
 
 Each card: [Enter the house]
 
@@ -115,8 +115,8 @@ Applying takes 5 minutes. Getting in doesn't.
 **07. For parents** (toggle)
 Everything you'd ask us on a call. Fees. Safety. Supervision. What your child brings home.
 
-**08. Close**
-Not everyone gets in. That's the point.
+**Close**
+Average is crowded. Be an Outlier.
 [Apply for Summer 2027]
 
 ---
@@ -224,8 +224,8 @@ DSB International School. The Green Acres Academy. The NEXT School. Goregaon Spo
 
 | City | Campus | Dates | Fee |
 |---|---|---|---|
-| Mumbai | Lower Parel, Chembur, Kandivali, [3 more] | [ ] | [₹25,000 or ₹40,000] |
-| Pune | Amanora, [3 more] | [ ] | [₹25,000 or ₹40,000] |
+| Mumbai | Lower Parel, Chembur, Kandivali, [3 more] | [ ] | ₹40,000 |
+| Pune | Amanora, [3 more] | [ ] | ₹40,000 |
 
 **How you get in**
 Applying takes 5 minutes. Getting in doesn't.
@@ -248,11 +248,11 @@ Student name, grade, school, parent's phone, city, preferred campus.
 
 ---
 
-## 10. Landing page: Robotics Residential (/engineers)
+## 10. Landing page: Robotics Fellowship (/engineers)
 
 **Hero**
 Four days on a university campus. One robot you built yourself.
-Robotics Residential. House of Engineers. FLAME University, Pune.
+Robotics Fellowship. House of Engineers. Residential. FLAME University, Pune.
 Last week of May. Ages 14 to 19. Built with IIT Bombay students.
 ₹40,000. Stay and meals included. 15% get in.
 [Apply for Summer 2027]
@@ -309,11 +309,11 @@ Student name, age, school, parent's phone, city.
 
 ---
 
-## 11. Landing page: Design and Architecture Residential (/designers)
+## 11. Landing page: Design and Architecture Fellowship (/designers)
 
 **Hero**
 Four days in Goa. Learn architecture by building it.
-Design and Architecture Residential. House of Designers. In collaboration with the Houses of Goa.
+Design and Architecture Fellowship. House of Designers. Residential. In collaboration with the Houses of Goa.
 First week of June. Ages 14 to 19. ₹40,000. Stay and meals included. 15% get in.
 [Apply for Summer 2027]
 
@@ -410,3 +410,21 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 **Copy changes**: "Applying takes 5 minutes." 45 teenagers in 2025. 150+ Outliers so far.
 
 **Privacy and terms**: drafted by the build, reviewed by BeOutlier before launch.
+
+---
+
+## 14. Home page changes (22 November 2026)
+
+**Order:** top strip, hero, ticker, 01, 02 Where it started, numbers, Robotics Hackathon (just above the houses), 03 houses, 04 who you build with, 05 student interviews, 06 parent testimonials, 07 what you take home, 08 how you get in, 09 for parents, close.
+
+**02. Where it started:** vision line "A generation of problem solvers and change makers who dare to question, and create." The 2025 story stays word for word. The flea market video (same as the phone hero) plays in its own frame.
+
+**Numbers:** 18 brands built by students. ₹5L+ earned by their brands. 45 Outliers in the community. 15% acceptance rate. (The 150+ figure is removed.)
+
+**Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. This overrides the section 2 rules on the logo and on "IIT Bombay students" for this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
+
+**05 and 06:** five student interviews and five parent testimonials, each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
+
+**07. What you take home:** certificate template. Every student keeps the project they built, a documentation journal, a detailed evaluation report, and access to the Level 2 Accelerator program.
+
+**Programs:** all three houses are ₹40,000. Founders Fellowship is a day scholar program; Robotics Fellowship and Design and Architecture Fellowship are residential. "Residential" is the format, never part of the name.

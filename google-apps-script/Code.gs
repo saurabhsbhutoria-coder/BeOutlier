@@ -21,7 +21,7 @@ var HEADERS = [
 
 var STATUSES = ['New', 'Test sent', 'Test done', 'Call done', 'Selected', 'Rejected', 'Enrolled', 'Paid'];
 
-var SUMMER_PROGRAMS = ['Founders Fellowship', 'Robotics Residential', 'Design and Architecture Residential'];
+var SUMMER_PROGRAMS = ['Founders Fellowship', 'Robotics Fellowship', 'Design and Architecture Fellowship'];
 var HACKATHON = 'Robotics Hackathon';
 var HACKATHON_SEATS = 51;
 

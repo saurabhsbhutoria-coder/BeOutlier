@@ -42,7 +42,7 @@ export default function FoundersPage() {
         video={heroVideos.founders}
         media={p.image}
         facts={[
-          `${p.title}. ${p.houseName}. Summer 2027.`,
+          `${p.title}. ${p.houseName}. ${p.format}. Summer 2027.`,
           `${p.duration}. ${p.placeLine}. ${eligibilityText(p.eligibility)}. 15% get in.`,
         ]}
       />
