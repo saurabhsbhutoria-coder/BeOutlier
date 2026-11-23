@@ -32,6 +32,20 @@ export function FacesGrid({ people, tone = "light" }: { people: Person[]; tone?:
             <p className={`mt-1 text-sm leading-snug ${tone === "light" ? "text-ink-muted" : "text-white/75"}`}>
               {p.line}
             </p>
+            {p.tags?.length ? (
+              <ul className="mt-3 flex flex-wrap gap-1.5" aria-label={`${p.name}, keywords`}>
+                {p.tags.map((t) => (
+                  <li
+                    key={t}
+                    className={`label border px-2 py-1 !text-[9px] leading-none sm:!text-[10px] ${
+                      tone === "light" ? "border-ink/25 text-ink" : "border-white/30 text-white/85"
+                    }`}
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </li>
       ))}

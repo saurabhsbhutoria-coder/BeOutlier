@@ -423,7 +423,9 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. The logo is allowed on this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
 
-**05 and 06:** five student interviews and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
+**05 and 06:** four student reels from @beoutlier.in (Instagram embeds, line "Straight from @beoutlier.in") and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
+
+**04. Mentors (added 23 November 2026):** ten mentors in content/people.ts, each with a photo, one line and up to three keyword tags, all taken from their own LinkedIn or Instagram profile. Status at IIT Bombay as their profiles show it: Suraj Racha is an alumnus (dual degree 2018 to 2023, now PhD); Anish Mayanache (MTech, to 2028) and Anmol Sureka (BTech, to 2028) are current students. A mentor's line may name their IIT Bombay degree; that is not "IIT Bombay" alone.
 
 **07. What you take home:** certificate template. Every student keeps the project they built, a documentation journal, a detailed evaluation report, and access to the Level 2 Accelerator program.
 

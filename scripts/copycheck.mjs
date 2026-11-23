@@ -52,7 +52,7 @@ for (const d of dirs) {
         }
         if (/[A-Za-z)]!(\s|$)/.test(t)) problems.push([rel, i + 1, "exclamation", t]);
         if (emoji.test(t)) problems.push([rel, i + 1, "emoji", t]);
-        if (/IIT Bombay(?! students| alumni)/.test(t) && !/inside IIT Bombay with the students/.test(t) && t.trim() !== "IIT Bombay") {
+        if (/IIT Bombay(?! students| alumni| alumnus| MTech| BTech|\.| with the students)/.test(t) && !/inside IIT Bombay with the students/.test(t) && t.trim() !== "IIT Bombay") {
           problems.push([rel, i + 1, 'IIT Bombay without "students"', t]);
         }
       }
