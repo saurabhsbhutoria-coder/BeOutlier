@@ -56,17 +56,14 @@ export function Certificate({ className = "" }: { className?: string }) {
                   </div>
                 ))}
               </div>
-              {/* The outlier seal */}
-              <div
-                aria-hidden="true"
-                className="relative flex aspect-square w-[16%] shrink-0 items-center justify-center rounded-full bg-mint ring-1 ring-ink ring-offset-[3px]"
-              >
-                <div className="text-center">
-                  <p className="display text-[clamp(7px,1.25vw,15px)] leading-[0.95]">Be an</p>
-                  <p className="display text-[clamp(7px,1.25vw,15px)] leading-[0.95]">Outlier</p>
-                  <p className="label mt-[6%] !text-[clamp(4px,0.6vw,7px)]">Summer 2027</p>
-                </div>
-              </div>
+              {/* The BeOutlier stamp, pressed on at a slight angle */}
+              <Image
+                src="/brand/stamp.webp"
+                alt="BeOutlier stamp: By exposure, from practice"
+                width={332}
+                height={330}
+                className="w-[21%] shrink-0 -rotate-[8deg] opacity-90 mix-blend-multiply"
+              />
             </div>
           </div>
         </div>
