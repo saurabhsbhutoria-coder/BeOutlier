@@ -18,7 +18,7 @@ const program = getProgram("engineers");
 export const metadata: Metadata = {
   title: "Robotics Fellowship. Four days on a university campus.",
   description:
-    "Robotics Fellowship. House of Engineers. Residential. FLAME University, Pune. Last week of May. Ages 14 to 19. Built with IIT Bombay students. 15% get in.",
+    "Robotics Fellowship. House of Engineers. Residential. FLAME University, Pune. Last week of May. Ages 14 to 19. Built with IIT Bombay alumni. 15% get in.",
   alternates: { canonical: "/engineers" },
 };
 
@@ -37,7 +37,7 @@ export default function EngineersPage() {
         video={heroVideos.engineers}
         facts={[
           `${p.title}. ${p.houseName}. ${p.format}. ${p.venue}.`,
-          `${p.datesLine}. ${eligibilityText(p.eligibility)}. Built with IIT Bombay students.`,
+          `${p.datesLine}. ${eligibilityText(p.eligibility)}. Built with IIT Bombay alumni.`,
           `${fee}. Stay and meals included. 15% get in.`,
         ]}
       />
@@ -46,7 +46,7 @@ export default function EngineersPage() {
         <Heading label="What it is" index="01" lines={[]} className="!mb-6" />
         <Reveal>
           <p className="heavy max-w-5xl text-2xl leading-[1.15] sm:text-4xl">
-            You live on campus for four days. You learn Arduino circuits and AI from IIT Bombay students. Then your
+            You live on campus for four days. You learn Arduino circuits and AI from IIT Bombay alumni. Then your
             team builds <span className="mark">a machine that sees, decides and moves</span>, and puts it up against
             every other team&apos;s.
           </p>
@@ -93,7 +93,7 @@ export default function EngineersPage() {
       </Section>
 
       <Section tone="linen">
-        <Heading label="Who you build with" index="07" lines={["IIT Bombay students", "who build this for fun."]} />
+        <Heading label="Who you build with" index="07" lines={["IIT Bombay alumni", "who build this for fun."]} />
         <FacesGrid people={peopleFor("engineers", "mentor")} />
       </Section>
 

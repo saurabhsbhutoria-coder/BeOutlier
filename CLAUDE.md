@@ -16,7 +16,7 @@ The site must feel like an exclusive inner circle that teenagers want in on and 
 - Banned words: unlock, empower, holistic, future ready, 21st century skills, world class, transformative, journey, nurture, potential.
 - Banned phrase: "Real money, real customers".
 - No stock photos. Only real student photos and videos.
-- Every claim must be true. Write "IIT Bombay students", never "IIT Bombay" alone. Never use the IIT Bombay logo.
+- Every claim must be true. Write "IIT Bombay alumni" (updated 23 November 2026, was "IIT Bombay students"), never "IIT Bombay" alone, except the Techfest prize line. The IIT Bombay logo is used only on the Robotics Hackathon tag (see section 14).
 
 ## 3. Tech setup
 
@@ -91,7 +91,7 @@ Summer 2027. Three houses. Pick one.
 | House | Program | What you do | Details | Link |
 |---|---|---|---|---|
 | Founders | Founders Fellowship | Build a brand. Pitch investors. Sell it at a live flea market. | 10 days. Day scholar. Mumbai and Pune. Grades 6 to 12. ₹40,000 | /founders |
-| Engineers | Robotics Fellowship | Build a working robot with IIT Bombay students. Take it home. | 4 days. FLAME University, Pune. Last week of May. Ages 14 to 19. ₹40,000 | /engineers |
+| Engineers | Robotics Fellowship | Build a working robot with IIT Bombay alumni. Take it home. | 4 days. FLAME University, Pune. Last week of May. Ages 14 to 19. ₹40,000 | /engineers |
 | Designers | Design and Architecture Fellowship | Learn architecture by building it, with the Houses of Goa. | 4 days. Goa. First week of June. Ages 14 to 19. ₹40,000 | /designers |
 
 Each card: [Enter the house]
@@ -253,12 +253,12 @@ Student name, grade, school, parent's phone, city, preferred campus.
 **Hero**
 Four days on a university campus. One robot you built yourself.
 Robotics Fellowship. House of Engineers. Residential. FLAME University, Pune.
-Last week of May. Ages 14 to 19. Built with IIT Bombay students.
+Last week of May. Ages 14 to 19. Built with IIT Bombay alumni.
 ₹40,000. Stay and meals included. 15% get in.
 [Apply for Summer 2027]
 
 **What it is**
-You live on campus for four days. You learn Arduino circuits and AI from IIT Bombay students. Then your team builds a machine that sees, decides and moves, and puts it up against every other team's.
+You live on campus for four days. You learn Arduino circuits and AI from IIT Bombay alumni. Then your team builds a machine that sees, decides and moves, and puts it up against every other team's.
 
 **The four days**
 Day 1. Move in. Orientation with your parents. Meet your team. First circuit.
@@ -282,7 +282,7 @@ Four days of campus life.
 A team you built it with.
 
 **Who you build with**
-IIT Bombay students who build this for fun.
+IIT Bombay alumni who build this for fun.
 [Faces with one line each]
 
 **For parents**
@@ -421,7 +421,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **Numbers:** 18 brands built by students. ₹5L+ earned by their brands. 45 Outliers in the community. 15% acceptance rate. (The 150+ figure is removed.)
 
-**Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. This overrides the section 2 rules on the logo and on "IIT Bombay students" for this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
+**Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. The logo is allowed on this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
 
 **05 and 06:** five student interviews and five parent testimonials, each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
 

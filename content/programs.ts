@@ -132,7 +132,7 @@ export const programs: Program[] = [
     houseShort: "Engineers",
     title: "Robotics Fellowship",
     tagline: "Four days on a university campus. One robot you built yourself.",
-    cardLine: "Build a working robot with IIT Bombay students. Take it home.",
+    cardLine: "Build a working robot with IIT Bombay alumni. Take it home.",
     duration: "4 days",
     placeLine: "FLAME University, Pune",
     datesLine: "Last week of May",

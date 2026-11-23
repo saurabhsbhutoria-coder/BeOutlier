@@ -38,8 +38,8 @@ export const mainNav = [
 
 /**
  * IIT Bombay tag on the Robotics Hackathon block.
- * NOTE: CLAUDE.md section 2 says never use the IIT Bombay logo and to write
- * "IIT Bombay students". This tag was requested on 22 November 2026; set
+ * NOTE: CLAUDE.md section 2 allows the IIT Bombay logo only on this tag.
+ * Requested by BeOutlier on 22 November 2026; set
  * showLogo to false to fall back to the text tag only.
  */
 export const iitBombayTag = {
