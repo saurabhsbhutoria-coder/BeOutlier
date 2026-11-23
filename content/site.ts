@@ -28,12 +28,26 @@ export function whatsappLink(text?: string): string {
   return text ? `${site.whatsapp.href}?text=${encodeURIComponent(text)}` : site.whatsapp.href;
 }
 
+/** Menu: sections of the Home page, plus About Us (changed 23 November 2026). */
 export const mainNav = [
-  { href: "/programs", label: "Programs" },
-  { href: "/the-code", label: "The Code" },
-  { href: "/faculty", label: "Faculty" },
-  { href: "/parents", label: "For Parents" },
-  { href: "/schools", label: "For Schools" },
+  { href: "/#houses", label: "Programs" },
+  { href: "/#mentors", label: "Mentors" },
+  { href: "/#stories", label: "Stories" },
+  { href: "/#parents", label: "For Parents" },
+  { href: "/#faq", label: "FAQs" },
+  { href: "/about", label: "About Us" },
+] as const;
+
+/** Footer "Explore" column: every key section of the Home page. */
+export const footerNav = [
+  { href: "/#houses", label: "The three houses" },
+  { href: "/#mentors", label: "Mentors" },
+  { href: "/#stories", label: "Hear it from the Outliers" },
+  { href: "/#testimonials", label: "Parent testimonials" },
+  { href: "/#take-home", label: "What you take home" },
+  { href: "/#admissions", label: "How you get in" },
+  { href: "/#parents", label: "For Parents" },
+  { href: "/#faq", label: "FAQs" },
 ] as const;
 
 /**

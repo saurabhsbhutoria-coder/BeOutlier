@@ -9,11 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/engineers", priority: 0.9 },
     { path: "/designers", priority: 0.9 },
     { path: "/apply", priority: 0.8 },
+    { path: "/about", priority: 0.7 },
     { path: "/programs", priority: 0.7 },
-    { path: "/the-code", priority: 0.5 },
     { path: "/faculty", priority: 0.5 },
     { path: "/parents", priority: 0.6 },
-    { path: "/schools", priority: 0.5 },
     { path: "/privacy", priority: 0.2 },
     { path: "/terms", priority: 0.2 },
   ];

@@ -435,4 +435,11 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 - Certificate: AIM (NITI Aayog) and MCA logos are ready but switched off (content/site.ts, certificateLogos.show) until BeOutlier confirms written permission, because both carry the State Emblem of India.
 - Sections fade up gently as they scroll into view (components/ui/ScrollMotion.tsx), off for reduced motion.
 
+**Changes of 23 November 2026 (night):**
+- Menu: Programs, Mentors, Stories, For Parents, FAQs (each a section of Home) and About Us. The Code and For Schools are off the menu, footer and sitemap (the pages still exist, unlinked). The footer has an Explore column with every key Home section.
+- Corners: video cards, mentor cards, FAQ items and About cards are rounded (soft frame, video inset). Buttons and section blocks stay square.
+- Mentors: each in its own rounded card, two rows that slide together. No count label.
+- 10. FAQs on Home (content/faq.ts), built only from facts in this file and content/programs.ts.
+- About Us (/about): what BeOutlier is, the vision, how it started (Last Summer, the orientation where 70 came against 25 expected, 45 teenagers, the flea market), the numbers, the three levels, the founding team (Saurabh Bhutoria: product, student experience and brand; Ishan Dubey: sales and partnerships), advisors and the mentors. Team, advisors, the orientation and host schools come from BeOutlier's One Pager (content/about.ts). Founder photos: initials until real photos are added.
+
 **Programs:** all three houses are ₹40,000. Founders Fellowship is a day scholar program; Robotics Fellowship and Design and Architecture Fellowship are residential. "Residential" is the format, never part of the name.

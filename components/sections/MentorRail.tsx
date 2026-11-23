@@ -37,22 +37,18 @@ export function MentorRail({ people, label = "Mentors" }: { people: Person[]; la
     const r = railRef.current;
     if (!r) return;
     const card = r.querySelector("li");
-    const step = card ? (card.getBoundingClientRect().width + 16) * 2 : r.clientWidth * 0.8;
+    const gap = parseFloat(getComputedStyle(r).columnGap) || 16;
+    const step = card ? (card.getBoundingClientRect().width + gap) * 2 : r.clientWidth * 0.8;
     r.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
   const scrollable = !(atStart && atEnd);
   const arrow =
-    "inline-flex size-11 items-center justify-center border border-ink transition-colors hover:enabled:bg-ink hover:enabled:text-mint disabled:cursor-not-allowed disabled:opacity-30";
+    "inline-flex size-11 items-center justify-center rounded-full border border-ink/30 bg-white transition-colors hover:enabled:border-ink hover:enabled:bg-ink hover:enabled:text-mint disabled:cursor-not-allowed disabled:opacity-30";
 
   return (
-    <div className="border border-ink bg-white p-4 sm:p-8">
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <p className="label flex items-center gap-2.5">
-          <span className="dot" aria-hidden="true" />
-          {people.length} mentors
-        </p>
-        <div className={`flex gap-2 ${scrollable ? "" : "invisible"}`}>
+    <div>
+      <div className={`mb-5 flex justify-end gap-2 ${scrollable ? "" : "hidden"}`}>
           <button type="button" onClick={() => go(-1)} disabled={atStart} className={arrow} aria-label={`Previous, ${label}`}>
             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
               <path d="M16 6H2M7 1L2 6l5 5" stroke="currentColor" strokeWidth="1.6" />
@@ -63,26 +59,29 @@ export function MentorRail({ people, label = "Mentors" }: { people: Person[]; la
               <path d="M0 6h14M9 1l5 5-5 5" stroke="currentColor" strokeWidth="1.6" />
             </svg>
           </button>
-        </div>
       </div>
       <ul
         ref={railRef}
         aria-label={label}
-        className="no-scrollbar grid snap-x snap-mandatory grid-flow-col grid-rows-2 gap-x-4 gap-y-8 overflow-x-auto [grid-auto-columns:calc((100%-1rem)/2.25)] sm:[grid-auto-columns:calc((100%-2rem)/3)] lg:[grid-auto-columns:calc((100%-4rem)/5)]"
+        className="no-scrollbar -mx-1 grid snap-x snap-mandatory grid-flow-col grid-rows-2 gap-4 overflow-x-auto p-1 [grid-auto-columns:calc((100%-1rem)/2.2)] sm:[grid-auto-columns:calc((100%-2rem)/3)] lg:gap-5 lg:[grid-auto-columns:calc((100%-5rem)/5)]"
       >
         {people.map((p) => (
           <li key={p.id} className="snap-start">
-            <div className="group relative aspect-[4/5] overflow-hidden bg-linen">
-              <Image
-                src={p.photo}
-                alt={`Portrait of ${p.name}`}
-                fill
-                sizes="(min-width: 1024px) 15vw, (min-width: 640px) 30vw, 44vw"
-                className="object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
-              />
-            </div>
-            <p className="mt-3 text-base font-semibold leading-tight">{p.name}</p>
-            <p className="mt-1 text-sm leading-snug text-ink-muted">{p.line}</p>
+            <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-2.5 shadow-[0_1px_2px_rgb(37_40_42/0.06),0_8px_24px_-12px_rgb(37_40_42/0.18)] ring-1 ring-ink/[0.06] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgb(37_40_42/0.06),0_18px_36px_-16px_rgb(37_40_42/0.28)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-linen">
+                <Image
+                  src={p.photo}
+                  alt={`Portrait of ${p.name}`}
+                  fill
+                  sizes="(min-width: 1024px) 15vw, (min-width: 640px) 30vw, 44vw"
+                  className="object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+                />
+              </div>
+              <div className="px-1.5 pt-3 pb-2">
+                <p className="text-[15px] font-semibold leading-tight">{p.name}</p>
+                <p className="mt-1.5 text-[13px] leading-snug text-ink-muted">{p.line}</p>
+              </div>
+            </article>
           </li>
         ))}
       </ul>

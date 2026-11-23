@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/bits";
-import { mainNav, site } from "@/content/site";
+import { footerNav, site } from "@/content/site";
 import { houses, programs } from "@/content/programs";
 import { microcopy } from "@/content/microcopy";
 
@@ -57,7 +57,7 @@ export function Footer() {
   const hackathon = programs.find((p) => p.id === "hackathon");
   return (
     <footer className="on-dark bg-ink text-white">
-      <div className="shell grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="shell grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1fr_1fr_1fr]">
         <div>
           <Logo className="h-10 sm:h-12" />
         </div>
@@ -79,9 +79,24 @@ export function Footer() {
             ) : null}
           </ul>
         </Column>
+        <Column title="Explore">
+          <ul className="flex flex-col gap-3 text-sm text-white/80">
+            {footerNav.map((n) => (
+              <li key={n.href}>
+                <Link href={n.href} className="transition-colors hover:text-mint">
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Column>
         <Column title="BeOutlier">
           <ul className="flex flex-col gap-3 text-sm text-white/80">
-            {mainNav.map((n) => (
+            {[
+              { href: "/about", label: "About Us" },
+              { href: "/parents", label: "Every detail for parents" },
+              { href: "/apply", label: site.primaryCta },
+            ].map((n) => (
               <li key={n.href}>
                 <Link href={n.href} className="transition-colors hover:text-mint">
                   {n.label}

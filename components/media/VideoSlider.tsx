@@ -72,7 +72,8 @@ export function VideoSlider({
     const r = railRef.current;
     if (!r) return;
     const card = r.querySelector("li");
-    const step = card ? card.getBoundingClientRect().width + 16 : r.clientWidth * 0.8;
+    const gap = parseFloat(getComputedStyle(r).columnGap) || 16;
+    const step = card ? card.getBoundingClientRect().width + gap : r.clientWidth * 0.8;
     r.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
@@ -82,9 +83,15 @@ export function VideoSlider({
     });
   };
 
-  const arrow = `inline-flex size-12 items-center justify-center border transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${
-    dark ? "border-white/40 hover:enabled:bg-mint hover:enabled:text-ink hover:enabled:border-mint" : "border-ink hover:enabled:bg-ink hover:enabled:text-mint"
+  const arrow = `inline-flex size-12 items-center justify-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${
+    dark
+      ? "border-white/25 hover:enabled:border-mint hover:enabled:bg-mint hover:enabled:text-ink"
+      : "border-ink/30 bg-white hover:enabled:border-ink hover:enabled:bg-ink hover:enabled:text-mint"
   }`;
+  /** The card: a soft rounded frame with the video inset, so it reads as one object. */
+  const card = dark
+    ? "bg-white/[0.05] ring-1 ring-white/10 shadow-[0_24px_48px_-24px_rgb(0_0_0/0.7)]"
+    : "bg-white ring-1 ring-ink/[0.07] shadow-[0_1px_2px_rgb(37_40_42/0.06),0_18px_40px_-20px_rgb(37_40_42/0.3)]";
 
   return (
     <div>
@@ -103,13 +110,13 @@ export function VideoSlider({
       <ul
         ref={railRef}
         aria-label={label}
-        className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-2 sm:mx-0 sm:scroll-px-0 sm:px-0"
+        className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pt-1 pb-8 sm:mx-0 sm:scroll-px-1 sm:px-1 lg:gap-5"
       >
         {items.map((v, i) => (
-          <li key={i} className="w-[72%] shrink-0 snap-start sm:w-[44%] lg:w-[calc((100%-3rem)/4)]">
+          <li key={i} className={`w-[72%] shrink-0 snap-start rounded-[22px] p-2 sm:w-[44%] lg:w-[calc((100%-3.75rem)/4)] ${card}`}>
             <div
-              className={`relative overflow-hidden border ${v.instagram ? "aspect-[100/121]" : "aspect-[9/16]"} ${
-                dark ? "border-white/20 bg-ink-soft" : "border-ink bg-ink"
+              className={`relative overflow-hidden rounded-2xl ${v.instagram ? "aspect-[100/121]" : "aspect-[9/16]"} ${
+                dark ? "bg-ink-soft" : "bg-ink"
               }`}
             >
               {!near && (v.instagram || v.src) ? null : v.instagram ? (
@@ -153,13 +160,13 @@ export function VideoSlider({
                 href={`https://www.instagram.com/reel/${v.instagram}/`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`label mt-3 inline-flex items-center gap-2 !text-[10px] underline-offset-4 hover:underline ${dark ? "text-white/70" : "text-ink-muted"}`}
+                className={`label flex items-center justify-between gap-2 px-2 pt-3 pb-1.5 !text-[10px] underline-offset-4 hover:underline ${dark ? "text-white/70 hover:text-mint" : "text-ink-muted hover:text-ink"}`}
               >
                 Watch on Instagram <span aria-hidden="true">↗</span>
               </a>
             ) : null}
             {v.name || v.line ? (
-              <div className="mt-3">
+              <div className="px-2 pt-3 pb-1.5">
                 {v.name ? <p className="font-semibold">{v.name}</p> : null}
                 {v.line ? <p className={`text-sm ${dark ? "text-white/70" : "text-ink-muted"}`}>{v.line}</p> : null}
               </div>

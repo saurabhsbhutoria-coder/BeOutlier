@@ -180,6 +180,11 @@
   transform: none;
 }
 
+/* Menu links jump to Home sections: clear the sticky header */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
 /* Section entrances (components/ui/ScrollMotion.tsx). Only sections below
    the fold get .sr, so first paint is never hidden. */
 .sr .sr-item {

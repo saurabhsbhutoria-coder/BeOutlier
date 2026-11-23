@@ -13,6 +13,7 @@ import { FacesGrid } from "@/components/sections/FacesGrid";
 import { MentorRail } from "@/components/sections/MentorRail";
 import { AdmissionSteps } from "@/components/sections/AdmissionSteps";
 import { Certificate } from "@/components/sections/Certificate";
+import { Faq } from "@/components/sections/Faq";
 import { ParentStudentToggle } from "@/components/mode/ParentStudentToggle";
 import { feeText, getProgram, houses } from "@/content/programs";
 import { peopleFor } from "@/content/people";
@@ -25,6 +26,8 @@ import {
   studentInterviews,
 } from "@/content/media";
 import { site } from "@/content/site";
+import { levels } from "@/content/about";
+import { faqs } from "@/content/faq";
 
 export const metadata: Metadata = {
   title: { absolute: "BeOutlier. A school beyond classrooms." },
@@ -58,12 +61,6 @@ const TAKE_HOME = [
   "Access to the Level 2 Accelerator program.",
 ];
 
-/** The pathway, as BeOutlier describes it (23 November 2026). Summer 2027 is Level 1. */
-const LEVELS = [
-  { level: "Level 1", when: "Summer 2027", text: "One house. One real project, built and shown to the world." },
-  { level: "Level 2", when: "9 month accelerator", text: "Go deeper. Learn the skill sets behind what they built." },
-  { level: "Level 3", when: "Internships", text: "Internships around the world, across diverse industries." },
-];
 
 export default function HomePage() {
   const hackathon = getProgram("hackathon");
@@ -244,7 +241,7 @@ export default function HomePage() {
           <HousePanels panels={panels} />
         </Section>
 
-        <Section tone="linen" className="parent:order-10">
+        <Section tone="linen" id="mentors" className="parent:order-10">
           <Eyebrow label="Who you build with" index="04" />
           <Stack lines={["Not teachers.", "People who have done it."]} className="mt-8 mb-14 text-5xl sm:text-8xl" />
           {peopleFor("home", "mentor").length ? (
@@ -254,7 +251,7 @@ export default function HomePage() {
           )}
         </Section>
 
-        <Section tone="ink" className="parent:order-11">
+        <Section tone="ink" id="stories" className="parent:order-11">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Eyebrow label="In their words" index="05" tone="mint" />
@@ -272,7 +269,7 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <Section tone="white" className="parent:order-3">
+        <Section tone="white" id="testimonials" className="parent:order-3">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Eyebrow label="Parent testimonials" index="06" />
@@ -285,7 +282,7 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <Section tone="linen" className="parent:order-4">
+        <Section tone="linen" id="take-home" className="parent:order-4">
           <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
             <div>
               <Eyebrow label="What you take home" index="07" />
@@ -307,7 +304,7 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <Section tone="white" className="parent:order-5">
+        <Section tone="white" id="admissions" className="parent:order-5">
           <Eyebrow label="How you get in" index="08" />
           <div className="mt-10">
             <AdmissionSteps variant="full" />
@@ -341,7 +338,7 @@ export default function HomePage() {
 
           {/* The pathway: Level 1 now, then the accelerator, then internships */}
           <ol className="mt-16 grid border border-ink sm:grid-cols-3">
-            {LEVELS.map((l, i) => (
+            {levels.map((l, i) => (
               <li
                 key={l.level}
                 className={`flex flex-col gap-3 p-6 sm:p-8 ${i === 0 ? "bg-ink text-white" : "bg-sand"} ${
@@ -367,9 +364,26 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <section className="bg-mint text-ink parent:order-12">
+        <Section tone="white" id="faq" className="parent:order-12">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <Eyebrow label="FAQs" index="10" />
+              <Stack lines={["Questions,", "answered."]} className="mt-8 text-5xl sm:text-7xl" />
+              <p className="mt-6 max-w-sm text-lg leading-snug text-ink-muted">
+                Anything else, ask us on{" "}
+                <a href={site.whatsapp.href} className="font-semibold text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
+                  WhatsApp
+                </a>
+                .
+              </p>
+            </div>
+            <Faq items={faqs} />
+          </div>
+        </Section>
+
+        <section className="bg-mint text-ink parent:order-13">
           <div className="shell py-28 sm:py-44">
-            <Eyebrow label="10" />
+            <Eyebrow label="11" />
             <h2 className="display mt-8 max-w-6xl text-[3.6rem] leading-[0.9] sm:text-8xl lg:text-[clamp(110px,11vw,190px)]">
               <span className="block">Average is crowded.</span>
               <span className="block">
