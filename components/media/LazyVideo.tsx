@@ -20,6 +20,7 @@ export function LazyVideo({
   eager?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const visible = useRef(false);
   const [load, setLoad] = useState(eager);
 
   useEffect(() => {
@@ -29,9 +30,10 @@ export function LazyVideo({
     if (reduced) return;
     const io = new IntersectionObserver(
       ([entry]) => {
+        visible.current = entry.isIntersecting;
         if (entry.isIntersecting) {
           setLoad(true);
-          v.play().catch(() => {});
+          if (v.currentSrc) v.play().catch(() => {});
         } else {
           v.pause();
         }
@@ -41,6 +43,14 @@ export function LazyVideo({
     io.observe(v);
     return () => io.disconnect();
   }, []);
+
+  // A <source> added after mount needs load(), then play if still on screen.
+  useEffect(() => {
+    const v = ref.current;
+    if (!load || !v) return;
+    v.load();
+    if (visible.current) v.play().catch(() => {});
+  }, [load]);
 
   return (
     <video

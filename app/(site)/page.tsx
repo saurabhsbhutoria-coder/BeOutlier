@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, Stack } from "@/components/ui/bits";
 import { CountUp } from "@/components/ui/CountUp";
 import { Marquee } from "@/components/media/Marquee";
-import { LazyVideo } from "@/components/media/LazyVideo";
+import { StoryVideo } from "@/components/media/StoryVideo";
 import { HeroVideo } from "@/components/media/HeroVideo";
 import { VideoSlider } from "@/components/media/VideoSlider";
 import { DropCard, TopStrip } from "@/components/sections/Cards";
@@ -196,14 +196,16 @@ export default function HomePage() {
               </a>
             </div>
             <figure className="order-1 mx-auto w-full max-w-xs lg:order-1 lg:max-w-sm">
-              <div className="grain relative aspect-[9/14] overflow-hidden rounded-2xl bg-ink shadow-[0_24px_48px_-24px_rgb(37_40_42/0.55)]">
-                <LazyVideo
-                  src={storyVideo.mp4}
-                  poster={storyVideo.poster}
-                  label="Last Summer's flea market, where students sold the brands they built"
-                  className="absolute inset-0 size-full object-cover"
-                />
-              </div>
+              {/* Native shape, no grain overlay, no crop: the video as it was filmed. */}
+              <StoryVideo
+                src={storyVideo.mp4}
+                poster={storyVideo.poster}
+                width={storyVideo.width}
+                height={storyVideo.height}
+                hasAudio={storyVideo.hasAudio}
+                label="Last Summer's flea market, where students sold the brands they built"
+                className="rounded-2xl shadow-[0_24px_48px_-24px_rgb(37_40_42/0.55)]"
+              />
               <figcaption className="label mt-3 flex items-center gap-2.5">
                 <span className="dot" aria-hidden="true" />
                 Flea market · Last Summer · Mumbai

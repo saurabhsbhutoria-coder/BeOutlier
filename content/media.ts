@@ -81,10 +81,20 @@ export const fleaMarketVideo: { mp4: string; poster: string } | null = null;
 /** Student Reels for Home section 05 (vertical 9:16). */
 export const reels: Reel[] = [];
 
-/** "Where it started": the same flea market video as the phone hero, in its own frame. */
-export const storyVideo: { mp4: string; poster: string } = {
-  mp4: "/media/home/hero-mobile.mp4",
+/**
+ * "Where it started": the flea market video in its own frame, shown at its
+ * native 9:16 shape (never stretched or cropped), muted by default.
+ * Its own file, separate from the small background copy used by the phone hero.
+ * Currently the best copy left (480x854, no sound). To upgrade: export the
+ * original at 720x1280 or 1080x1920 WITH sound, replace the file, set hasAudio
+ * to true and the sound button appears.
+ */
+export const storyVideo: { mp4: string; poster: string; width: number; height: number; hasAudio: boolean } = {
+  mp4: "/media/home/flea-market-story.mp4",
   poster: "/media/home/hero-mobile-poster.jpg",
+  width: 480,
+  height: 854,
+  hasAudio: false,
 };
 
 /**
