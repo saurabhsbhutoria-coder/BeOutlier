@@ -126,7 +126,7 @@ Average is crowded. Be an Outlier.
 **Hero**
 Build a working robot in two days.
 Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur.
-Ages 14 to 19. No experience needed. Mentored by IIT Bombay students.
+Ages 14 to 19. No experience needed. Mentored by IIT Bombay alumni.
 ₹10,000. 51 seats. 17 teams of 3. [Book a seat]
 
 **What you build**
@@ -151,7 +151,7 @@ An internship.
 A day inside IIT Bombay with the students who build for Techfest.
 
 **Who you build with**
-IIT Bombay students who build this for fun.
+IIT Bombay alumni who build this for fun.
 [Faces with one line each]
 
 **For parents**

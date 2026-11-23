@@ -16,7 +16,7 @@ const program = getProgram("hackathon");
 export const metadata: Metadata = {
   title: "Robotics Hackathon. Build a working robot in two days.",
   description:
-    "Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur. Ages 14 to 19. No experience needed. Mentored by IIT Bombay students.",
+    "Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur. Ages 14 to 19. No experience needed. Mentored by IIT Bombay alumni.",
   alternates: { canonical: "/hackathon" },
 };
 
@@ -34,7 +34,7 @@ export default function HackathonPage() {
         video={heroVideos.hackathon}
         facts={[
           `Robotics and AI Hackathon. ${p.datesLine}. ${p.venue}.`,
-          `${eligibilityText(p.eligibility)}. No experience needed. Mentored by IIT Bombay students.`,
+          `${eligibilityText(p.eligibility)}. No experience needed. Mentored by IIT Bombay alumni.`,
           `${feeText(p.fee)}. ${seatsText(p)} 17 teams of 3.`,
         ]}
       />
@@ -79,7 +79,7 @@ export default function HackathonPage() {
       </Section>
 
       <Section tone="linen">
-        <Heading label="Who you build with" index="05" lines={["IIT Bombay students", "who build this for fun."]} />
+        <Heading label="Who you build with" index="05" lines={["IIT Bombay alumni", "who build this for fun."]} />
         <FacesGrid people={peopleFor("hackathon", "mentor")} />
       </Section>
 
