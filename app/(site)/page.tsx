@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, Stack } from "@/components/ui/bits";
-import { Reveal } from "@/components/ui/Reveal";
 import { CountUp } from "@/components/ui/CountUp";
 import { Marquee } from "@/components/media/Marquee";
 import { LazyVideo } from "@/components/media/LazyVideo";
@@ -11,11 +10,11 @@ import { VideoSlider } from "@/components/media/VideoSlider";
 import { DropCard, TopStrip } from "@/components/sections/Cards";
 import { HousePanels } from "@/components/sections/HousePanels";
 import { FacesGrid } from "@/components/sections/FacesGrid";
+import { MentorRail } from "@/components/sections/MentorRail";
 import { AdmissionSteps } from "@/components/sections/AdmissionSteps";
-import { ParentsComparison } from "@/components/sections/ParentsComparison";
 import { Certificate } from "@/components/sections/Certificate";
 import { ParentStudentToggle } from "@/components/mode/ParentStudentToggle";
-import { getProgram, houses } from "@/content/programs";
+import { feeText, getProgram, houses } from "@/content/programs";
 import { peopleFor } from "@/content/people";
 import {
   fleaMarketPhotos,
@@ -59,11 +58,20 @@ const TAKE_HOME = [
   "Access to the Level 2 Accelerator program.",
 ];
 
+/** The pathway, as BeOutlier describes it (23 November 2026). Summer 2027 is Level 1. */
+const LEVELS = [
+  { level: "Level 1", when: "Summer 2027", text: "One house. One real project, built and shown to the world." },
+  { level: "Level 2", when: "9 month accelerator", text: "Go deeper. Learn the skill sets behind what they built." },
+  { level: "Level 3", when: "Internships", text: "Internships around the world, across diverse industries." },
+];
+
 export default function HomePage() {
   const hackathon = getProgram("hackathon");
   const summer = houses();
   /** Once a desktop video is set in content/media.ts, desktop goes full bleed too. */
   const fullBleedDesktop = Boolean(homeHero.desktop);
+  const fees = [...new Set(summer.map((p) => feeText(p.fee)))];
+  const houseFee = fees.length === 1 ? fees[0] : null;
   const panels = summer.map((p) => ({ program: p, image: houseImages[p.house as keyof typeof houseImages] }));
 
   return (
@@ -149,21 +157,19 @@ export default function HomePage() {
       {/* Sections reorder in parent mode: parents first, then the houses and the proof. */}
       <div className="flex flex-col">
         <Section tone="white" className="parent:order-9">
-          <Reveal>
-            <Eyebrow label="01" />
-            <Stack
-              lines={["Teenagers know a lot.", "They rarely get to use it."]}
-              className="mt-8 max-w-6xl text-[3.2rem] sm:text-8xl lg:text-[clamp(96px,9vw,150px)]"
-            />
-            <div className="mt-14 grid max-w-5xl gap-8 sm:grid-cols-2 sm:gap-14">
-              <p className="text-xl leading-snug text-ink-muted sm:text-2xl">
-                Not for lack of ability. For lack of a place to try.
-              </p>
-              <p className="display text-5xl sm:text-6xl">
-                <span className="mark">We built that place.</span>
-              </p>
-            </div>
-          </Reveal>
+          <Eyebrow label="01" />
+          <Stack
+            lines={["Teenagers know a lot.", "They rarely get to use it."]}
+            className="mt-8 max-w-6xl text-[3.2rem] sm:text-8xl lg:text-[clamp(96px,9vw,150px)]"
+          />
+          <div className="mt-14 grid max-w-5xl gap-8 sm:grid-cols-2 sm:gap-14">
+            <p className="text-xl leading-snug text-ink-muted sm:text-2xl">
+              Not for lack of ability. For lack of a place to try.
+            </p>
+            <p className="display text-5xl sm:text-6xl">
+              <span className="mark">We built that place.</span>
+            </p>
+          </div>
         </Section>
 
         {/* 02. Where it started: the vision, the story, and the video in its own frame */}
@@ -176,7 +182,7 @@ export default function HomePage() {
               </h2>
               <div className="mt-12 grid max-w-2xl gap-6 border-t border-ink pt-8 sm:grid-cols-2 sm:gap-10">
                 <p className="display text-3xl leading-[1] sm:text-4xl">
-                  In 2025, 45 teenagers built brands from scratch in 10 days.
+                  Last Summer, 45 teenagers built brands from scratch in 10 days.
                 </p>
                 <div className="grid gap-4 text-lg leading-snug">
                   <p>They sourced, priced, pitched and sold to strangers.</p>
@@ -189,13 +195,13 @@ export default function HomePage() {
                 <LazyVideo
                   src={storyVideo.mp4}
                   poster={storyVideo.poster}
-                  label="The 2025 flea market, where students sold the brands they built"
+                  label="Last Summer's flea market, where students sold the brands they built"
                   className="absolute inset-0 size-full object-cover"
                 />
               </div>
               <figcaption className="label mt-3 flex items-center gap-2.5">
                 <span className="dot" aria-hidden="true" />
-                Flea market · Summer 2025 · Mumbai
+                Flea market · Last Summer · Mumbai
               </figcaption>
             </figure>
           </div>
@@ -241,7 +247,11 @@ export default function HomePage() {
         <Section tone="linen" className="parent:order-10">
           <Eyebrow label="Who you build with" index="04" />
           <Stack lines={["Not teachers.", "People who have done it."]} className="mt-8 mb-14 text-5xl sm:text-8xl" />
-          <FacesGrid people={peopleFor("home", "mentor")} />
+          {peopleFor("home", "mentor").length ? (
+            <MentorRail people={peopleFor("home", "mentor")} />
+          ) : (
+            <FacesGrid people={[]} />
+          )}
         </Section>
 
         <Section tone="ink" className="parent:order-11">
@@ -293,9 +303,7 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
-            <Reveal>
-              <Certificate className="lg:rotate-[-1.2deg]" />
-            </Reveal>
+            <Certificate className="lg:rotate-[-1.2deg]" />
           </div>
         </Section>
 
@@ -307,17 +315,56 @@ export default function HomePage() {
         </Section>
 
         <Section tone="sand" id="parents" className="parent:order-1">
-          <div className="mb-14 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <div>
               <Eyebrow label="For parents" index="09" />
-              <Stack lines={["Everything you'd ask", "us on a call."]} className="mt-8 text-5xl sm:text-7xl" />
-              <p className="mt-6 max-w-xl text-xl sm:text-2xl">Fees. Safety. Supervision. What your child brings home.</p>
+              <Stack lines={["Summer 2027", "is Level 1."]} className="mt-8 text-5xl sm:text-7xl" />
+              <p className="mt-6 max-w-xl text-xl leading-snug sm:text-2xl">
+                Your child spends the summer building something real, and leaves with proof of it. A project, a
+                journal, an evaluation report and a certificate: the kind of work that builds a strong profile.
+              </p>
             </div>
-            <ButtonLink href="/parents" variant="ink">
-              For Parents
-            </ButtonLink>
+            <dl className="self-end border-t border-ink">
+              {[
+                ["Three houses", "Founders, Robotics, Design and Architecture"],
+                ["Fee", houseFee ? `${houseFee} per house` : "Set per house"],
+                ["Format", "Day scholar in Mumbai and Pune. Residential in Pune and Goa."],
+                ["Supervision", "1 mentor for every 9 students"],
+              ].map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-ink/25 py-4 sm:grid-cols-[10rem_1fr]">
+                  <dt className="label pt-1 text-ink/70">{k}</dt>
+                  <dd className="text-lg font-medium leading-snug">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <ParentsComparison />
+
+          {/* The pathway: Level 1 now, then the accelerator, then internships */}
+          <ol className="mt-16 grid border border-ink sm:grid-cols-3">
+            {LEVELS.map((l, i) => (
+              <li
+                key={l.level}
+                className={`flex flex-col gap-3 p-6 sm:p-8 ${i === 0 ? "bg-ink text-white" : "bg-sand"} ${
+                  i > 0 ? "border-t border-ink sm:border-t-0 sm:border-l" : ""
+                }`}
+              >
+                <p className={`label flex items-center gap-2.5 ${i === 0 ? "text-mint" : "text-ink/70"}`}>
+                  <span className="dot" aria-hidden="true" />
+                  {l.level} <span className="opacity-60">· {l.when}</span>
+                </p>
+                <p className="text-lg leading-snug">{l.text}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <ButtonLink href="/parents" variant="ink">
+              Every detail, house by house
+            </ButtonLink>
+            <a href={site.whatsapp.href} className="label underline decoration-ink/30 underline-offset-4 hover:decoration-ink">
+              Or ask us on WhatsApp
+            </a>
+          </div>
         </Section>
 
         <section className="bg-mint text-ink parent:order-12">

@@ -26,6 +26,28 @@ export function VideoSlider({
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
   const dark = tone === "dark";
+  /** Posters and Instagram frames load only once the strip is near the screen. */
+  const [near, setNear] = useState(false);
+
+  useEffect(() => {
+    const r = railRef.current;
+    if (!r) return;
+    if (!("IntersectionObserver" in window)) {
+      setNear(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(r);
+    return () => io.disconnect();
+  }, []);
 
   const sync = useCallback(() => {
     const r = railRef.current;
@@ -90,7 +112,7 @@ export function VideoSlider({
                 dark ? "border-white/20 bg-ink-soft" : "border-ink bg-ink"
               }`}
             >
-              {v.instagram ? (
+              {!near && (v.instagram || v.src) ? null : v.instagram ? (
                 // Instagram's own embed frame: a 55px header, the reel cropped to about 4:5, then a footer.
                 // The card shows only the reel; the link under the card credits Instagram.
                 <iframe

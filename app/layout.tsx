@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { GoogleAnalytics } from "@/components/tracking/GoogleAnalytics";
 import { AttributionCapture } from "@/components/tracking/AttributionCapture";
+import { ScrollMotion } from "@/components/ui/ScrollMotion";
 
 const anton = Anton({ weight: "400", subsets: ["latin"], variable: "--font-anton", display: "swap" });
 const inter = Inter_Tight({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
+        <ScrollMotion />
         <AttributionCapture />
         <MetaPixel />
         <GoogleAnalytics />

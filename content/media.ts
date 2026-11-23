@@ -40,7 +40,7 @@ export const fleaMarketPhotos: Photo[] = [
 
 /**
  * Photo behind each house panel (Home section 03 and /programs).
- * Engineers and Designers use 2025 flea market photos as stand ins until
+ * Engineers and Designers use last summer's flea market photos as stand ins until
  * real photos from those programs exist. Replace them as soon as possible,
  * ideally with photos at least 1600px wide.
  */

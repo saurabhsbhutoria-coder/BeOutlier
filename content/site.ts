@@ -42,6 +42,20 @@ export const mainNav = [
  * Requested by BeOutlier on 22 November 2026; set
  * showLogo to false to fall back to the text tag only.
  */
+/**
+ * Logos on the certificate (Home section 07), requested 23 November 2026.
+ * Both carry the State Emblem of India, which only authorised bodies may use
+ * (State Emblem of India (Prohibition of Improper Use) Act, 2005). Keep show
+ * false until BeOutlier has written permission from AIM and from MCA.
+ */
+export const certificateLogos = {
+  show: false,
+  items: [
+    { src: "/brand/partners/aim-niti-aayog.webp", alt: "Atal Innovation Mission, NITI Aayog", width: 424, height: 160 },
+    { src: "/brand/partners/mca.webp", alt: "Ministry of Corporate Affairs, Government of India", width: 116, height: 160 },
+  ],
+} as const;
+
 export const iitBombayTag = {
   showLogo: true,
   logo: "/brand/partners/iit-bombay.png",

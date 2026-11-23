@@ -180,6 +180,20 @@
   transform: none;
 }
 
+/* Section entrances (components/ui/ScrollMotion.tsx). Only sections below
+   the fold get .sr, so first paint is never hidden. */
+.sr .sr-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sr.sr-in .sr-item {
+  opacity: 1;
+  transform: none;
+}
+
 /* Marquees pause on hover and focus */
 .marquee-track:hover,
 .marquee-track:focus-within {
@@ -195,7 +209,8 @@
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .sr .sr-item {
     opacity: 1;
     transform: none;
     transition: none;

@@ -425,8 +425,14 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **05 and 06:** four student reels from @beoutlier.in (Instagram embeds, line "Straight from @beoutlier.in") and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
 
-**04. Mentors (added 23 November 2026):** ten mentors in content/people.ts, each with a photo, one line and up to three keyword tags, all taken from their own LinkedIn or Instagram profile. Status at IIT Bombay as their profiles show it: Suraj Racha is an alumnus (dual degree 2018 to 2023, now PhD); Anish Mayanache (MTech, to 2028) and Anmol Sureka (BTech, to 2028) are current students. A mentor's line may name their IIT Bombay degree; that is not "IIT Bombay" alone.
+**04. Mentors (added 23 November 2026):** ten mentors in content/people.ts, each with a photo and one line, taken from their own LinkedIn or Instagram profile. Shown in one framed container as a two row slider, five per row on desktop. No keyword tags. Status at IIT Bombay as their profiles show it: Suraj Racha is an alumnus (dual degree 2018 to 2023, now PhD); Anish Mayanache (MTech, to 2028) and Anmol Sureka (BTech, to 2028) are current students. A mentor's line may name their IIT Bombay degree; that is not "IIT Bombay" alone.
 
 **07. What you take home:** certificate template. Every student keeps the project they built, a documentation journal, a detailed evaluation report, and access to the Level 2 Accelerator program.
+
+**Changes of 23 November 2026 (evening):**
+- Never write "2025" on the site. Say "Last Summer" ("Last Summer, 45 teenagers built brands from scratch in 10 days.").
+- 09. For parents on Home is short and vision led: "Summer 2027 is Level 1.", one paragraph on building something real and a strong profile, four facts (three houses, fee per house, format, supervision), then the pathway: Level 1 (Summer 2027), Level 2 (a 9 month accelerator to go deeper and learn the skill sets), Level 3 (internships around the world, across diverse industries). Full house by house details live on /parents and the landing pages only.
+- Certificate: AIM (NITI Aayog) and MCA logos are ready but switched off (content/site.ts, certificateLogos.show) until BeOutlier confirms written permission, because both carry the State Emblem of India.
+- Sections fade up gently as they scroll into view (components/ui/ScrollMotion.tsx), off for reduced motion.
 
 **Programs:** all three houses are ₹40,000. Founders Fellowship is a day scholar program; Robotics Fellowship and Design and Architecture Fellowship are residential. "Residential" is the format, never part of the name.

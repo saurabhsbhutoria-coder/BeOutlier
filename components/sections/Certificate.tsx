@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Logo } from "@/components/ui/bits";
+import { certificateLogos } from "@/content/site";
 
 /**
  * The certificate template, drawn in HTML so it stays sharp at any size.
@@ -20,6 +22,20 @@ export function Certificate({ className = "" }: { className?: string }) {
 
           {/* Body */}
           <div className="relative flex flex-1 flex-col justify-between border-[0.5px] border-ink/20 px-[5%] py-[4%]">
+            {certificateLogos.show ? (
+              <div className="absolute top-[6%] right-[5%] flex items-center gap-[clamp(6px,1.4vw,16px)]">
+                {certificateLogos.items.map((l) => (
+                  <Image
+                    key={l.src}
+                    src={l.src}
+                    alt={l.alt}
+                    width={l.width}
+                    height={l.height}
+                    className="h-[clamp(16px,3.6vw,40px)] w-auto"
+                  />
+                ))}
+              </div>
+            ) : null}
             <div>
               <p className="label !text-[clamp(6px,0.9vw,10px)] text-ink/60">Certificate of Achievement</p>
               <p className="mt-[2%] text-[clamp(8px,1.3vw,14px)] text-ink-muted">This certifies that</p>
