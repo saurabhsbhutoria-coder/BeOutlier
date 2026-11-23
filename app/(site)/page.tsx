@@ -108,7 +108,7 @@ export default function HomePage() {
               <span className="dot" aria-hidden="true" />
               Summer 2027 <span className="opacity-60">· Mumbai · Pune · Goa</span>
             </p>
-            <h1 className="display mt-5 text-[4rem] leading-[0.86] sm:mt-0 sm:text-9xl lg:text-[clamp(120px,11.5vw,200px)] parent:text-6xl parent:sm:text-8xl">
+            <h1 className="display mt-5 text-[4rem] leading-[0.98] sm:mt-0 sm:text-9xl lg:text-[clamp(120px,11.5vw,200px)] parent:text-6xl parent:sm:text-8xl">
               <span className="block">A school</span>
               <span className="block">beyond</span>
               <span className="block whitespace-nowrap">
@@ -171,24 +171,32 @@ export default function HomePage() {
 
         {/* 02. Where it started: the vision, the story, and the video in its own frame */}
         <Section tone="mint" className="parent:order-6">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-20">
-            <div>
-              <Eyebrow label="Where it started" index="02" />
-              <h2 className="display mt-8 text-[2.9rem] leading-[0.92] sm:text-7xl lg:text-[clamp(72px,6.4vw,112px)]">
-                A generation of problem solvers and change makers who dare to question, and create.
-              </h2>
-              <div className="mt-12 grid max-w-2xl gap-6 border-t border-ink pt-8 sm:grid-cols-2 sm:gap-10">
-                <p className="display text-3xl leading-[1] sm:text-4xl">
-                  Last Summer, 45 teenagers built brands from scratch in 10 days.
-                </p>
-                <div className="grid gap-4 text-lg leading-snug">
-                  <p>They sourced, priced, pitched and sold to strangers.</p>
-                  <p className="font-semibold">Some sold out. Some lost money. Every one of them knows why.</p>
-                </div>
+          {/* One big line only: the vision. The story below is set in text, beside its video. */}
+          <Eyebrow label="Where it started" index="02" />
+          <p className="label mt-10 text-ink/70">Our vision</p>
+          <h2 className="display mt-4 max-w-5xl text-[2.5rem] leading-[1.02] sm:text-6xl lg:text-[clamp(56px,5.2vw,88px)]">
+            A generation of problem solvers and change makers who dare to question, and create.
+          </h2>
+
+          <div className="mt-16 grid items-center gap-10 border-t border-ink/25 pt-12 sm:mt-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+            <div className="order-2 max-w-xl lg:order-2">
+              <p className="label text-ink/70">The story</p>
+              <p className="mt-4 text-2xl font-semibold leading-snug sm:text-3xl">
+                Last Summer, 45 teenagers built brands from scratch in 10 days.
+              </p>
+              <div className="mt-6 grid gap-3 text-lg leading-relaxed">
+                <p>They sourced, priced, pitched and sold to strangers at a live flea market in Mumbai.</p>
+                <p className="font-semibold">Some sold out. Some lost money. Every one of them knows why.</p>
               </div>
+              <a
+                href="/about"
+                className="label mt-8 inline-flex items-center gap-2 underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+              >
+                How it started <span aria-hidden="true">→</span>
+              </a>
             </div>
-            <figure className="mx-auto w-full max-w-sm lg:max-w-none">
-              <div className="grain relative aspect-[9/14] overflow-hidden border border-ink bg-ink">
+            <figure className="order-1 mx-auto w-full max-w-xs lg:order-1 lg:max-w-sm">
+              <div className="grain relative aspect-[9/14] overflow-hidden rounded-2xl bg-ink shadow-[0_24px_48px_-24px_rgb(37_40_42/0.55)]">
                 <LazyVideo
                   src={storyVideo.mp4}
                   poster={storyVideo.poster}

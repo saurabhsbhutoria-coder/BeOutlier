@@ -3,10 +3,11 @@
  *
  * Setup (see SETUP.md, steps 1 to 3):
  *   1. Extensions > Apps Script in the Sheet, paste this file.
- *   2. Project Settings > Script Properties:
- *        SHARED_SECRET  the same long random value as APPS_SCRIPT_SECRET in Vercel
- *        TEAM_EMAIL     where lead alerts go (default team@beoutlier.in)
- *   3. Run setup() once from the editor and approve the permissions.
+ *   2. Run setup() once from the editor and approve the permissions. It creates
+ *      the Script Properties:
+ *        SHARED_SECRET  a long random value; copy it into APPS_SCRIPT_SECRET in Vercel
+ *        TEAM_EMAIL     where lead alerts go (default teambeoutlier@gmail.com, editable)
+ *   3. (Properties can be changed later in Project Settings > Script Properties.)
  *   4. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.
  *      Copy the URL into APPS_SCRIPT_URL in Vercel.
  */
@@ -93,6 +94,18 @@ function setup() {
   var ss = SpreadsheetApp.getActive();
   var sheet = leadsSheet_();
 
+  // The shared secret is created here, once, so it never has to be typed anywhere.
+  // Copy it from Project Settings > Script Properties into APPS_SCRIPT_SECRET.
+  var props = PropertiesService.getScriptProperties();
+  if (!props.getProperty('SHARED_SECRET')) {
+    props.setProperty('SHARED_SECRET', Utilities.getUuid().replace(/-/g, '') + Utilities.getUuid().replace(/-/g, ''));
+  }
+  if (!props.getProperty('TEAM_EMAIL')) {
+    props.setProperty('TEAM_EMAIL', 'teambeoutlier@gmail.com');
+  }
+  // Make sure MailApp is authorised during setup, not on the first real lead.
+  MailApp.getRemainingDailyQuota();
+
   var statusCol = HEADERS.indexOf('status') + 1;
   var rule = SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).setAllowInvalid(false).build();
   sheet.getRange(2, statusCol, sheet.getMaxRows() - 1, 1).setDataValidation(rule);
@@ -154,7 +167,7 @@ function setup() {
 // ---------------------------------------------------------------- emails
 
 function sendTeamEmail_(lead, props) {
-  var to = props.getProperty('TEAM_EMAIL') || 'team@beoutlier.in';
+  var to = props.getProperty('TEAM_EMAIL') || 'teambeoutlier@gmail.com';
   var digits = String(lead.parent_whatsapp || '').replace(/\D/g, '');
   var wa = 'https://wa.me/' + digits;
 
@@ -184,7 +197,7 @@ function sendTeamEmail_(lead, props) {
 
 function sendParentEmail_(lead, props) {
   if (!lead.parent_email) return;
-  var team = props.getProperty('TEAM_EMAIL') || 'team@beoutlier.in';
+  var team = props.getProperty('TEAM_EMAIL') || 'teambeoutlier@gmail.com';
   var first = String(lead.student_name || '').split(' ')[0] || 'your child';
   var isBooking = lead.form_type === 'booking';
   var subject, lines;

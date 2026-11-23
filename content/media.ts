@@ -40,7 +40,7 @@ export const fleaMarketPhotos: Photo[] = [
 
 /**
  * Photo behind each house panel (Home section 03 and /programs).
- * Engineers and Designers use last summer's flea market photos as stand ins until
+ * Engineers uses last summer's flea market photos as stand ins until
  * real photos from those programs exist. Replace them as soon as possible,
  * ideally with photos at least 1600px wide.
  */
@@ -54,8 +54,8 @@ export const houseImages: Record<"founders" | "engineers" | "designers", { src: 
     alt: "Students at a BeOutlier event",
   },
   designers: {
-    src: "/media/founders/flea-market-stall.jpg",
-    alt: "Students explaining their product to visitors at their stall",
+    src: "/media/designers/designers-house.jpg",
+    alt: "Students working through a written task around a table, with a timer in the middle",
   },
 };
 
