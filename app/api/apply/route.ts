@@ -110,8 +110,9 @@ export async function POST(req: NextRequest) {
     _payment_url: paymentUrl,
   };
 
-  const url = process.env.APPS_SCRIPT_URL;
-  const secret = process.env.APPS_SCRIPT_SECRET;
+  // Trimmed: a value pasted into Vercel with a stray space or line break must still work.
+  const url = process.env.APPS_SCRIPT_URL?.trim();
+  const secret = process.env.APPS_SCRIPT_SECRET?.trim();
 
   if (!url || !secret) {
     if (process.env.NODE_ENV !== "production") {
