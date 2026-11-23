@@ -85,8 +85,24 @@ export function VideoSlider({
       >
         {items.map((v, i) => (
           <li key={i} className="w-[72%] shrink-0 snap-start sm:w-[44%] lg:w-[calc((100%-3rem)/4)]">
-            <div className={`relative aspect-[9/16] overflow-hidden border ${dark ? "border-white/20 bg-ink-soft" : "border-ink bg-ink"}`}>
-              {v.src ? (
+            <div
+              className={`relative overflow-hidden border ${v.instagram ? "aspect-[100/121]" : "aspect-[9/16]"} ${
+                dark ? "border-white/20 bg-ink-soft" : "border-ink bg-ink"
+              }`}
+            >
+              {v.instagram ? (
+                // Instagram's own embed frame: a 55px header, the reel cropped to about 4:5, then a footer.
+                // The card shows only the reel; the link under the card credits Instagram.
+                <iframe
+                  src={`https://www.instagram.com/reel/${v.instagram}/embed/`}
+                  title={v.name ? `${v.name}, on Instagram` : `${label} ${i + 1}, on Instagram`}
+                  loading="lazy"
+                  allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
+                  allowFullScreen
+                  scrolling="no"
+                  className="absolute top-[-55px] left-[-1px] h-[calc(100%+320px)] w-[calc(100%+2px)] max-w-none border-0 bg-white"
+                />
+              ) : v.src ? (
                 <video
                   src={v.src}
                   poster={v.poster}
@@ -110,6 +126,16 @@ export function VideoSlider({
                 </div>
               )}
             </div>
+            {v.instagram ? (
+              <a
+                href={`https://www.instagram.com/reel/${v.instagram}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`label mt-3 inline-flex items-center gap-2 !text-[10px] underline-offset-4 hover:underline ${dark ? "text-white/70" : "text-ink-muted"}`}
+              >
+                Watch on Instagram <span aria-hidden="true">↗</span>
+              </a>
+            ) : null}
             {v.name || v.line ? (
               <div className="mt-3">
                 {v.name ? <p className="font-semibold">{v.name}</p> : null}

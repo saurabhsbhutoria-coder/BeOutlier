@@ -94,13 +94,37 @@ export const storyVideo: { mp4: string; poster: string } = {
  */
 export interface VideoSlot {
   src?: string;
+  /**
+   * Instagram reel code, the part after /reel/ in the link. Plays Instagram's
+   * own embed inside the card (4:5, as Instagram crops reels in embeds).
+   */
+  instagram?: string;
   poster?: string;
   name?: string;
   line?: string;
 }
 
-/** Home: student interviews, 5 videos. */
-export const studentInterviews: VideoSlot[] = [{}, {}, {}, {}, {}];
+/** Home: student interviews. Reels from @beoutlier.in, added 23 November 2026. */
+export const studentInterviews: VideoSlot[] = [
+  { instagram: "DY7PbgkzAEA" },
+  { instagram: "DNiEUMZzj4f" },
+  { instagram: "DORBB1piD6_" },
+  { instagram: "DXb8PRyk1_d" },
+];
 
-/** Home: parent testimonials, 5 videos. */
-export const parentTestimonials: VideoSlot[] = [{}, {}, {}, {}, {}];
+/**
+ * Home: parent testimonials, 7 videos (added 23 November 2026).
+ * Cut from call recordings: each is cropped to the parent's own camera, so
+ * no call interface, browser tabs or other participants' names show.
+ * name and line are left empty until BeOutlier confirms how each family
+ * wants to be credited.
+ */
+export const parentTestimonials: VideoSlot[] = [
+  { src: "/media/parents/parent-take-ep1.mp4", poster: "/media/parents/parent-take-ep1.jpg" },
+  { src: "/media/parents/parent-nishika.mp4", poster: "/media/parents/parent-nishika.jpg" },
+  { src: "/media/parents/parent-hridaan.mp4", poster: "/media/parents/parent-hridaan.jpg" },
+  { src: "/media/parents/parent-jitaksh.mp4", poster: "/media/parents/parent-jitaksh.jpg" },
+  { src: "/media/parents/parent-prerna.mp4", poster: "/media/parents/parent-prerna.jpg" },
+  { src: "/media/parents/parent-hastak.mp4", poster: "/media/parents/parent-hastak.jpg" },
+  { src: "/media/parents/parent-jiana.mp4", poster: "/media/parents/parent-jiana.jpg" },
+];

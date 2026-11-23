@@ -250,7 +250,12 @@ export default function HomePage() {
               <Eyebrow label="In their words" index="05" tone="mint" />
               <Stack lines={["Hear it from", "the Outliers."]} className="mt-8 text-5xl sm:text-8xl" />
             </div>
-            <p className="max-w-xs text-lg text-white/70">Five students. Unscripted.</p>
+            <p className="max-w-xs text-lg text-white/70">
+              Straight from{" "}
+              <a href={site.instagram.href} target="_blank" rel="noopener noreferrer" className="text-mint underline decoration-mint/40 underline-offset-4 hover:decoration-mint">
+                {site.instagram.display}
+              </a>
+            </p>
           </div>
           <div className="mt-12">
             <VideoSlider items={studentInterviews} label="Student interviews" placeholder="Student interview" tone="dark" />
@@ -263,6 +268,7 @@ export default function HomePage() {
               <Eyebrow label="Parent testimonials" index="06" />
               <Stack lines={["Parents, in their", "own words."]} className="mt-8 text-5xl sm:text-8xl" />
             </div>
+            <p className="max-w-xs text-lg text-ink-muted">Seven families. Unscripted.</p>
           </div>
           <div className="mt-12">
             <VideoSlider items={parentTestimonials} label="Parent testimonials" placeholder="Parent testimonial" />
