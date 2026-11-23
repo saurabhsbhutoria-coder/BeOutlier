@@ -115,11 +115,11 @@ export function VideoSlider({
         {items.map((v, i) => (
           <li key={i} className={`w-[72%] shrink-0 snap-start rounded-[22px] p-2 sm:w-[44%] lg:w-[calc((100%-3.75rem)/4)] ${card}`}>
             <div
-              className={`relative overflow-hidden rounded-2xl ${v.instagram ? "aspect-[100/121]" : "aspect-[9/16]"} ${
+              className={`relative overflow-hidden rounded-2xl ${v.instagram && !v.src ? "aspect-[100/121]" : "aspect-[9/16]"} ${
                 dark ? "bg-ink-soft" : "bg-ink"
               }`}
             >
-              {!near && (v.instagram || v.src) ? null : v.instagram ? (
+              {!near && (v.instagram || v.src) ? null : v.instagram && !v.src ? (
                 // Instagram's own embed frame: a 55px header, the reel cropped to about 4:5, then a footer.
                 // The card shows only the reel; the link under the card credits Instagram.
                 <iframe

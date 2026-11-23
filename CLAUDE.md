@@ -423,7 +423,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. The logo is allowed on this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
 
-**05 and 06:** four student reels from @beoutlier.in (Instagram embeds, line "Straight from @beoutlier.in") and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
+**05 and 06:** four student reels from @beoutlier.in (hosted on the site since 23 November 2026, because tracking protection blocks Instagram embeds in several browsers; line "Straight from @beoutlier.in") and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
 
 **04. Mentors (added 23 November 2026):** ten mentors in content/people.ts, each with a photo and one line, taken from their own LinkedIn or Instagram profile. Shown in one framed container as a two row slider, five per row on desktop. No keyword tags. Status at IIT Bombay as their profiles show it: Suraj Racha is an alumnus (dual degree 2018 to 2023, now PhD); Anish Mayanache (MTech, to 2028) and Anmol Sureka (BTech, to 2028) are current students. A mentor's line may name their IIT Bombay degree; that is not "IIT Bombay" alone.
 

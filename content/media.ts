@@ -95,8 +95,9 @@ export const storyVideo: { mp4: string; poster: string } = {
 export interface VideoSlot {
   src?: string;
   /**
-   * Instagram reel code, the part after /reel/ in the link. Plays Instagram's
-   * own embed inside the card (4:5, as Instagram crops reels in embeds).
+   * Instagram reel code, the part after /reel/ in the link. With `src` it only
+   * adds a "Watch on Instagram" link; without `src` the card falls back to
+   * Instagram's own embed (4:5), which some browsers block.
    */
   instagram?: string;
   poster?: string;
@@ -104,12 +105,16 @@ export interface VideoSlot {
   line?: string;
 }
 
-/** Home: student interviews. Reels from @beoutlier.in, added 23 November 2026. */
+/**
+ * Home: the Outliers. Reels from @beoutlier.in, hosted on the site (23 November
+ * 2026) because browsers with tracking protection block Instagram's embed.
+ * `instagram` now only adds the "Watch on Instagram" link under each card.
+ */
 export const studentInterviews: VideoSlot[] = [
-  { instagram: "DY7PbgkzAEA" },
-  { instagram: "DNiEUMZzj4f" },
-  { instagram: "DORBB1piD6_" },
-  { instagram: "DXb8PRyk1_d" },
+  { src: "/media/outliers/outlier-1.mp4", poster: "/media/outliers/outlier-1.jpg", instagram: "DY7PbgkzAEA" },
+  { src: "/media/outliers/outlier-2.mp4", poster: "/media/outliers/outlier-2.jpg", instagram: "DNiEUMZzj4f" },
+  { src: "/media/outliers/outlier-3.mp4", poster: "/media/outliers/outlier-3.jpg", instagram: "DORBB1piD6_" },
+  { src: "/media/outliers/outlier-4.mp4", poster: "/media/outliers/outlier-4.jpg", instagram: "DXb8PRyk1_d" },
 ];
 
 /**
