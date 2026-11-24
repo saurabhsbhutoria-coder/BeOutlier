@@ -9,6 +9,13 @@ import type { Person } from "@/content/people";
  * Desktop shows 5 per row (all 10 at once), tablets 3, phones 2 with a peek.
  * Arrows appear only when there is more to scroll.
  */
+/** "LinkedIn" or "Instagram", from the profile address. */
+function profilePlatform(url: string): string {
+  if (/instagram\.com/i.test(url)) return "Instagram";
+  if (/linkedin\.com/i.test(url)) return "LinkedIn";
+  return "Profile";
+}
+
 export function MentorRail({ people, label = "Mentors" }: { people: Person[]; label?: string }) {
   const railRef = useRef<HTMLUListElement>(null);
   const [atStart, setAtStart] = useState(true);
@@ -65,9 +72,22 @@ export function MentorRail({ people, label = "Mentors" }: { people: Person[]; la
         aria-label={label}
         className="no-scrollbar -mx-1 grid snap-x snap-mandatory grid-flow-col grid-rows-2 gap-4 overflow-x-auto p-1 [grid-auto-columns:calc((100%-1rem)/2.2)] sm:[grid-auto-columns:calc((100%-2rem)/3)] lg:gap-5 lg:[grid-auto-columns:calc((100%-5rem)/5)]"
       >
-        {people.map((p) => (
+        {people.map((p) => {
+          const platform = p.source ? profilePlatform(p.source) : null;
+          const Card = p.source ? "a" : "article";
+          return (
           <li key={p.id} className="snap-start">
-            <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-2.5 shadow-[0_1px_2px_rgb(37_40_42/0.06),0_8px_24px_-12px_rgb(37_40_42/0.18)] ring-1 ring-ink/[0.06] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgb(37_40_42/0.06),0_18px_36px_-16px_rgb(37_40_42/0.28)]">
+            <Card
+              {...(p.source
+                ? {
+                    href: p.source,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    "aria-label": `${p.name}, ${p.line} Opens ${platform} in a new tab.`,
+                  }
+                : {})}
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white p-2.5 shadow-[0_1px_2px_rgb(37_40_42/0.06),0_8px_24px_-12px_rgb(37_40_42/0.18)] ring-1 ring-ink/[0.06] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgb(37_40_42/0.06),0_18px_36px_-16px_rgb(37_40_42/0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            >
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-linen">
                 <Image
                   src={p.photo}
@@ -77,13 +97,19 @@ export function MentorRail({ people, label = "Mentors" }: { people: Person[]; la
                   className="object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
                 />
               </div>
-              <div className="px-1.5 pt-3 pb-2">
+              <div className="flex flex-1 flex-col px-1.5 pt-3 pb-2">
                 <p className="text-[15px] font-semibold leading-tight">{p.name}</p>
                 <p className="mt-1.5 text-[13px] leading-snug text-ink-muted">{p.line}</p>
+                {platform ? (
+                  <p className="label mt-auto flex items-center gap-1.5 pt-3 !text-[10px] text-ink-muted transition-colors group-hover:text-ink">
+                    {platform} <span aria-hidden="true">↗</span>
+                  </p>
+                ) : null}
               </div>
-            </article>
+            </Card>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

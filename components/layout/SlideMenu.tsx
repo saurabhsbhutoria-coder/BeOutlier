@@ -44,7 +44,8 @@ export function SlideMenu() {
     return () => {
       document.body.style.overflow = prev;
       document.removeEventListener("keydown", onKey);
-      buttonRef.current?.focus();
+      // preventScroll: returning focus must not pull the page back up to the header
+      buttonRef.current?.focus({ preventScroll: true });
     };
   }, [open]);
 
@@ -81,6 +82,12 @@ export function SlideMenu() {
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
+          // Any link tapped in the menu closes it at once. Links to sections of
+          // the page you are on (/#faq) never change the path, so this is the
+          // only thing that closes the menu for them.
+          onClickCapture={(e) => {
+            if ((e.target as HTMLElement).closest("a")) setOpen(false);
+          }}
           className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-ink p-6 text-white on-dark transition-transform duration-300 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}

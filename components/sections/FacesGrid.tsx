@@ -20,21 +20,40 @@ export function FacesGrid({ people, tone = "light" }: { people: Person[]; tone?:
   }
   return (
     <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-      {people.map((p) => (
-        <li key={p.id} className="flex flex-col gap-3">
-          <div
-            className={`relative aspect-[4/5] overflow-hidden border ${tone === "light" ? "border-ink/15" : "border-white/15"} grayscale transition duration-500 hover:grayscale-0`}
-          >
-            <Image src={p.photo} alt={`Portrait of ${p.name}`} fill sizes="(min-width: 640px) 25vw, 50vw" className="object-cover" />
-          </div>
-          <div>
-            <p className="text-base font-semibold leading-tight">{p.name}</p>
-            <p className={`mt-1 text-sm leading-snug ${tone === "light" ? "text-ink-muted" : "text-white/75"}`}>
-              {p.line}
-            </p>
-          </div>
-        </li>
-      ))}
+      {people.map((p) => {
+        const inner = (
+          <>
+            <div
+              className={`relative aspect-[4/5] overflow-hidden border ${tone === "light" ? "border-ink/15" : "border-white/15"} grayscale transition duration-500 group-hover:grayscale-0`}
+            >
+              <Image src={p.photo} alt={`Portrait of ${p.name}`} fill sizes="(min-width: 640px) 25vw, 50vw" className="object-cover" />
+            </div>
+            <div>
+              <p className="text-base font-semibold leading-tight">{p.name}</p>
+              <p className={`mt-1 text-sm leading-snug ${tone === "light" ? "text-ink-muted" : "text-white/75"}`}>
+                {p.line}
+              </p>
+            </div>
+          </>
+        );
+        return (
+          <li key={p.id}>
+            {p.source ? (
+              // The whole card opens the person's LinkedIn (or Instagram) in a new tab.
+              <a
+                href={p.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col gap-3 focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                {inner}
+              </a>
+            ) : (
+              <div className="group flex flex-col gap-3">{inner}</div>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
