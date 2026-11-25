@@ -12,8 +12,12 @@ export interface Person {
   line: string;
   /** Where the details were taken from (LinkedIn or Instagram), for checking later */
   source?: string;
-  /** /media/people/<id>.jpg */
+  /** /media/people/<id>.jpg. Empty: the card shows initials, never a fake face. */
   photo: string;
+  /** Degree at IIT Bombay, as the person's own profile states it ("M.Tech"). Shown as an IIT Bombay badge on the hackathon page. */
+  iitb?: string;
+  /** false keeps the person off the Home mentor slider (program pages only). */
+  home?: boolean;
   programs: ProgramId[];
   role: "mentor" | "faculty" | "partner" | "alumni";
   /** Alumni only: what they made */
@@ -33,7 +37,7 @@ export const people: Person[] = [
     name: "Suraj Racha",
     line: "Cofounder, VIDUR. AI researcher at BharatGen. PhD, IIT Bombay.",
     photo: "/media/people/suraj-racha.jpg",
-    programs: ["hackathon", "engineers"],
+    programs: ["engineers"],
     role: "mentor",
     source: "https://www.linkedin.com/in/suraj-racha-a9519b186/",
   },
@@ -44,6 +48,7 @@ export const people: Person[] = [
     photo: "/media/people/anish-mayanache.jpg",
     programs: ["hackathon", "engineers"],
     role: "mentor",
+    iitb: "M.Tech",
     source: "https://www.linkedin.com/in/anish-mayanache-7b8729213/",
   },
   {
@@ -51,7 +56,7 @@ export const people: Person[] = [
     name: "Anmol Sureka",
     line: "Research Head, Enactus IIT Bombay. AI engineering intern at Prodigal.",
     photo: "/media/people/anmol-sureka.jpg",
-    programs: ["hackathon", "engineers", "founders"],
+    programs: ["engineers", "founders"],
     role: "mentor",
     source: "https://www.linkedin.com/in/anmolsureka/",
   },
@@ -60,7 +65,7 @@ export const people: Person[] = [
     name: "Roshan Vadassery",
     line: "Founder, Permissionless. Former CTO, MeTime. 400k+ on Instagram.",
     photo: "/media/people/roshan-vadassery.jpg",
-    programs: ["hackathon", "engineers", "founders"],
+    programs: ["engineers", "founders"],
     role: "mentor",
     source: "https://www.linkedin.com/in/roshan-vadassery/",
   },
@@ -118,10 +123,57 @@ export const people: Person[] = [
     role: "mentor",
     source: "https://www.instagram.com/chavibhutoria/",
   },
+  // Robotics Hackathon mentors, added 25 November 2026 (with Anish above).
+  {
+    id: "gagan-g",
+    name: "Gagan G",
+    line: "AI and ML research engineer. Deep learning, computer vision and optimisation. Patent holder.",
+    photo: "/media/people/gagan-g.jpg",
+    programs: ["hackathon"],
+    role: "mentor",
+    iitb: "M.Tech",
+    home: false,
+    source: "https://www.linkedin.com/in/gagan-g-iitb/",
+  },
+  {
+    id: "giridhara-datta",
+    name: "Giridhara Datta",
+    line: "M.Tech in Integrated Circuits and Systems. Former embedded systems engineer at ENMAZ Engineering.",
+    photo: "/media/people/giridhara-datta.jpg",
+    programs: ["hackathon"],
+    role: "mentor",
+    iitb: "M.Tech",
+    home: false,
+    source: "https://www.linkedin.com/in/giridhara-datta/",
+  },
+  {
+    id: "prabhakar-j",
+    name: "Prabhakar J",
+    line: "M.Tech in Integrated Circuits and Systems. Former automation engineer at Vedanta Aluminium: PLCs and ABB robots.",
+    photo: "/media/people/prabhakar-j.jpg",
+    programs: ["hackathon"],
+    role: "mentor",
+    iitb: "M.Tech",
+    home: false,
+    source: "https://www.linkedin.com/in/prabhakar-j-463673198/",
+  },
+  {
+    // His LinkedIn lists Sardar Patel Institute of Technology only, so no IIT Bombay badge until confirmed.
+    // Photo is 100px on LinkedIn: initials until a real photo is added.
+    id: "woodrow-gonsalves",
+    name: "Woodrow Gonsalves",
+    line: "Student, Sardar Patel Institute of Technology, Mumbai.",
+    photo: "",
+    programs: ["hackathon"],
+    role: "mentor",
+    home: false,
+    source: "https://www.linkedin.com/in/woodrow-gonsalves-022b03269/",
+  },
 ];
 
 export function peopleFor(programId: ProgramId | "home", role?: Person["role"]): Person[] {
   return people.filter(
-    (p) => (programId === "home" || p.programs.includes(programId)) && (!role || p.role === role),
+    (p) =>
+      (programId === "home" ? p.home !== false : p.programs.includes(programId)) && (!role || p.role === role),
   );
 }

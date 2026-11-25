@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CloseBlock, FormSection, Heading, LandingHero } from "@/components/sections/Landing";
-import { FacesGrid } from "@/components/sections/FacesGrid";
+import { MentorRail } from "@/components/sections/MentorRail";
 import { DayPlan, InfoTable, ProjectGrid } from "@/components/ui/Lists";
 import { Section, Stack } from "@/components/ui/bits";
 import { Reveal } from "@/components/ui/Reveal";
@@ -80,7 +80,7 @@ export default function HackathonPage() {
 
       <Section tone="linen">
         <Heading label="Who you build with" index="05" lines={["IIT Bombay alumni", "who build this for fun."]} />
-        <FacesGrid people={peopleFor("hackathon", "mentor")} />
+        <MentorRail people={peopleFor("hackathon", "mentor")} rows={1} showIitb label="Hackathon mentors" />
       </Section>
 
       <Section tone="white">
