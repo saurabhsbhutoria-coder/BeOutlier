@@ -15,7 +15,7 @@ export interface Person {
   /** /media/people/<id>.jpg. Empty: the card shows initials, never a fake face. */
   photo: string;
   /** Degree at IIT Bombay, as the person's own profile states it ("M.Tech"). Shown as an IIT Bombay badge on the hackathon page. */
-  iitb?: string;
+  iitb?: string | true;
   /** false keeps the person off the Home mentor slider (program pages only). */
   home?: boolean;
   programs: ProgramId[];
@@ -158,7 +158,8 @@ export const people: Person[] = [
     source: "https://www.linkedin.com/in/prabhakar-j-463673198/",
   },
   {
-    // His LinkedIn lists Sardar Patel Institute of Technology only, so no IIT Bombay badge until confirmed.
+    // IIT Bombay confirmed by BeOutlier on 25 November 2026 (his LinkedIn lists Sardar Patel
+    // Institute of Technology only, and no degree at IIT Bombay, so the badge shows no degree).
     // Photo is 100px on LinkedIn: initials until a real photo is added.
     id: "woodrow-gonsalves",
     name: "Woodrow Gonsalves",
@@ -166,6 +167,7 @@ export const people: Person[] = [
     photo: "",
     programs: ["hackathon"],
     role: "mentor",
+    iitb: true,
     home: false,
     source: "https://www.linkedin.com/in/woodrow-gonsalves-022b03269/",
   },

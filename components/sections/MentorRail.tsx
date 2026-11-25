@@ -121,7 +121,9 @@ export function MentorRail({
                     <Image src={iitBombayTag.logo} alt="" width={52} height={51} className="size-8 shrink-0" />
                     <span className="flex flex-col leading-tight">
                       <span className="text-[13px] font-bold text-ink">IIT Bombay</span>
-                      <span className="text-[11px] font-medium text-ink-muted">{p.iitb}</span>
+                      {typeof p.iitb === "string" ? (
+                        <span className="text-[11px] font-medium text-ink-muted">{p.iitb}</span>
+                      ) : null}
                     </span>
                   </span>
                 ) : null}
