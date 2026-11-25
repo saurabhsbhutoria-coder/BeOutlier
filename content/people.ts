@@ -157,20 +157,6 @@ export const people: Person[] = [
     home: false,
     source: "https://www.linkedin.com/in/prabhakar-j-463673198/",
   },
-  {
-    // IIT Bombay confirmed by BeOutlier on 25 November 2026 (his LinkedIn lists Sardar Patel
-    // Institute of Technology only, and no degree at IIT Bombay, so the badge shows no degree).
-    // Photo is 100px on LinkedIn: initials until a real photo is added.
-    id: "woodrow-gonsalves",
-    name: "Woodrow Gonsalves",
-    line: "Student, Sardar Patel Institute of Technology, Mumbai.",
-    photo: "",
-    programs: ["hackathon"],
-    role: "mentor",
-    iitb: true,
-    home: false,
-    source: "https://www.linkedin.com/in/woodrow-gonsalves-022b03269/",
-  },
 ];
 
 export function peopleFor(programId: ProgramId | "home", role?: Person["role"]): Person[] {
