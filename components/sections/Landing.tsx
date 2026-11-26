@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, StatusBadge, Stack } from "@/components/ui/bits";
 import { ApplicationForm } from "@/components/form/ApplicationForm";
 import { LazyVideo } from "@/components/media/LazyVideo";
+import { HeroVideo } from "@/components/media/HeroVideo";
 import { ctaLabel, type Program } from "@/content/programs";
 
 /**
@@ -73,6 +74,67 @@ export function LandingHero({
             ) : null}
           </div>
         ) : null}
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Full bleed video hero, the same treatment as the Home hero: the video fills
+ * the band (horizontal file on desktop, vertical on phones, only one downloads),
+ * a dark gradient keeps white type readable, the headline and facts sit at the
+ * bottom with one button to the form.
+ */
+export function VideoHero({
+  program,
+  lines,
+  facts,
+  tag,
+  mobile,
+  desktop,
+}: {
+  program: Program;
+  lines: string[];
+  facts: ReactNode[];
+  /** Shown under the headline, e.g. the IIT Bombay tag */
+  tag?: ReactNode;
+  mobile: { mp4: string; poster: string };
+  desktop: { mp4: string; poster: string };
+}) {
+  return (
+    <section className="on-dark relative isolate overflow-hidden bg-ink text-white">
+      <HeroVideo mobile={mobile} desktop={desktop} />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/95 lg:bg-gradient-to-r lg:from-ink/90 lg:via-ink/55 lg:to-ink/20" />
+      <div className="shell relative grid min-h-[calc(100svh-4rem)] content-end py-10 sm:py-14 lg:min-h-[calc(100svh-4rem)] lg:py-14">
+        <div className="max-w-4xl [text-shadow:0_2px_24px_rgb(26_28_30/0.55)]">
+          <div className="flex flex-wrap items-center gap-3">
+            <Eyebrow label={program.datesLine ?? program.title} index={program.placeLine} tone="light" />
+            <StatusBadge status={program.status} />
+          </div>
+          <Stack
+            as="h1"
+            lines={lines}
+            className="mt-5 text-[3.6rem] leading-[0.98] sm:text-8xl lg:text-[clamp(88px,8vw,140px)]"
+          />
+          {tag ? <div className="mt-7 [text-shadow:none] lg:mt-6">{tag}</div> : null}
+          <ul className="mt-7 max-w-2xl border-t border-white/40 lg:mt-6">
+            {facts.map((f, i) => (
+              <li
+                key={i}
+                className={`border-b border-white/20 py-3 text-base leading-snug sm:text-lg lg:py-2.5 ${
+                  i === facts.length - 1 ? "font-semibold" : "text-white/90"
+                }`}
+              >
+                {f}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 [text-shadow:none] lg:mt-7">
+            <ButtonLink href="#apply" variant="mint" size="lg">
+              {ctaLabel(program)}
+            </ButtonLink>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -125,10 +125,11 @@ Average is crowded. Be an Outlier.
 
 Rewritten 26 November 2026 to read as a serious build event, not a hobby day (structure from established student hackathons: tracks, format, judging, stakes). Fee changed to ₹8,000 per student; meals are not included.
 
-**Hero**
-Two days to build a machine that thinks.
+**Hero** (26 November 2026: full bleed video background like Home, public/media/hackathon/, desktop and phone files)
+Build a robot that thinks.
+[IIT Bombay tag with logo] Mentored by folks from IIT Bombay
 Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur.
-Ages 14 to 19. Teams of 3. No experience needed. Mentored by IIT Bombay alumni.
+Ages 14 to 19. Teams of 3. No experience needed.
 ₹8,000 per student. 51 seats. 17 teams. [Book a seat]
 
 **01. The challenge**
@@ -428,7 +429,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **Numbers:** 18 brands built by students. ₹5L+ earned by their brands. 45 Outliers in the community. 15% acceptance rate. (The 150+ figure is removed.)
 
-**Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by IIT Bombay alumni" with the IIT Bombay logo. The logo is allowed on this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
+**Robotics Hackathon block:** the dates in their own container (Sat 26 and Sun 27 December), venue, timings, ages, fee, seats. Tag: "Mentored by folks from IIT Bombay" (changed 26 November 2026) with the IIT Bombay logo. The logo is allowed on this tag only, at BeOutlier's request. Switch the logo off in content/site.ts (iitBombayTag.showLogo).
 
 **05 and 06:** four student reels from @beoutlier.in (hosted on the site since 23 November 2026, because tracking protection blocks Instagram embeds in several browsers; line "Straight from @beoutlier.in") and seven parent testimonials (seven clips added 23 November 2026, line "Seven families. Unscripted."), each a horizontal slider of framed videos with arrows. Slots live in content/media.ts.
 

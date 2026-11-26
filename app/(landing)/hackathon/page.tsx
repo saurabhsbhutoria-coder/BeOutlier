@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CloseBlock, FormSection, Heading, LandingHero } from "@/components/sections/Landing";
+import { CloseBlock, FormSection, Heading, VideoHero } from "@/components/sections/Landing";
+import { IitBombayTag } from "@/components/sections/Cards";
 import { MentorRail } from "@/components/sections/MentorRail";
 import { DayPlan, InfoTable, NumberedList, ProjectGrid } from "@/components/ui/Lists";
 import { Section, Stack } from "@/components/ui/bits";
@@ -9,14 +10,14 @@ import { StickyApplyBar } from "@/components/layout/StickyApplyBar";
 import { TrackViewContent } from "@/components/tracking/TrackViewContent";
 import { ctaLabel, eligibilityText, feeText, getProgram, seatsText } from "@/content/programs";
 import { peopleFor } from "@/content/people";
-import { heroVideos } from "@/content/media";
+import { hackathonHero } from "@/content/media";
 
 const program = getProgram("hackathon");
 
 export const metadata: Metadata = {
   title: "Robotics and AI Hackathon, Mumbai. 26 and 27 December.",
   description:
-    "A two day robotics and AI hackathon for ages 14 to 19 at The Green Acres Academy, Chembur. Four problem statements, teams of 3, judged on working builds. Mentored by IIT Bombay alumni. No experience needed.",
+    "A two day robotics and AI hackathon for ages 14 to 19 at The Green Acres Academy, Chembur. Four problem statements, teams of 3, judged on working builds. Mentored by folks from IIT Bombay. No experience needed.",
   alternates: { canonical: "/hackathon" },
 };
 
@@ -34,13 +35,15 @@ export default function HackathonPage() {
     <>
       <TrackViewContent programId={p.id} title={p.title} />
 
-      <LandingHero
+      <VideoHero
         program={p}
-        lines={["Two days to build", "a machine that thinks."]}
-        video={heroVideos.hackathon}
+        lines={["Build a robot", "that thinks."]}
+        mobile={hackathonHero.mobile}
+        desktop={hackathonHero.desktop}
+        tag={<IitBombayTag />}
         facts={[
           `Robotics and AI Hackathon. ${p.datesLine}. ${p.venue}.`,
-          `${eligibilityText(p.eligibility)}. Teams of 3. No experience needed. Mentored by IIT Bombay alumni.`,
+          `${eligibilityText(p.eligibility)}. Teams of 3. No experience needed.`,
           `${fee} per student. ${seatsText(p)} 17 teams.`,
         ]}
       />

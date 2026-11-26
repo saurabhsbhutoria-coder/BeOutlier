@@ -73,5 +73,5 @@ export const certificateLogos = {
 export const iitBombayTag = {
   showLogo: true,
   logo: "/brand/partners/iit-bombay.png",
-  text: "Mentored by IIT Bombay alumni",
+  text: "Mentored by folks from IIT Bombay",
 } as const;

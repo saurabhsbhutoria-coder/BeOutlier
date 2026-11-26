@@ -72,6 +72,16 @@ export const homeHero: {
   mobile: { mp4: "/media/home/hero-mobile.mp4", poster: "/media/home/hero-mobile-poster.jpg" },
 };
 
+/**
+ * Robotics Hackathon hero background (26 November 2026), full bleed like Home.
+ * Desktop: the original 1280x568 loop. Phone: a 320x568 vertical slice from its centre.
+ * Muted, no sound track.
+ */
+export const hackathonHero = {
+  desktop: { mp4: "/media/hackathon/hero-desktop.mp4", poster: "/media/hackathon/hero-desktop.jpg" },
+  mobile: { mp4: "/media/hackathon/hero-mobile.mp4", poster: "/media/hackathon/hero-mobile.jpg" },
+};
+
 /** Hero videos per landing page. Add an mp4 and a poster still, then set these. */
 export const heroVideos: Partial<Record<"home" | "hackathon" | "founders" | "engineers" | "designers", { mp4: string; poster: string }>> = {};
 
