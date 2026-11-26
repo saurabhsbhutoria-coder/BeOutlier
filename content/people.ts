@@ -139,7 +139,7 @@ export const people: Person[] = [
     id: "giridhara-datta",
     name: "Giridhara Datta",
     line: "M.Tech in Integrated Circuits and Systems. Former embedded systems engineer at ENMAZ Engineering.",
-    photo: "/media/people/giridhara-datta.jpg",
+    photo: "/media/people/giridhara-datta-2026.jpg",
     programs: ["hackathon"],
     role: "mentor",
     iitb: "M.Tech",
@@ -156,6 +156,18 @@ export const people: Person[] = [
     iitb: "M.Tech",
     home: false,
     source: "https://www.linkedin.com/in/prabhakar-j-463673198/",
+  },
+  {
+    // Added back 26 November 2026 at BeOutlier's request: photo and details from BeOutlier,
+    // no LinkedIn link, so his card is not clickable.
+    id: "woodrow-gonsalves",
+    name: "Woodrow Gonsalves",
+    line: "M.Tech in Integrated Circuits and Systems.",
+    photo: "/media/people/woodrow-gonsalves.jpg",
+    programs: ["hackathon"],
+    role: "mentor",
+    iitb: "M.Tech",
+    home: false,
   },
 ];
 

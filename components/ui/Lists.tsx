@@ -65,8 +65,8 @@ export function InfoTable({
   );
 }
 
-/** Numbered pillar cards with a title and one line. */
-export function ProjectGrid({ items }: { items: { title: string; text: string }[] }) {
+/** Numbered pillar cards with a title and one line, and an optional track label. */
+export function ProjectGrid({ items }: { items: { title: string; text: string; kicker?: string }[] }) {
   return (
     <ul className="grid gap-4 sm:grid-cols-2">
       {items.map((it, i) => (
@@ -74,7 +74,10 @@ export function ProjectGrid({ items }: { items: { title: string; text: string }[
           key={it.title}
           className="group border border-ink bg-white p-7 text-ink transition-colors duration-300 hover:bg-mint sm:p-8"
         >
-          <span className="display text-3xl text-mint-deep group-hover:text-ink">{String(i + 1).padStart(2, "0")}</span>
+          <div className="flex items-baseline justify-between gap-4">
+            <span className="display text-3xl text-mint-deep group-hover:text-ink">{String(i + 1).padStart(2, "0")}</span>
+            {it.kicker ? <span className="label text-right text-ink-muted group-hover:text-ink">Track · {it.kicker}</span> : null}
+          </div>
           <h3 className="display mt-8 text-4xl sm:text-5xl">{it.title}</h3>
           <p className="mt-3 text-base leading-relaxed text-ink-muted group-hover:text-ink">{it.text}</p>
         </li>

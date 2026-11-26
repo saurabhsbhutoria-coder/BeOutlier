@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CloseBlock, FormSection, Heading, LandingHero } from "@/components/sections/Landing";
 import { MentorRail } from "@/components/sections/MentorRail";
-import { DayPlan, InfoTable, ProjectGrid } from "@/components/ui/Lists";
+import { DayPlan, InfoTable, NumberedList, ProjectGrid } from "@/components/ui/Lists";
 import { Section, Stack } from "@/components/ui/bits";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyApplyBar } from "@/components/layout/StickyApplyBar";
@@ -14,15 +14,21 @@ import { heroVideos } from "@/content/media";
 const program = getProgram("hackathon");
 
 export const metadata: Metadata = {
-  title: "Robotics Hackathon. Build a working robot in two days.",
+  title: "Robotics and AI Hackathon, Mumbai. 26 and 27 December.",
   description:
-    "Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur. Ages 14 to 19. No experience needed. Mentored by IIT Bombay alumni.",
+    "A two day robotics and AI hackathon for ages 14 to 19 at The Green Acres Academy, Chembur. Four problem statements, teams of 3, judged on working builds. Mentored by IIT Bombay alumni. No experience needed.",
   alternates: { canonical: "/hackathon" },
 };
 
+/**
+ * Rewritten 26 November 2026: a serious build event, not a hobby day.
+ * Structure borrowed from established student hackathons (tracks, format,
+ * judging, stakes). Every fact is from CLAUDE.md section 8 and programs.ts.
+ */
 export default function HackathonPage() {
   if (!program) notFound();
   const p = program;
+  const fee = feeText(p.fee);
 
   return (
     <>
@@ -30,74 +36,114 @@ export default function HackathonPage() {
 
       <LandingHero
         program={p}
-        lines={["Build a working", "robot in two days."]}
+        lines={["Two days to build", "a machine that thinks."]}
         video={heroVideos.hackathon}
         facts={[
           `Robotics and AI Hackathon. ${p.datesLine}. ${p.venue}.`,
-          `${eligibilityText(p.eligibility)}. No experience needed. Mentored by IIT Bombay alumni.`,
-          `${feeText(p.fee)}. ${seatsText(p)} 17 teams of 3.`,
+          `${eligibilityText(p.eligibility)}. Teams of 3. No experience needed. Mentored by IIT Bombay alumni.`,
+          `${fee} per student. ${seatsText(p)} 17 teams.`,
         ]}
       />
 
       <Section tone="white">
-        <Heading label="What you build" index="01" lines={["Arduino circuits plus AI.", "Your team picks one:"]} />
+        <Heading label="The challenge" index="01" lines={["Four problem statements.", "Your team takes one."]} />
+        <p className="-mt-6 mb-12 max-w-2xl text-xl leading-snug text-ink-muted">
+          Every team builds with Arduino and AI. Each track is a problem engineers are solving right now.
+        </p>
         <Reveal>
           <ProjectGrid
             items={[
-              { title: "Self driving car", text: "Drives itself and dodges obstacles." },
-              { title: "Gesture controlled robotic arm", text: "Wave your hand at the camera and the arm copies you." },
-              { title: "Face unlock door", text: "Recognises your face and opens. Locks for strangers." },
-              { title: "Smart waste bin", text: "Sees what you throw in and sorts it into wet or dry." },
+              {
+                kicker: "Autonomy",
+                title: "Self driving car",
+                text: "A car that reads the road ahead and steers around obstacles on its own.",
+              },
+              {
+                kicker: "Human machine interaction",
+                title: "Gesture controlled robotic arm",
+                text: "A camera reads your hand. The arm follows every move.",
+              },
+              {
+                kicker: "Computer vision",
+                title: "Face recognition door",
+                text: "Recognises the faces it knows and opens. Stays locked for everyone else.",
+              },
+              {
+                kicker: "Sustainability",
+                title: "Smart waste bin",
+                text: "Sees what goes in and sorts it into wet or dry waste, by itself.",
+              },
             ]}
           />
         </Reveal>
       </Section>
 
       <Section tone="linen">
-        <p className="label flex items-center gap-2.5"><span className="dot" aria-hidden="true" />Before you start <span className="opacity-55">· 02</span></p>
-        <p className="mt-8 max-w-4xl text-2xl font-medium leading-snug sm:text-4xl">
-          No coding or electronics needed. We teach you everything and hand you every part before the build begins.
+        <Heading label="Starting from zero" index="02" lines={[]} className="!mb-6" />
+        <p className="max-w-4xl text-2xl font-medium leading-snug sm:text-4xl">
+          You walk in with curiosity. You walk out having built a working robot.
+        </p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+          No coding or electronics needed. Day 1 opens with training in Arduino circuits and AI, and every team gets the
+          full hardware kit before the build begins.
         </p>
       </Section>
 
       <Section tone="white">
-        <Heading label="The two days" index="03" lines={[]} className="!mb-6" />
+        <Heading label="The format" index="03" lines={["Two days.", "10 am to 7 pm."]} />
         <DayPlan
           days={[
-            { label: "Day 1.", text: "Learn the circuits. Meet your team. Start building." },
-            { label: "Day 2.", text: "Build. Break it. Fix it. Demo it to the judges." },
+            {
+              label: "Day 1.",
+              text: "Training in Arduino circuits and AI. Teams lock in their problem statement. The build begins.",
+            },
+            { label: "Day 2.", text: "Build, test, break, rebuild. Final demos before the judges." },
+          ]}
+        />
+      </Section>
+
+      <Section tone="white" className="!pt-0">
+        <Heading label="How teams are judged" index="04" lines={["Judged on what works.", "Not on what was planned."]} />
+        <NumberedList
+          items={[
+            "It works, live, in front of the judges.",
+            "It solves the problem the team chose.",
+            "The team can explain every part of how it works.",
+            "It was built here, by the team, in two days.",
           ]}
         />
       </Section>
 
       <Section tone="ink">
-        <Heading label="What the best teams get" index="04" lines={[]} tone="mint" className="!mb-6" />
-        <Stack lines={["An internship."]} className="text-6xl text-mint sm:text-9xl" />
+        <Heading label="What is at stake" index="05" lines={[]} tone="mint" className="!mb-6" />
+        <p className="label text-white/70">For the best teams</p>
+        <Stack lines={["An internship."]} className="mt-4 text-6xl text-mint sm:text-9xl" />
         <p className="display mt-8 max-w-4xl text-3xl sm:text-5xl">
           A day inside IIT Bombay with the students who build for Techfest.
         </p>
       </Section>
 
       <Section tone="linen">
-        <Heading label="Who you build with" index="05" lines={["IIT Bombay alumni", "who build this for fun."]} />
+        <Heading label="Who you build with" index="06" lines={["IIT Bombay alumni", "who build this for fun."]} />
         <MentorRail people={peopleFor("hackathon", "mentor")} rows={1} showIitb label="Hackathon mentors" />
       </Section>
 
       <Section tone="white">
-        <Heading label="For parents" index="06" lines={[]} className="!mb-6" />
+        <Heading label="For parents" index="07" lines={[]} className="!mb-6" />
         <InfoTable
           caption="Hackathon details for parents"
           rows={[
             { label: "Venue", value: `${p.venue}.` },
             { label: "Timings", value: "10 am to 7 pm, both days." },
-            { label: "Included", value: "All parts and meals." },
+            { label: "Included", value: "Every hardware part and kit the team builds with." },
+            { label: "Meals", value: "Not included. Please send a packed lunch and water." },
             { label: "Supervision", value: "1 mentor for every 9 students." },
-            { label: "Fee", value: `${feeText(p.fee)}. Paid online at booking.` },
+            { label: "Fee", value: `${fee} per student. Paid online at booking.` },
           ]}
         />
       </Section>
 
-      <CloseBlock program={p} lines={[`${seatsText(p)} Open to all.`, "When they're gone,", "they're gone."]} />
+      <CloseBlock program={p} lines={[`${seatsText(p)} 17 teams.`, "Booking closes", "when seats fill."]} />
 
       <FormSection program={p} />
 

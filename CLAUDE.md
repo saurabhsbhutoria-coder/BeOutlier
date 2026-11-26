@@ -123,45 +123,52 @@ Average is crowded. Be an Outlier.
 
 ## 8. Landing page: Robotics Hackathon (/hackathon)
 
+Rewritten 26 November 2026 to read as a serious build event, not a hobby day (structure from established student hackathons: tracks, format, judging, stakes). Fee changed to ₹8,000 per student; meals are not included.
+
 **Hero**
-Build a working robot in two days.
+Two days to build a machine that thinks.
 Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur.
-Ages 14 to 19. No experience needed. Mentored by IIT Bombay alumni.
-₹10,000. 51 seats. 17 teams of 3. [Book a seat]
+Ages 14 to 19. Teams of 3. No experience needed. Mentored by IIT Bombay alumni.
+₹8,000 per student. 51 seats. 17 teams. [Book a seat]
 
-**What you build**
-Arduino circuits plus AI. Your team picks one:
+**01. The challenge**
+Four problem statements. Your team takes one. Every team builds with Arduino and AI. Each track is a problem engineers are solving right now.
 
-| Project | What it does |
-|---|---|
-| Self driving car | Drives itself and dodges obstacles. |
-| Gesture controlled robotic arm | Wave your hand at the camera and the arm copies you. |
-| Face unlock door | Recognises your face and opens. Locks for strangers. |
-| Smart waste bin | Sees what you throw in and sorts it into wet or dry. |
+| Track | Project | What it does |
+|---|---|---|
+| Autonomy | Self driving car | A car that reads the road ahead and steers around obstacles on its own. |
+| Human machine interaction | Gesture controlled robotic arm | A camera reads your hand. The arm follows every move. |
+| Computer vision | Face recognition door | Recognises the faces it knows and opens. Stays locked for everyone else. |
+| Sustainability | Smart waste bin | Sees what goes in and sorts it into wet or dry waste, by itself. |
 
-**Before you start**
-No coding or electronics needed. We teach you everything and hand you every part before the build begins.
+**02. Starting from zero**
+You walk in with curiosity. You walk out having built a working robot. No coding or electronics needed. Day 1 opens with training in Arduino circuits and AI, and every team gets the full hardware kit before the build begins.
 
-**The two days**
-Day 1. Learn the circuits. Meet your team. Start building.
-Day 2. Build. Break it. Fix it. Demo it to the judges.
+**03. The format** (10 am to 7 pm, both days)
+Day 1. Training in Arduino circuits and AI. Teams lock in their problem statement. The build begins.
+Day 2. Build, test, break, rebuild. Final demos before the judges.
 
-**What the best teams get**
+**04. How teams are judged** (DRAFT, for BeOutlier to confirm)
+Judged on what works. Not on what was planned. It works, live, in front of the judges. It solves the problem the team chose. The team can explain every part of how it works. It was built here, by the team, in two days.
+
+**05. What is at stake** (for the best teams)
 An internship.
 A day inside IIT Bombay with the students who build for Techfest.
 
-**Who you build with**
-IIT Bombay alumni who build this for fun.
-[Faces with one line each]
+**06. Who you build with**
+IIT Bombay alumni who build this for fun. (BeOutlier chose to keep this line, 25 November 2026.)
+Mentors: Anish Mayanache, Gagan G, Giridhara Datta, Prabhakar J, Woodrow Gonsalves, each with an IIT Bombay badge.
 
-**For parents**
+**07. For parents**
 Venue: The Green Acres Academy, Chembur.
 Timings: 10 am to 7 pm, both days.
-Included: all parts and meals.
+Included: every hardware part and kit the team builds with.
+Meals: not included. Please send a packed lunch and water.
 Supervision: 1 mentor for every 9 students.
+Fee: ₹8,000 per student. Paid online at booking.
 
 **Close**
-51 seats. Open to all. When they're gone, they're gone.
+51 seats. 17 teams. Booking closes when seats fill.
 [Book a seat]
 
 **Form**

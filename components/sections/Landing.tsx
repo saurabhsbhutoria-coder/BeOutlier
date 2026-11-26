@@ -35,7 +35,7 @@ export function LandingHero({
           <div className="flex flex-wrap items-center gap-3">
             <Eyebrow
               label={program.houseName ?? (program.datesLine ?? "")}
-              index={program.season === "summer-2027" ? "Summer 2027" : "Drop"}
+              index={program.season === "summer-2027" ? "Summer 2027" : "Mumbai"}
             />
             <StatusBadge status={program.status} />
           </div>

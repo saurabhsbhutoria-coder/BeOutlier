@@ -47,7 +47,7 @@ You will paste these in step 5. Have them ready:
 | `NEXT_PUBLIC_META_PIXEL_ID` | Meta Events Manager > your Pixel > the ID number |
 | `META_CAPI_TOKEN` | Events Manager > your Pixel > Settings > Conversions API > **Generate access token** |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics > Admin > Data streams > your web stream > Measurement ID (`G-...`) |
-| `NEXT_PUBLIC_HACKATHON_PAYMENT_URL` | The payment page link from your gateway (Razorpay Payment Page, Cashfree, or similar) for ₹10,000. Leave empty until ready: the thank you page then says you will call to confirm. |
+| `NEXT_PUBLIC_HACKATHON_PAYMENT_URL` | The payment page link from your gateway (Razorpay Payment Page, Cashfree, or similar) for ₹8,000 per student. Leave empty until ready: the thank you page then says you will call to confirm. |
 | `META_TEST_EVENT_CODE` (optional) | Events Manager > Test events > the code. Only while testing. Delete it afterwards. |
 
 Any tracking value you leave empty simply switches that tracking off. The site still works.
