@@ -3,9 +3,10 @@ import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, StatusBadge, Stack } from "@/components/ui/bits";
 import { ApplicationForm } from "@/components/form/ApplicationForm";
+import { LeadPopup } from "@/components/form/LeadPopup";
 import { LazyVideo } from "@/components/media/LazyVideo";
 import { HeroVideo } from "@/components/media/HeroVideo";
-import { ctaLabel, type Program } from "@/content/programs";
+import { ctaLabel, feeText, seatsText, type Program } from "@/content/programs";
 
 /**
  * One button hero for landing pages, on the mint band. The button scrolls to the form.
@@ -35,12 +36,18 @@ export function LandingHero({
         <div>
           <div className="flex flex-wrap items-center gap-3">
             <Eyebrow
-              label={program.houseName ?? (program.datesLine ?? "")}
-              index={program.season === "summer-2027" ? "Summer 2027" : "Mumbai"}
+              label={program.houseName ?? program.datesLine ?? ""}
+              index={
+                program.season === "summer-2027" ? "Summer 2027" : "Mumbai"
+              }
             />
             <StatusBadge status={program.status} />
           </div>
-          <Stack as="h1" lines={lines} className="mt-7 text-[3.3rem] sm:text-8xl lg:text-[8.5rem]" />
+          <Stack
+            as="h1"
+            lines={lines}
+            className="mt-7 text-[3.3rem] sm:text-8xl lg:text-[8.5rem]"
+          />
           <ul className="mt-10 max-w-3xl border-t border-ink">
             {facts.map((f, i) => (
               <li
@@ -70,7 +77,14 @@ export function LandingHero({
                 className="absolute inset-0 size-full object-cover"
               />
             ) : media ? (
-              <Image src={media.src} alt={media.alt} fill priority sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover" />
+              <Image
+                src={media.src}
+                alt={media.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 35vw, 90vw"
+                className="object-cover"
+              />
             ) : null}
           </div>
         ) : null}
@@ -104,11 +118,18 @@ export function VideoHero({
   return (
     <section className="on-dark relative isolate overflow-hidden bg-ink text-white">
       <HeroVideo mobile={mobile} desktop={desktop} />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/95 lg:bg-gradient-to-r lg:from-ink/90 lg:via-ink/55 lg:to-ink/20" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/95 lg:bg-gradient-to-r lg:from-ink/90 lg:via-ink/55 lg:to-ink/20"
+      />
       <div className="shell relative grid min-h-[calc(100svh-4rem)] content-end py-10 sm:py-14 lg:min-h-[calc(100svh-4rem)] lg:py-14">
         <div className="max-w-4xl [text-shadow:0_2px_24px_rgb(26_28_30/0.55)]">
           <div className="flex flex-wrap items-center gap-3">
-            <Eyebrow label={program.datesLine ?? program.title} index={program.placeLine} tone="light" />
+            <Eyebrow
+              label={program.datesLine ?? program.title}
+              index={program.placeLine}
+              tone="light"
+            />
             <StatusBadge status={program.status} />
           </div>
           <Stack
@@ -116,7 +137,9 @@ export function VideoHero({
             lines={lines}
             className="mt-5 text-[3.6rem] leading-[0.98] sm:text-8xl lg:text-[clamp(88px,8vw,140px)]"
           />
-          {tag ? <div className="mt-7 [text-shadow:none] lg:mt-6">{tag}</div> : null}
+          {tag ? (
+            <div className="mt-7 [text-shadow:none] lg:mt-6">{tag}</div>
+          ) : null}
           <ul className="mt-7 max-w-2xl border-t border-white/40 lg:mt-6">
             {facts.map((f, i) => (
               <li
@@ -140,30 +163,73 @@ export function VideoHero({
   );
 }
 
-/** The one form on a landing page, under #apply, on the sand band. */
-export function FormSection({ program, heading }: { program: Program; heading?: string }) {
+/**
+ * The one form on a landing page, under #apply, on the sand band.
+ * The same form also opens as a pop up 5 seconds after the page loads
+ * (components/form/LeadPopup.tsx). Pass popup={false} to switch that off.
+ */
+export function FormSection({
+  program,
+  heading,
+  popup = true,
+}: {
+  program: Program;
+  heading?: string;
+  popup?: boolean;
+}) {
+  const fee = feeText(program.fee);
+  const popupLine = program.selective
+    ? "Applying takes 5 minutes. Getting in doesn't."
+    : [fee ? `${fee} per student.` : null, seatsText(program)]
+        .filter(Boolean)
+        .join(" ");
   return (
-    <section id="apply" className="scroll-mt-4 bg-sand text-ink">
-      <div className="shell grid gap-10 py-20 sm:py-32 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-        <div className="lg:sticky lg:top-10">
-          <Eyebrow label={program.title} />
-          <Stack lines={[heading ?? ctaLabel(program)]} className="mt-6 text-5xl sm:text-7xl" />
-          {program.selective ? (
-            <p className="mt-6 text-lg leading-snug sm:text-xl">Applying takes 5 minutes. Getting in doesn&apos;t.</p>
-          ) : null}
+    <>
+      {popup && program.status !== "sold_out" ? (
+        <LeadPopup
+          programId={program.id}
+          mode={program.formType}
+          eyebrow={program.houseName ?? program.title}
+          heading={heading ?? ctaLabel(program)}
+          line={popupLine || undefined}
+        />
+      ) : null}
+      <section id="apply" className="scroll-mt-4 bg-sand text-ink">
+        <div className="shell grid gap-10 py-20 sm:py-32 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+          <div className="lg:sticky lg:top-10">
+            <Eyebrow label={program.title} />
+            <Stack
+              lines={[heading ?? ctaLabel(program)]}
+              className="mt-6 text-5xl sm:text-7xl"
+            />
+            {program.selective ? (
+              <p className="mt-6 text-lg leading-snug sm:text-xl">
+                Applying takes 5 minutes. Getting in doesn&apos;t.
+              </p>
+            ) : null}
+          </div>
+          <ApplicationForm mode={program.formType} programId={program.id} />
         </div>
-        <ApplicationForm mode={program.formType} programId={program.id} />
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
 /** Close block on the mint band: one line, one button. */
-export function CloseBlock({ lines, program }: { lines: string[]; program: Program }) {
+export function CloseBlock({
+  lines,
+  program,
+}: {
+  lines: string[];
+  program: Program;
+}) {
   return (
     <section className="bg-mint text-ink">
       <div className="shell py-28 sm:py-40">
-        <Stack lines={lines} className="max-w-6xl text-[3.4rem] sm:text-8xl lg:text-[9rem]" />
+        <Stack
+          lines={lines}
+          className="max-w-6xl text-[3.4rem] sm:text-8xl lg:text-[9rem]"
+        />
         <div className="mt-12">
           <ButtonLink href="#apply" variant="ink" size="lg">
             {ctaLabel(program)}
@@ -191,7 +257,9 @@ export function Heading({
   return (
     <div className={`mb-12 ${className}`}>
       <Eyebrow label={label} index={index} tone={tone} />
-      {lines.length ? <Stack lines={lines} className="mt-6 text-5xl sm:text-7xl" /> : null}
+      {lines.length ? (
+        <Stack lines={lines} className="mt-6 text-5xl sm:text-7xl" />
+      ) : null}
     </div>
   );
 }

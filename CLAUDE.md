@@ -24,7 +24,7 @@ The site must feel like an exclusive inner circle that teenagers want in on and 
 - Mobile first. Most traffic comes from Meta ads on phones.
 - Every form submission goes to a Google Sheet, with an instant alert to the sales team.
 - Tracking on every page: Meta Pixel + Conversions API, Google Analytics 4, UTM parameters saved with each lead.
-- Landing pages are standalone: no menu, one button, one form.
+- Landing pages are standalone: no menu, one button, one form. Since 26 November 2026 that same form also opens as a pop up 5 seconds after the page loads (components/form/LeadPopup.tsx), once per visit, never when the visitor is already at the form or has applied. Switch off per page with <FormSection popup={false} />.
 - Video first. Student videos autoplay muted and swipe like Reels.
 
 ## 4. Design

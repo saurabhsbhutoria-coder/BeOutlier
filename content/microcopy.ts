@@ -18,7 +18,7 @@ export const microcopy = {
     consent:
       "I am the parent or guardian and I agree to BeOutlier contacting me about this application.",
     privacyLink: "Read how we use your data",
-    friendsHint: "Teams are 3. We will try to put you together.",
+    friendsHint: "Everyone builds their own robot. We will try to seat friends together.",
     phoneHint: "We send updates on WhatsApp.",
     labels: {
       student_name: "Student name",

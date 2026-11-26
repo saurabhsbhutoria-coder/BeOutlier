@@ -237,3 +237,18 @@ section[id] {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Lead pop up (components/form/LeadPopup.tsx): rises from the bottom on phones, fades up on desktop */
+@keyframes lead-popup-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes lead-popup-backdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.lead-popup[open] { animation: lead-popup-in 0.45s cubic-bezier(.2,.8,.2,1); overscroll-behavior: contain; }
+.lead-popup[open]::backdrop { animation: lead-popup-backdrop 0.3s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .lead-popup[open], .lead-popup[open]::backdrop { animation: none; }
+}

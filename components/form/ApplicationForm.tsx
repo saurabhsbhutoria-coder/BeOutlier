@@ -54,9 +54,11 @@ export interface ApplicationFormProps {
   /** /apply: let the student pick a house first */
   showHousePicker?: boolean;
   initialHouse?: ProgramId;
+  /** Prefix for field ids, so a second copy (the pop up) never clashes with the page form */
+  idPrefix?: string;
 }
 
-export function ApplicationForm({ mode, programId: preset, showHousePicker = false, initialHouse }: ApplicationFormProps) {
+export function ApplicationForm({ mode, programId: preset, showHousePicker = false, initialHouse, idPrefix = "" }: ApplicationFormProps) {
   const router = useRouter();
   const draftKey = `bo_draft_${preset ?? "apply"}`;
   const [programId, setProgramId] = useState<ProgramId | null>(preset ?? initialHouse ?? null);
@@ -90,6 +92,22 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
     }
     restored.current = true;
   }, [draftKey, preset]);
+
+  // The pop up and the page form share one draft: when one closes, the other picks up what was typed.
+  useEffect(() => {
+    const onSync = (e: Event) => {
+      const d = (e as CustomEvent<{ key: string; from: string }>).detail;
+      if (!d || d.key !== draftKey || d.from === idPrefix) return;
+      try {
+        const raw = sessionStorage.getItem(draftKey);
+        if (raw) setValues((v) => ({ ...EMPTY, ...JSON.parse(raw).values, consent: v.consent }));
+      } catch {
+        /* ignore */
+      }
+    };
+    window.addEventListener("bo:draft-sync", onSync);
+    return () => window.removeEventListener("bo:draft-sync", onSync);
+  }, [draftKey, idPrefix]);
 
   useEffect(() => {
     if (!restored.current) return;
@@ -258,12 +276,12 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
       onSubmit={onSubmit}
       noValidate
       className="relative scroll-mt-24 border border-ink bg-white p-6 text-ink sm:p-10"
-      aria-describedby="form-status"
+      aria-describedby={`${idPrefix}form-status`}
     >
       {/* Honeypot: hidden from people, tempting to bots */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-        <label htmlFor="company">Company</label>
-        <input id="company" name="company" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        <label htmlFor={`${idPrefix}company`}>Company</label>
+        <input id={`${idPrefix}company`} name="company" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
       </div>
 
       {showHousePicker && step === 1 ? (
@@ -311,23 +329,23 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
       {step === 1 ? (
         <div className="mt-6 grid gap-5 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <TextField id="student_name" label={L.student_name} value={values.student_name} onChange={set("student_name")} onBlur={blur("student_name")} error={errors.student_name} autoComplete="off" maxLength={80} />
+            <TextField id={`${idPrefix}student_name`} label={L.student_name} value={values.student_name} onChange={set("student_name")} onBlur={blur("student_name")} error={errors.student_name} autoComplete="off" maxLength={80} />
           </div>
-          <SelectField id="age" label={L.age} value={values.age} onChange={set("age")} onBlur={blur("age")} options={program ? ageOptions(program) : []} placeholder={f.placeholders.select} error={errors.age} />
-          <SelectField id="grade" label={L.grade} value={values.grade} onChange={set("grade")} onBlur={blur("grade")} options={program ? gradeOptions(program) : []} placeholder={f.placeholders.select} error={errors.grade} />
+          <SelectField id={`${idPrefix}age`} label={L.age} value={values.age} onChange={set("age")} onBlur={blur("age")} options={program ? ageOptions(program) : []} placeholder={f.placeholders.select} error={errors.age} />
+          <SelectField id={`${idPrefix}grade`} label={L.grade} value={values.grade} onChange={set("grade")} onBlur={blur("grade")} options={program ? gradeOptions(program) : []} placeholder={f.placeholders.select} error={errors.grade} />
           <div className="sm:col-span-2">
-            <TextField id="school" label={L.school} value={values.school} onChange={set("school")} onBlur={blur("school")} error={errors.school} autoComplete="off" maxLength={120} />
+            <TextField id={`${idPrefix}school`} label={L.school} value={values.school} onChange={set("school")} onBlur={blur("school")} error={errors.school} autoComplete="off" maxLength={120} />
           </div>
-          <SelectField id="board" label={L.board} value={values.board} onChange={set("board")} onBlur={blur("board")} options={[...BOARDS]} placeholder={f.placeholders.select} error={errors.board} />
-          <TextField id="city" label={L.city} value={values.city} onChange={set("city")} onBlur={blur("city")} error={errors.city} autoComplete="address-level2" maxLength={60} />
+          <SelectField id={`${idPrefix}board`} label={L.board} value={values.board} onChange={set("board")} onBlur={blur("board")} options={[...BOARDS]} placeholder={f.placeholders.select} error={errors.board} />
+          <TextField id={`${idPrefix}city`} label={L.city} value={values.city} onChange={set("city")} onBlur={blur("city")} error={errors.city} autoComplete="address-level2" maxLength={60} />
           {campuses.length ? (
             <div className="sm:col-span-2">
-              <SelectField id="preferred_campus" label={L.preferred_campus} value={values.preferred_campus} onChange={set("preferred_campus")} onBlur={blur("preferred_campus")} options={campuses} placeholder={f.placeholders.select} error={errors.preferred_campus} />
+              <SelectField id={`${idPrefix}preferred_campus`} label={L.preferred_campus} value={values.preferred_campus} onChange={set("preferred_campus")} onBlur={blur("preferred_campus")} options={campuses} placeholder={f.placeholders.select} error={errors.preferred_campus} />
             </div>
           ) : null}
           {isHackathon ? (
             <div className="sm:col-span-2">
-              <TextField id="friends" label={L.friends} value={values.friends} onChange={set("friends")} hint={f.friendsHint} optional maxLength={300} />
+              <TextField id={`${idPrefix}friends`} label={L.friends} value={values.friends} onChange={set("friends")} hint={f.friendsHint} optional maxLength={300} />
             </div>
           ) : null}
           <div className="sm:col-span-2">
@@ -338,10 +356,10 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
         </div>
       ) : (
         <div className="mt-6 grid gap-5">
-          <TextField id="parent_name" label={L.parent_name} value={values.parent_name} onChange={set("parent_name")} onBlur={blur("parent_name")} error={errors.parent_name} autoComplete="name" maxLength={80} />
-          <TextField id="parent_whatsapp" label={L.parent_whatsapp} value={values.parent_whatsapp} onChange={set("parent_whatsapp")} onBlur={blur("parent_whatsapp")} error={errors.parent_whatsapp} hint={f.phoneHint} type="tel" inputMode="tel" autoComplete="tel-national" prefix="+91" maxLength={14} placeholder="98765 43210" />
-          <TextField id="parent_email" label={L.parent_email} value={values.parent_email} onChange={set("parent_email")} onBlur={blur("parent_email")} error={errors.parent_email} type="email" inputMode="email" autoComplete="email" maxLength={120} />
-          <CheckboxField id="consent" checked={values.consent} onChange={(v) => set("consent")(v)} error={errors.consent}>
+          <TextField id={`${idPrefix}parent_name`} label={L.parent_name} value={values.parent_name} onChange={set("parent_name")} onBlur={blur("parent_name")} error={errors.parent_name} autoComplete="name" maxLength={80} />
+          <TextField id={`${idPrefix}parent_whatsapp`} label={L.parent_whatsapp} value={values.parent_whatsapp} onChange={set("parent_whatsapp")} onBlur={blur("parent_whatsapp")} error={errors.parent_whatsapp} hint={f.phoneHint} type="tel" inputMode="tel" autoComplete="tel-national" prefix="+91" maxLength={14} placeholder="98765 43210" />
+          <TextField id={`${idPrefix}parent_email`} label={L.parent_email} value={values.parent_email} onChange={set("parent_email")} onBlur={blur("parent_email")} error={errors.parent_email} type="email" inputMode="email" autoComplete="email" maxLength={120} />
+          <CheckboxField id={`${idPrefix}consent`} checked={values.consent} onChange={(v) => set("consent")(v)} error={errors.consent}>
             {f.consent}{" "}
             <Link href="/privacy" target="_blank" className="underline underline-offset-2">
               {f.privacyLink}
@@ -359,7 +377,7 @@ export function ApplicationForm({ mode, programId: preset, showHousePicker = fal
         </div>
       )}
 
-      <div id="form-status" aria-live="polite" className="mt-4">
+      <div id={`${idPrefix}form-status`} aria-live="polite" className="mt-4">
         {status === "error" && serverMsg ? (
           <div className="border border-ink/15 bg-linen p-5">
             <p className="text-sm font-bold">{serverMsg}</p>
