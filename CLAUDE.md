@@ -153,7 +153,7 @@ Day 2. Build, test, break, rebuild. Final demos before the judges.
 Judged on what works. Not on what was planned. It works, live, in front of the judges. It solves the problem the team chose. The team can explain every part of how it works. It was built here, by the team, in two days.
 
 **05. What is at stake** (rewritten 26 November 2026; Techfest is no longer named anywhere on the site)
-₹20,000 prize pool. Top 3 projects win cash. Split (DRAFT, for BeOutlier to confirm): 1st ₹10,000, 2nd ₹6,000, 3rd ₹4,000, each a cash prize for the team.
+₹20,000 prize pool. Top 3 projects win cash. Split (confirmed by BeOutlier, 26 November 2026): 1st ₹10,000, 2nd ₹6,000, 3rd ₹4,000, each a cash prize for the team.
 The best teams also earn internship opportunities with stalwarts in AI and engineering.
 For every student: a taste of building something cool with AI and circuits; every student keeps what they build; a room of geniuses; global exposure; a strong pre collegiate profile; a globally recognised certificate.
 

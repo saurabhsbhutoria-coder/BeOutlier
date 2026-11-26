@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/hackathon" },
 };
 
-/** Prize pool, ₹20,000 across the top 3 projects (26 November 2026). Split is a DRAFT for BeOutlier to confirm. */
+/** Prize pool, ₹20,000 across the top 3 projects (26 November 2026). Split confirmed by BeOutlier. */
 const prizes = [
   { place: "1st place", amount: "₹10,000" },
   { place: "2nd place", amount: "₹6,000" },
