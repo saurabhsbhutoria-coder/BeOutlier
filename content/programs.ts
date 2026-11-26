@@ -59,6 +59,11 @@ export interface Program {
   seats: { total: number | null; left: number | null };
   selective: boolean;
   status: Status;
+  /**
+   * false: the landing page is offline (it redirects to the houses on Home)
+   * and the house shows a Coming soon mark instead of its button.
+   */
+  published: boolean;
   formType: FormType;
   route: "/hackathon" | "/founders" | "/engineers" | "/designers";
   season: "summer-2027" | "december-2026";
@@ -87,6 +92,7 @@ export const programs: Program[] = [
     seats: { total: 51, left: null },
     selective: false,
     status: "open",
+    published: true,
     formType: "booking",
     route: "/hackathon",
     season: "december-2026",
@@ -110,6 +116,7 @@ export const programs: Program[] = [
     seats: { total: null, left: null },
     selective: true,
     status: "open",
+    published: true,
     formType: "apply",
     route: "/founders",
     season: "summer-2027",
@@ -143,6 +150,7 @@ export const programs: Program[] = [
     seats: { total: null, left: null },
     selective: true,
     status: "open",
+    published: false,
     formType: "apply",
     route: "/engineers",
     season: "summer-2027",
@@ -166,6 +174,7 @@ export const programs: Program[] = [
     seats: { total: null, left: null },
     selective: true,
     status: "open",
+    published: false,
     formType: "apply",
     route: "/designers",
     season: "summer-2027",

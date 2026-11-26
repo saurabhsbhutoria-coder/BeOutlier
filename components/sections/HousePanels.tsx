@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink, ComingSoonMark } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/bits";
 import { detailsLine, type Program } from "@/content/programs";
 
@@ -116,9 +116,13 @@ export function HousePanels({ panels }: { panels: HousePanel[] }) {
               <p className="max-w-md text-lg leading-snug sm:text-xl">{p.cardLine}</p>
               <p className="label border-t border-white/25 pt-3 !text-[11px] leading-relaxed text-white/80">{detailsLine(p)}</p>
               <div className="pt-1">
-                <ButtonLink href={p.route} variant="mint">
-                  Enter the house
-                </ButtonLink>
+                {p.published ? (
+                  <ButtonLink href={p.route} variant="mint">
+                    Enter the house
+                  </ButtonLink>
+                ) : (
+                  <ComingSoonMark tone="light" />
+                )}
               </div>
             </div>
           </article>

@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
+import { programs } from "@/content/programs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
-    { path: "/hackathon", priority: 0.9 },
-    { path: "/founders", priority: 0.9 },
-    { path: "/engineers", priority: 0.9 },
-    { path: "/designers", priority: 0.9 },
+    // Landing pages, only while published
+    ...programs.filter((p) => p.published).map((p) => ({ path: p.route, priority: 0.9 })),
     { path: "/apply", priority: 0.8 },
     { path: "/about", priority: 0.7 },
     { path: "/programs", priority: 0.7 },

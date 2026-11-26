@@ -65,9 +65,15 @@ export function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-white/80">
             {houses().map((h) => (
               <li key={h.id}>
-                <Link href={h.route} className="transition-colors hover:text-mint">
-                  {h.houseName}
-                </Link>
+                {h.published ? (
+                  <Link href={h.route} className="transition-colors hover:text-mint">
+                    {h.houseName}
+                  </Link>
+                ) : (
+                  <span className="text-white/55">
+                    {h.houseName} <span className="label ml-1 !text-[10px] text-mint">Coming soon</span>
+                  </span>
+                )}
               </li>
             ))}
             {hackathon ? (

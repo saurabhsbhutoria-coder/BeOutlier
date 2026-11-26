@@ -463,3 +463,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 - About Us (/about): what BeOutlier is, the vision, how it started (Last Summer, the orientation where 70 came against 25 expected, 45 teenagers, the flea market), the numbers, the three levels, the founding team (Saurabh Bhutoria: product, student experience and brand; Ishan Dubey: sales and partnerships), advisors and the mentors. Team, advisors, the orientation and host schools come from BeOutlier's One Pager (content/about.ts). Founder photos: initials until real photos are added.
 
 **Programs:** all three houses are ₹40,000. Founders Fellowship is a day scholar program; Robotics Fellowship and Design and Architecture Fellowship are residential. "Residential" is the format, never part of the name.
+
+## 15. Unpublished landing pages (26 November 2026)
+
+/engineers (Robotics Fellowship) and /designers (Design and Architecture Fellowship) are offline: each redirects to the houses on Home (/#houses), temporarily, and is left out of the sitemap. Both houses stay on Home and /programs exactly as before; their "Enter the house" button is replaced by a "Coming soon" mark (not a link), and the footer lists them with "Coming soon". The thank you page after a hackathon booking no longer links to /engineers. To publish a page again, set `published: true` on it in content/programs.ts.

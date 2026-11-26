@@ -104,3 +104,17 @@ export function Button({
     </button>
   );
 }
+
+/**
+ * Stands where a house button would be while its page is unpublished
+ * (Program.published false). Not a link.
+ */
+export function ComingSoonMark({ tone = "ink", className = "" }: { tone?: "ink" | "light"; className?: string }) {
+  const look = tone === "light" ? "border-white/45 text-white" : "border-ink/35 text-ink";
+  return (
+    <span className={`inline-flex min-h-12 items-center gap-2.5 border border-dashed px-5 text-[14px] font-semibold tracking-[0.01em] ${look} ${className}`}>
+      <span className="size-2 rounded-full bg-mint" aria-hidden="true" />
+      Coming soon
+    </span>
+  );
+}

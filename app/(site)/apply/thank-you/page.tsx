@@ -65,7 +65,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
         </div>
       </section>
 
-      {isBooking && engineers ? (
+      {isBooking && engineers?.published ? (
         <Section tone="sand">
           <Eyebrow label={t.houseOfEngineersEyebrow} index={engineers.houseName ?? ""} tone="ink" />
           <Stack lines={[engineers.tagline]} className="mt-4 max-w-4xl text-5xl sm:text-7xl" />

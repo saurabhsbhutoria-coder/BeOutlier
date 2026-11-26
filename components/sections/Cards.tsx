@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink, ComingSoonMark } from "@/components/ui/Button";
 import { StatusBadge } from "@/components/ui/bits";
 import { ctaLabel, detailsLine, eligibilityText, feeText, seatsText, type Program } from "@/content/programs";
 import { iitBombayTag } from "@/content/site";
@@ -133,9 +133,13 @@ export function HouseCard({ program, index }: { program: Program; index: number 
         {detailsLine(program)}
       </p>
       <div className="mt-auto pt-8">
-        <ButtonLink href={program.route} variant="ink" className="w-full">
-          Enter the house
-        </ButtonLink>
+        {program.published ? (
+          <ButtonLink href={program.route} variant="ink" className="w-full">
+            Enter the house
+          </ButtonLink>
+        ) : (
+          <ComingSoonMark className="w-full justify-center" />
+        )}
       </div>
     </article>
   );
