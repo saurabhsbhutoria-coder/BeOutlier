@@ -134,14 +134,14 @@ Ages 14 to 19. Every student builds their own robot. No experience needed.
 ₹8,000 per student. 51 seats. Full kit included, yours to keep. [Book a seat]
 
 **01. The challenge**
-Four problem statements. You take one. Every student builds their own, with Arduino and AI. Each track is a problem engineers are solving right now.
+Four problem statements. You take one. Every student builds the same glove and robocar from the kit, then makes it solve one problem. Each track is a problem engineers are solving right now. (Tracks reworked 26 November 2026 so each one can be built with the kit in section 03. The old tracks, self driving car, robotic arm, face recognition door and waste bin, needed parts the kit does not have.)
 
-| Track | Project | What it does |
-|---|---|---|
-| Autonomy | Self driving car | A car that reads the road ahead and steers around obstacles on its own. |
-| Human machine interaction | Gesture controlled robotic arm | A camera reads your hand. The arm follows every move. |
-| Computer vision | Face recognition door | Recognises the faces it knows and opens. Stays locked for everyone else. |
-| Sustainability | Smart waste bin | Sees what goes in and sorts it into wet or dry waste, by itself. |
+| Track | Project | What it does | Kit parts it uses |
+|---|---|---|---|
+| Human machine interaction | Gesture driven robocar | Tilt your hand and the car follows. Lean forward to go, flatten your hand to stop. | Motion sensor, both ESP32 boards, motor driver |
+| Speech AI | Voice commanded robocar | Say go, stop, left or right. The car hears you and obeys. | Microphone, both ESP32 boards, motor driver |
+| Machine learning | Custom gesture recognition | Train an AI model on gestures you invent, a circle, a swipe, a shake, and turn each one into a move. | Motion sensor, ESP32, robocar |
+| Assistive technology | Hands free mobility | A model wheelchair steered by small hand movements, for people who cannot grip a joystick. | Motion sensor, robocar |
 
 **02. Starting from zero**
 You walk in with curiosity. You walk out having built a working robot. No coding or electronics needed. Day 1 opens with training in Arduino circuits and AI, and every student gets their own kit before the build begins.

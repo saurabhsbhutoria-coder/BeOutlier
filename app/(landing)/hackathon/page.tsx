@@ -92,30 +92,31 @@ export default function HackathonPage() {
       <Section tone="white">
         <Heading label="The challenge" index="01" lines={["Four problem statements.", "You take one."]} />
         <p className="-mt-6 mb-12 max-w-2xl text-xl leading-snug text-ink-muted">
-          Every student builds their own, with Arduino and AI. Each track is a problem engineers are solving right now.
+          Every student builds the same glove and robocar from the kit, then makes it solve one problem. Each track is a
+          problem engineers are solving right now.
         </p>
         <Reveal>
           <ProjectGrid
             items={[
               {
-                kicker: "Autonomy",
-                title: "Self driving car",
-                text: "A car that reads the road ahead and steers around obstacles on its own.",
-              },
-              {
                 kicker: "Human machine interaction",
-                title: "Gesture controlled robotic arm",
-                text: "A camera reads your hand. The arm follows every move.",
+                title: "Gesture driven robocar",
+                text: "Tilt your hand and the car follows. Lean forward to go, flatten your hand to stop.",
               },
               {
-                kicker: "Computer vision",
-                title: "Face recognition door",
-                text: "Recognises the faces it knows and opens. Stays locked for everyone else.",
+                kicker: "Speech AI",
+                title: "Voice commanded robocar",
+                text: "Say go, stop, left or right. The car hears you and obeys.",
               },
               {
-                kicker: "Sustainability",
-                title: "Smart waste bin",
-                text: "Sees what goes in and sorts it into wet or dry waste, by itself.",
+                kicker: "Machine learning",
+                title: "Custom gesture recognition",
+                text: "Train an AI model on gestures you invent, a circle, a swipe, a shake, and turn each one into a move.",
+              },
+              {
+                kicker: "Assistive technology",
+                title: "Hands free mobility",
+                text: "A model wheelchair steered by small hand movements, for people who cannot grip a joystick.",
               },
             ]}
           />
