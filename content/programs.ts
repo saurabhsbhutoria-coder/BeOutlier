@@ -88,7 +88,7 @@ export const programs: Program[] = [
     cities: ["Mumbai"],
     venue: "The Green Acres Academy, Chembur",
     eligibility: { kind: "age", min: 14, max: 19 },
-    fee: { kind: "fixed", amount: 8000 },
+    fee: { kind: "fixed", amount: 7999 },
     seats: { total: 51, left: null },
     selective: false,
     status: "open",

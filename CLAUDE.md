@@ -123,7 +123,7 @@ Average is crowded. Be an Outlier.
 
 ## 8. Landing page: Robotics Hackathon (/hackathon)
 
-Rewritten 26 November 2026 to read as a serious build event, not a hobby day (structure from established student hackathons: tracks, format, judging, stakes). Fee changed to ₹8,000 per student; meals are not included.
+Rewritten 26 November 2026 to read as a serious build event, not a hobby day (structure from established student hackathons: tracks, format, judging, stakes). Fee changed to ₹7,999 per student (was ₹8,000, changed again 26 November 2026); meals are not included.
 Solo builds (26 November 2026, later the same day): not a team hackathon. Every student builds their own robot and keeps the full kit. Never write "teams of 3" or "17 teams".
 
 **Hero** (26 November 2026: full bleed video background like Home, public/media/hackathon/, desktop and phone files)
@@ -131,7 +131,7 @@ Build a robot that thinks.
 [IIT Bombay tag with logo] Mentored by folks from IIT Bombay
 Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur.
 Ages 14 to 19. Every student builds their own robot. No experience needed.
-₹8,000 per student. 51 seats. Full kit included, yours to keep. [Book a seat]
+₹7,999 per student. 51 seats. Full kit included, yours to keep. [Book a seat]
 
 **01. The challenge**
 Four problem statements. You take one. Every student builds the same glove and robocar from the kit, then makes it solve one problem. Each track is a problem engineers are solving right now. (Tracks reworked 26 November 2026 so each one can be built with the kit in section 03. The old tracks, self driving car, robotic arm, face recognition door and waste bin, needed parts the kit does not have.)
@@ -178,7 +178,7 @@ Included: the full kit, 16 components. Your child keeps it.
 Certificate: a numbered BeOutlier certificate, signed and stamped, for every student.
 Meals: not included. Please send a packed lunch and water.
 Supervision: 1 mentor for every 9 students.
-Fee: ₹8,000 per student. Paid online at booking.
+Fee: ₹7,999 per student. Paid online at booking.
 
 **Close**
 51 seats. 51 robots. Then it closes.
