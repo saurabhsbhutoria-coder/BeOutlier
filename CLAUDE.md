@@ -16,7 +16,7 @@ The site must feel like an exclusive inner circle that teenagers want in on and 
 - Banned words: unlock, empower, holistic, future ready, 21st century skills, world class, transformative, journey, nurture, potential.
 - Banned phrase: "Real money, real customers".
 - No stock photos. Only real student photos and videos.
-- Every claim must be true. Write "IIT Bombay alumni" (updated 23 November 2026, was "IIT Bombay students"), never "IIT Bombay" alone, except the Techfest prize line. The IIT Bombay logo is used only on the Robotics Hackathon tag (see section 14).
+- Every claim must be true. Write "IIT Bombay alumni" (updated 23 November 2026, was "IIT Bombay students"), never "IIT Bombay" alone. The IIT Bombay logo is used only on the Robotics Hackathon tag (see section 14).
 
 ## 3. Tech setup
 
@@ -152,9 +152,10 @@ Day 2. Build, test, break, rebuild. Final demos before the judges.
 **04. How teams are judged** (DRAFT, for BeOutlier to confirm)
 Judged on what works. Not on what was planned. It works, live, in front of the judges. It solves the problem the team chose. The team can explain every part of how it works. It was built here, by the team, in two days.
 
-**05. What is at stake** (for the best teams)
-An internship.
-A day inside IIT Bombay with the students who build for Techfest.
+**05. What is at stake** (rewritten 26 November 2026; Techfest is no longer named anywhere on the site)
+₹20,000 prize pool. Top 3 projects win cash. Split (DRAFT, for BeOutlier to confirm): 1st ₹10,000, 2nd ₹6,000, 3rd ₹4,000, each a cash prize for the team.
+The best teams also earn internship opportunities with stalwarts in AI and engineering.
+For every student: a taste of building something cool with AI and circuits; every student keeps what they build; a room of geniuses; global exposure; a strong pre collegiate profile; a globally recognised certificate.
 
 **06. Who you build with**
 IIT Bombay alumni who build this for fun. (BeOutlier chose to keep this line, 25 November 2026.)
@@ -413,7 +414,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 
 **Hackathon payment**: paid online at booking. The booking form collects details, then sends the parent to the payment page. Gateway to be added by BeOutlier.
 
-**Confirmed true and cleared**: "A day inside IIT Bombay with the students who build for Techfest". Every school named under "Previously hosted at".
+**Confirmed true and cleared**: Every school named under "Previously hosted at".
 
 **Copy changes**: "Applying takes 5 minutes." 45 teenagers in 2025. 150+ Outliers so far.
 

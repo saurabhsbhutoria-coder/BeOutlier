@@ -458,7 +458,7 @@ Raw videos are fine; I will compress them for the web.
 4. Founders: remaining campuses (`[3 more]` in Mumbai and Pune), dates, and the fee per campus. The Home card says "From ₹25,000" while the campus table says "₹25,000 or ₹40,000": which campuses are which?
 5. `[X]` teenagers in 2025 and `[X]` Outliers so far.
 6. **Hackathon payment.** ₹10,000: is it paid online at booking, or collected after the confirmation call? The plan assumes after the call, so no payment gateway. If you want online payment, Razorpay is a separate step.
-7. **"A day inside IIT Bombay with the students who build for Techfest."** This names IIT Bombay as a place and names Techfest. Please confirm both are true and cleared, given the rule about never using "IIT Bombay" alone.
+7. (Removed 26 November 2026: the Techfest line is off the site.)
 
 **Copy the build needs that `CLAUDE.md` does not have**
 

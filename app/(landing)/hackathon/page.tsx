@@ -4,7 +4,7 @@ import { CloseBlock, FormSection, Heading, VideoHero } from "@/components/sectio
 import { IitBombayTag } from "@/components/sections/Cards";
 import { MentorRail } from "@/components/sections/MentorRail";
 import { DayPlan, InfoTable, NumberedList, ProjectGrid } from "@/components/ui/Lists";
-import { Section, Stack } from "@/components/ui/bits";
+import { Section } from "@/components/ui/bits";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyApplyBar } from "@/components/layout/StickyApplyBar";
 import { TrackViewContent } from "@/components/tracking/TrackViewContent";
@@ -17,9 +17,38 @@ const program = getProgram("hackathon");
 export const metadata: Metadata = {
   title: "Robotics and AI Hackathon, Mumbai. 26 and 27 December.",
   description:
-    "A two day robotics and AI hackathon for ages 14 to 19 at The Green Acres Academy, Chembur. Four problem statements, teams of 3, judged on working builds. Mentored by folks from IIT Bombay. No experience needed.",
+    "A two day robotics and AI hackathon for ages 14 to 19 at The Green Acres Academy, Chembur. Four problem statements, teams of 3, judged on working builds. ₹20,000 prize pool for the top 3 projects. Mentored by folks from IIT Bombay. No experience needed.",
   alternates: { canonical: "/hackathon" },
 };
+
+/** Prize pool, ₹20,000 across the top 3 projects (26 November 2026). Split is a DRAFT for BeOutlier to confirm. */
+const prizes = [
+  { place: "1st place", amount: "₹10,000" },
+  { place: "2nd place", amount: "₹6,000" },
+  { place: "3rd place", amount: "₹4,000" },
+];
+
+/** What every student leaves with, in BeOutlier's words (26 November 2026). */
+const everyStudent = [
+  {
+    title: "A taste of the real thing.",
+    text: "What it feels like to build something cool with AI and circuits, and watch it work.",
+  },
+  { title: "You keep what you build.", text: "Every student takes their build home." },
+  {
+    title: "A room of geniuses.",
+    text: "Two days beside sharp young builders and the engineers who mentor them.",
+  },
+  {
+    title: "Global exposure.",
+    text: "Problems engineers around the world are solving right now, and the tools they use to solve them.",
+  },
+  {
+    title: "A strong pre collegiate profile.",
+    text: "A working build and a result to point to, long before college applications.",
+  },
+  { title: "A globally recognised certificate.", text: "Every student gets one." },
+];
 
 /**
  * Rewritten 26 November 2026: a serious build event, not a hobby day.
@@ -118,12 +147,37 @@ export default function HackathonPage() {
       </Section>
 
       <Section tone="ink">
-        <Heading label="What is at stake" index="05" lines={[]} tone="mint" className="!mb-6" />
-        <p className="label text-white/70">For the best teams</p>
-        <Stack lines={["An internship."]} className="mt-4 text-6xl text-mint sm:text-9xl" />
-        <p className="display mt-8 max-w-4xl text-3xl sm:text-5xl">
-          A day inside IIT Bombay with the students who build for Techfest.
+        <Heading label="What is at stake" index="05" lines={["₹20,000 prize pool.", "Top 3 projects win."]} tone="mint" />
+        <Reveal>
+          <ol className="grid gap-3 sm:grid-cols-3">
+            {prizes.map((prize, i) => (
+              <li
+                key={prize.place}
+                className={`rounded-[22px] border p-6 sm:p-7 ${
+                  i === 0 ? "border-mint bg-mint text-ink" : "border-white/20 bg-white/5 text-white"
+                }`}
+              >
+                <p className={`label ${i === 0 ? "text-ink/70" : "text-white/60"}`}>{prize.place}</p>
+                <p className="display mt-4 text-6xl sm:text-7xl">{prize.amount}</p>
+                <p className={`mt-3 text-base ${i === 0 ? "text-ink/80" : "text-white/70"}`}>Cash prize for the team.</p>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+        <p className="mt-8 max-w-3xl text-xl leading-snug text-white sm:text-2xl">
+          The best teams also earn internship opportunities with stalwarts in AI and engineering.
         </p>
+
+        <p className="label mt-16 text-mint sm:mt-20">For every student</p>
+        <ul className="mt-6 grid gap-x-10 border-t border-white/25 sm:grid-cols-2 lg:grid-cols-3">
+          {everyStudent.map((item, i) => (
+            <li key={item.title} className="border-b border-white/15 py-6">
+              <p className="label text-white/50">{String(i + 1).padStart(2, "0")}</p>
+              <p className="display mt-3 text-2xl text-white sm:text-3xl">{item.title}</p>
+              <p className="mt-2 text-base leading-snug text-white/70">{item.text}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section tone="linen">
