@@ -1,3 +1,4 @@
+import { META_PIXEL_ID } from "@/lib/pixel";
 /**
  * Meta Conversions API: server side Lead event, deduplicated with the browser
  * Pixel through the shared event_id (the lead_id). Only parent contact data
@@ -22,7 +23,7 @@ export interface CapiLead {
 }
 
 export async function sendCapiLead(l: CapiLead): Promise<void> {
-  const pixel = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const pixel = META_PIXEL_ID;
   const token = process.env.META_CAPI_TOKEN;
   if (!pixel || !token) return;
   const version = process.env.META_GRAPH_VERSION || "v23.0";

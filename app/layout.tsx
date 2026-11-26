@@ -3,6 +3,7 @@ import { Anton, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
+import { META_PIXEL_ID, metaPixelBaseCode } from "@/lib/pixel";
 import { GoogleAnalytics } from "@/components/tracking/GoogleAnalytics";
 import { AttributionCapture } from "@/components/tracking/AttributionCapture";
 import { ScrollMotion } from "@/components/ui/ScrollMotion";
@@ -48,6 +49,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        {/* Meta Pixel Code */}
+        <script id="meta-pixel" dangerouslySetInnerHTML={{ __html: metaPixelBaseCode }} />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
+        {/* End Meta Pixel Code */}
       </head>
       <body>
         {children}
