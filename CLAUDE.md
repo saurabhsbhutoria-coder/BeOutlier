@@ -124,16 +124,17 @@ Average is crowded. Be an Outlier.
 ## 8. Landing page: Robotics Hackathon (/hackathon)
 
 Rewritten 26 November 2026 to read as a serious build event, not a hobby day (structure from established student hackathons: tracks, format, judging, stakes). Fee changed to ₹8,000 per student; meals are not included.
+Solo builds (26 November 2026, later the same day): not a team hackathon. Every student builds their own robot and keeps the full kit. Never write "teams of 3" or "17 teams".
 
 **Hero** (26 November 2026: full bleed video background like Home, public/media/hackathon/, desktop and phone files)
 Build a robot that thinks.
 [IIT Bombay tag with logo] Mentored by folks from IIT Bombay
 Robotics and AI Hackathon. 26 and 27 December. The Green Acres Academy, Chembur.
-Ages 14 to 19. Teams of 3. No experience needed.
-₹8,000 per student. 51 seats. 17 teams. [Book a seat]
+Ages 14 to 19. Every student builds their own robot. No experience needed.
+₹8,000 per student. 51 seats. Full kit included, yours to keep. [Book a seat]
 
 **01. The challenge**
-Four problem statements. Your team takes one. Every team builds with Arduino and AI. Each track is a problem engineers are solving right now.
+Four problem statements. You take one. Every student builds their own, with Arduino and AI. Each track is a problem engineers are solving right now.
 
 | Track | Project | What it does |
 |---|---|---|
@@ -143,34 +144,44 @@ Four problem statements. Your team takes one. Every team builds with Arduino and
 | Sustainability | Smart waste bin | Sees what goes in and sorts it into wet or dry waste, by itself. |
 
 **02. Starting from zero**
-You walk in with curiosity. You walk out having built a working robot. No coding or electronics needed. Day 1 opens with training in Arduino circuits and AI, and every team gets the full hardware kit before the build begins.
+You walk in with curiosity. You walk out having built a working robot. No coding or electronics needed. Day 1 opens with training in Arduino circuits and AI, and every student gets their own kit before the build begins.
 
-**03. The format** (10 am to 7 pm, both days)
-Day 1. Training in Arduino circuits and AI. Teams lock in their problem statement. The build begins.
+**03. Your kit** (from BeOutlier's bill of materials, navator-robocar-kit-bom.docx, 26 November 2026; listed in content/hackathonKit.ts)
+The full kit. Yours to keep. 16 components: a glove controller (reads your hand and your voice) and a two wheel robocar that follows it over WiFi.
+The glove: motion sensor (BMI270 6 axis IMU), microphone (SPH0645), sensor cable (Qwiic), fabric glove with strap.
+The robocar: motor driver (TB6612FNG), 2 geared DC motors (100 RPM BO), wheel set (two 65 mm wheels and a caster), 4 rechargeable AA cells, switched battery holder, leads and mounting set.
+For both builds: 2 ESP32 boards (Arduino compatible), 2 power banks, 2 USB cables, 2 mini breadboards, jumper wire set, 2 LEDs and 2 resistors.
+Each part has a site drawn illustration (components/sections/KitArt.tsx) until real photos of the kit are added. Prices and suppliers are internal and never shown.
+
+**04. The format** (10 am to 7 pm, both days)
+Day 1. Training in Arduino circuits and AI. You lock in your problem statement. The build begins.
 Day 2. Build, test, break, rebuild. Final demos before the judges.
 
-**04. How teams are judged** (DRAFT, for BeOutlier to confirm)
-Judged on what works. Not on what was planned. It works, live, in front of the judges. It solves the problem the team chose. The team can explain every part of how it works. It was built here, by the team, in two days.
+**05. How builds are judged** (DRAFT, for BeOutlier to confirm)
+Judged on what works. Not on what was planned. It works, live, in front of the judges. It solves the problem you chose. You can explain every part of how it works. You built it here, yourself, in two days.
 
-**05. What is at stake** (rewritten 26 November 2026; Techfest is no longer named anywhere on the site)
-₹20,000 prize pool. Top 3 projects win cash. Split (confirmed by BeOutlier, 26 November 2026): 1st ₹10,000, 2nd ₹6,000, 3rd ₹4,000, each a cash prize for the team.
-The best teams also earn internship opportunities with stalwarts in AI and engineering.
-For every student: a taste of building something cool with AI and circuits; every student keeps what they build; a room of geniuses; global exposure; a strong pre collegiate profile; a globally recognised certificate.
+**06. What is at stake** (rewritten 26 November 2026; Techfest is no longer named anywhere on the site)
+₹20,000 prize pool. Top 3 projects win cash. Split (confirmed by BeOutlier, 26 November 2026): 1st ₹10,000, 2nd ₹6,000, 3rd ₹4,000.
+The best builders also earn internship opportunities with stalwarts in AI and engineering.
+For every student: a taste of building something cool with AI and circuits; you keep what you build (robot and full kit); a room of geniuses; global exposure; a strong pre collegiate profile; close mentoring (1 mentor for every 9 students).
+The certificate: "Signed. Stamped. Numbered." A BeOutlier Certificate of Achievement for every student, naming the robot they built: signed by the program director and the lead mentor, stamped by BeOutlier, numbered one per student. Shown with the certificate template. Never write "globally recognised". Issue the real certificates exactly as the template shows.
 
-**06. Who you build with**
+**07. Who you build with**
 IIT Bombay alumni who build this for fun. (BeOutlier chose to keep this line, 25 November 2026.)
 Mentors: Anish Mayanache, Gagan G, Giridhara Datta, Prabhakar J, Woodrow Gonsalves, each with an IIT Bombay badge.
 
-**07. For parents**
+**08. For parents**
 Venue: The Green Acres Academy, Chembur.
 Timings: 10 am to 7 pm, both days.
-Included: every hardware part and kit the team builds with.
+Format: every student builds their own robot.
+Included: the full kit, 16 components. Your child keeps it.
+Certificate: a numbered BeOutlier certificate, signed and stamped, for every student.
 Meals: not included. Please send a packed lunch and water.
 Supervision: 1 mentor for every 9 students.
 Fee: ₹8,000 per student. Paid online at booking.
 
 **Close**
-51 seats. 17 teams. Booking closes when seats fill.
+51 seats. 51 robots. Then it closes.
 [Book a seat]
 
 **Form**

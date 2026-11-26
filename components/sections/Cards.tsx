@@ -60,7 +60,7 @@ export function DropCard({ program, eyebrow }: { program: Program; eyebrow: stri
     ["Venue", program.venue ?? program.placeLine],
     ["Timings", "10 am to 7 pm, both days"],
     ["Ages", eligibilityText(program.eligibility)],
-    ["Fee", `${feeText(program.fee) ?? ""} per student. All hardware included`],
+    ["Fee", `${feeText(program.fee) ?? ""} per student. Full kit included`],
   ];
   return (
     <article className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20">
@@ -74,7 +74,7 @@ export function DropCard({ program, eyebrow }: { program: Program; eyebrow: stri
         </div>
         <h2 className="display mt-8 text-[clamp(56px,9vw,140px)]">{program.title}</h2>
         <p className="display mt-5 text-3xl text-mint sm:text-4xl">{program.tagline}</p>
-        <p className="mt-6 max-w-md text-lg text-white/75">Four tracks. Seventeen teams. Judged on what actually works. No experience needed.</p>
+        <p className="mt-6 max-w-md text-lg text-white/75">Four tracks. Every student builds their own robot and keeps the kit. No experience needed.</p>
         <IitBombayTag className="mt-8" />
       </div>
 

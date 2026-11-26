@@ -6,7 +6,17 @@ import { certificateLogos } from "@/content/site";
  * The certificate template, drawn in HTML so it stays sharp at any size.
  * Bracketed fields are placeholders filled per student.
  */
-export function Certificate({ className = "" }: { className?: string }) {
+export function Certificate({
+  className = "",
+  number = "BO 2027 0001",
+  event,
+}: {
+  className?: string;
+  /** Placeholder certificate number shown in the header */
+  number?: string;
+  /** What the project was built in; defaults to the Summer 2027 house line */
+  event?: string;
+}) {
   return (
     <figure
       className={`relative w-full overflow-hidden border border-ink bg-white text-ink shadow-[0_40px_90px_-30px_rgb(0_0_0/0.55)] ${className}`}
@@ -17,7 +27,7 @@ export function Certificate({ className = "" }: { className?: string }) {
           {/* Header band: the logo on its native mint */}
           <div className="flex items-center justify-between gap-4 bg-mint px-[5%] py-[3.2%]">
             <Logo className="h-[clamp(16px,3.4vw,34px)]" />
-            <p className="label !text-[clamp(6px,0.9vw,10px)] text-ink/75">Certificate no. [BO 2027 0001]</p>
+            <p className="label !text-[clamp(6px,0.9vw,10px)] text-ink/75">Certificate no. [{number}]</p>
           </div>
 
           {/* Body */}
@@ -41,8 +51,14 @@ export function Certificate({ className = "" }: { className?: string }) {
               <p className="mt-[2%] text-[clamp(8px,1.3vw,14px)] text-ink-muted">This certifies that</p>
               <p className="display mt-[1%] text-[clamp(22px,5.2vw,58px)] leading-none">[Student Name]</p>
               <p className="mt-[2.5%] max-w-[78%] text-[clamp(8px,1.3vw,14px)] leading-snug">
-                built <span className="font-semibold">[Project name]</span> in the{" "}
-                <span className="font-semibold">[Program]</span>, [House], Summer 2027.
+                built <span className="font-semibold">[Project name]</span>{" "}
+                {event ? (
+                  <>{event}</>
+                ) : (
+                  <>
+                    in the <span className="font-semibold">[Program]</span>, [House], Summer 2027.
+                  </>
+                )}
               </p>
             </div>
 

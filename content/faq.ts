@@ -59,7 +59,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "What is the Robotics Hackathon?",
-    a: `Two days, ${h.datesLine}, at ${h.venue}. ${eligibilityText(h.eligibility)}. No experience needed. ${feeText(h.fee)}, paid online at booking. Open to all, no test.`,
+    a: `Two days, ${h.datesLine}, at ${h.venue}. ${eligibilityText(h.eligibility)}. Every student builds their own robot and keeps the full kit. No experience needed. ${feeText(h.fee)}, paid online at booking. Open to all, no test.`,
   },
   {
     q: "How do I talk to someone?",
