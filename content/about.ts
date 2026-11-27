@@ -1,5 +1,5 @@
 /**
- * About Us facts (added 23 November 2026). Team roles, advisors, the
+ * About Us facts (added 23 November 2026). Team roles, the
  * orientation turnout and host schools come from BeOutlier's own One Pager;
  * the vision and story from CLAUDE.md. Never write "2025": say "Last Summer".
  */
@@ -30,11 +30,6 @@ export interface TeamMember {
 export const foundingTeam: TeamMember[] = [
   { name: "Saurabh Bhutoria", role: "Product, student experience and brand." },
   { name: "Ishan Dubey", role: "Sales and partnerships." },
-];
-
-export const advisors: TeamMember[] = [
-  { name: "Prerna Gupta", role: "Acres Foundation." },
-  { name: "Rohan Parikh", role: "The Green Acres Academy." },
 ];
 
 export const hostSchools = ["The Green Acres Academy", "Chatrabhuj Narsee School"];

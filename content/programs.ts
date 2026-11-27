@@ -25,11 +25,24 @@ export type Fee =
 export interface Campus {
   id: string;
   city: "Mumbai" | "Pune";
+  /** The school, e.g. "DSB International School" */
   name: string;
+  /** Neighbourhood, e.g. "Lower Parel" */
+  area: string;
+  /** Google Maps link that opens this exact school (checked 27 November 2026) */
+  maps: string;
+  /** Photo of the school; until set, the card shows a drawn stand in */
+  photo?: string;
   /** null renders a visible placeholder until announced */
   dates: string | null;
   /** null renders a visible placeholder until announced */
   fee: number | null;
+}
+
+/** A Google Maps search link; a place id pins it when the name alone finds more than one place. */
+function maps(query: string, placeId?: string): string {
+  const q = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+  return placeId ? `${q}&query_place_id=${placeId}` : q;
 }
 
 export type Format = "Day scholar" | "Residential" | "Day event";
@@ -120,11 +133,14 @@ export const programs: Program[] = [
     formType: "apply",
     route: "/founders",
     season: "summer-2027",
+    // Summer 2027 campuses (27 November 2026). Students pick any one. Dates to be announced.
     campuses: [
-      { id: "mumbai-lower-parel", city: "Mumbai", name: "Lower Parel", dates: null, fee: 40000 },
-      { id: "mumbai-chembur", city: "Mumbai", name: "Chembur", dates: null, fee: 40000 },
-      { id: "mumbai-kandivali", city: "Mumbai", name: "Kandivali", dates: null, fee: 40000 },
-      { id: "pune-amanora", city: "Pune", name: "Amanora", dates: null, fee: 40000 },
+      { id: "mumbai-lower-parel", city: "Mumbai", name: "DSB International School", area: "Lower Parel", maps: maps("DSB International School Lower Parel Mumbai"), dates: null, fee: 40000 },
+      { id: "mumbai-chembur", city: "Mumbai", name: "The Green Acres Academy", area: "Chembur", maps: maps("The Green Acres Academy, Chembur", "ChIJqykV-6XI5zsRkRHImal9IDQ"), dates: null, fee: 40000 },
+      { id: "mumbai-kandivali", city: "Mumbai", name: "Chatrabhuj Narsee School", area: "Kandivali", maps: maps("Chatrabhuj Narsee School Kandivali Mumbai"), dates: null, fee: 40000 },
+      { id: "mumbai-mulund", city: "Mumbai", name: "JBCN International School", area: "Mulund", maps: maps("JBCN International School Mulund Mumbai"), dates: null, fee: 40000 },
+      { id: "mumbai-navi-mumbai", city: "Mumbai", name: "Goldcrest International", area: "Vashi, Navi Mumbai", maps: maps("Goldcrest International, Navi Mumbai"), dates: null, fee: 40000 },
+      { id: "pune-amanora", city: "Pune", name: "Chatrabhuj Narsee School", area: "Amanora", maps: maps("Chatrabhuj Narsee School Pune"), dates: null, fee: 40000 },
     ],
     image: {
       src: "/media/founders/flea-market-jars.jpg",
@@ -243,5 +259,5 @@ export const statusBadge: Record<Status, string | null> = {
 /** Options for the preferred campus select (Founders). */
 export function campusOptions(p: Program): string[] {
   if (!p.campuses) return [];
-  return [...p.campuses.map((c) => `${c.city}, ${c.name}`), "Not sure yet"];
+  return [...p.campuses.map((c) => `${c.city}, ${c.name}, ${c.area}`), "Not sure yet"];
 }

@@ -29,7 +29,7 @@ export default async function ApplyPage({ searchParams }: { searchParams: Promis
             <li>3. Screening call.</li>
             <li>4. A letter.</li>
           </ol>
-          <p className="display mt-6 text-3xl">85 out of 100 won&apos;t make it.</p>
+          <p className="display mt-6 text-3xl">Only 15 out of 100 will make it to the fellowship.</p>
         </div>
         <ApplicationForm mode="apply" showHousePicker initialHouse={initialHouse} />
       </div>

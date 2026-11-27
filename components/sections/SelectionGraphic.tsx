@@ -7,7 +7,8 @@ import { CountUp } from "@/components/ui/CountUp";
 const SELECTED = [3, 12, 19, 27, 31, 38, 44, 52, 57, 63, 68, 74, 81, 90, 96];
 
 /**
- * "85 out of 100 won't make it." A big number that counts up, and a 10 by 10
+ * "Only 15 out of 100 will make it to the fellowship." (changed 27 November 2026,
+ * was "85 out of 100 won't make it"). A big number that counts up, and a 10 by 10
  * grid of outlined squares where 15 fill with mint one after another once the
  * graphic scrolls into view. Without JavaScript or with reduced motion, the
  * final state shows straight away.
@@ -37,12 +38,13 @@ export function SelectionGraphic({ tone = "light" }: { tone?: "light" | "dark" }
 
   return (
     <div ref={ref}>
-      <p className="sr-only">85 out of 100 won&apos;t make it.</p>
-      <p aria-hidden="true" className="display text-[clamp(110px,15vw,210px)] leading-[0.85]">
-        <CountUp to={85} />
+      <p className="sr-only">Only 15 out of 100 will make it to the fellowship.</p>
+      <p aria-hidden="true" className="display text-3xl leading-none sm:text-4xl">Only</p>
+      <p aria-hidden="true" className="display mt-1 text-[clamp(110px,15vw,210px)] leading-[0.85]">
+        <CountUp to={15} />
       </p>
-      <p aria-hidden="true" className="display mt-3 max-w-[11ch] text-3xl leading-[1.02] sm:text-4xl">
-        out of 100 won&apos;t make it.
+      <p aria-hidden="true" className="display mt-3 max-w-[14ch] text-3xl leading-[1.02] sm:text-4xl">
+        out of 100 will make it to the fellowship.
       </p>
       <div aria-hidden="true" className="mt-9 grid max-w-[400px] grid-cols-10 gap-1.5">
         {Array.from({ length: 100 }).map((_, i) => {
@@ -63,7 +65,7 @@ export function SelectionGraphic({ tone = "light" }: { tone?: "light" | "dark" }
           );
         })}
       </div>
-      <p className={`label mt-4 ${dark ? "text-white/65" : "text-ink-muted"}`}>15 of every 100 are selected</p>
+      <p className={`label mt-4 ${dark ? "text-white/65" : "text-ink-muted"}`}>Each mint square is one fellow</p>
     </div>
   );
 }

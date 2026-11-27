@@ -110,7 +110,7 @@ Applying takes 5 minutes. Getting in doesn't.
 2. Aptitude test. Nothing to memorise.
 3. Screening call. We want to hear how you think.
 4. A letter. Selected or not. If not, come back next year.
-85 out of 100 won't make it.
+Only 15 out of 100 will make it to the fellowship.
 
 **07. For parents** (toggle)
 Everything you'd ask us on a call. Fees. Safety. Supervision. What your child brings home.
@@ -194,77 +194,56 @@ Thank you page introduces the House of Engineers and links to /engineers.
 
 ## 9. Landing page: Founders Fellowship (/founders)
 
+Rebuilt 27 November 2026 to match the hackathon page (full bleed video hero, numbered sections). Tone: a serious fellowship for teenagers, plain and factual, never salesy. Media: hero from Desktop\Videos\Flea 2025.mp4 (desktop) and the Home flea market loop (phone); the market reel (students bargaining with vendors) and the "13 yr old entrepreneurs" reel play in framed players with a sound button; stills from Flea 2025 and Summer 2025. All in content/media.ts (foundersHero, foundersMedia).
+
 **Hero**
-Build a brand. Sell it live. Keep what you make.
-Founders Fellowship. House of Founders. Summer 2027.
-10 days. Mumbai and Pune. Grades 6 to 12. 15% get in.
-[Apply for Summer 2027]
+Your first startup. Before 18.
+Founders Fellowship. 10 days for teenagers in grades 6 to 12.
+Mumbai and Pune. Summer 2027. Only 15 of every 100 get in. [Apply for Summer 2027]
 
-**What it is**
-Ten days. Offline. You form a team, build a brand from a blank page, source materials in the wholesale market, pitch it to investors and sell it at a live flea market. We give you seed capital to start, and what you earn at the stall is yours.
+**01. The fellowship**
+A startup fellowship for teenagers. Ten days, offline, for students in grades 6 to 12. You form a team, build a brand from a blank page, source it, price it, pitch it to investors and sell it to the public. Nothing here is a simulation.
 
-**The 10 days**
-8 masterclasses. 1 Demo Day. 1 flea market.
-1. Problem solving like a consultant
-2. Design thinking
-3. Market research with AI tools
-4. Pricing and unit economics
-5. Market visit: sourcing and vendor negotiation
-6. Customer personas
-7. Branding
-8. How to sell
-9. Demo Day: pitch to investors
-10. Live flea market, open to the public
+**02. What every fellow gets** (six things, from day 1)
+Seed capital (what you earn at the stall is yours). A dedicated mentor (1 for every 9 students, all ten days). Vendor access (wholesale markets; you source and negotiate yourself). 8 masterclasses. The network (mentors, investors, alumni, every cohort after you). Exposure, early (pitching to investors and selling to strangers, years before college).
 
-**Every day**
+**03. Start to finish** (never call it a "journey": banned word)
+01 Before you start: Selection. Apply, aptitude test, screening call, a letter. Only 15 of every 100 make it.
+02 Day 1: Your team. Your mentor. Your seed capital. Orientation on campus.
+03 Days 1 to 8: Eight masterclasses. 11 am to 1 pm masterclass, 2 pm to 4 pm workshop on your own brand. Problem solving like a consultant, design thinking, market research with AI tools, pricing and unit economics, sourcing and vendor negotiation, customer personas, branding, how to sell.
+04 Day 5: Into the market. The wholesale market on the team's own budget; negotiate with vendors. [market reel]
+05 Days 6 to 8: Build the brand. [the "13 yr old entrepreneurs" reel]
+06 Day 9: Demo Day. Pitch to investors.
+07 The finale: The flea market.
+08 After: The strongest teams get a route to capital from incubators and micro VCs. Every fellow gets access to Level 2, the 9 month accelerator.
 
-| Time | Block | What happens |
-|---|---|---|
-| 11 am to 1 pm | Masterclass | One idea, taught through real cases. |
-| 1 pm to 2 pm | Lunch | Bring your tiffin, or opt into our meal plan. |
-| 2 pm to 4 pm | Workshop | Apply it to your own brand, that same day. |
+**04. The flea market**
+One city. Every cohort. One market. Every Mumbai campus sells at one grand flea market, and every Pune campus at another. Open to the public. Incubators and micro VCs come to scout the strongest teams and help them with access to capital to take it further as a startup. Some teams sell out. Some lose money. Every team knows why.
 
-**What you walk away with**
-1. Your own brand. Name, product, packaging, built from zero.
-2. Your profits. Whatever you sell is yours to keep.
-3. Your journal. Everything you learned, in your own handwriting.
-4. A shot at the prize pool. The best brands get scouted by investors.
-5. The Outliers network. Alumni, mentors and every cohort after you.
+**05. Who you learn from**
+People who have built things. 1 mentor for every 9 students. [Founders mentors, content/people.ts]
 
-Some teams sell out. Some lose money. Every team knows why.
+**06. Campuses for Summer 2027** (students pick any one; exact dates to be announced; ₹40,000 at every campus)
+Mumbai: DSB International School, Lower Parel. The Green Acres Academy, Chembur. Chatrabhuj Narsee School, Kandivali. JBCN International School, Mulund. Goldcrest International, Vashi, Navi Mumbai.
+Pune: Chatrabhuj Narsee School, Amanora.
+Each card links to the school on Google Maps (links checked 27 November 2026, in content/programs.ts). School photos: a drawn stand in until BeOutlier supplies or approves a photo for each school.
+Previously hosted at: DSB International School. The Green Acres Academy. The NEXT School. Goregaon Sports Club.
 
-**Who you learn from**
-People who have built things. 1 mentor for every 9 students.
-[Mentor faces with one line each — to be added]
+**07. What you take home**
+Proof of work. Not proof of attendance. The brand you built and what it earned; a documentation journal; a detailed evaluation report; a numbered BeOutlier certificate, signed and stamped; access to Level 2. [certificate template]
 
-**Previously hosted at**
-DSB International School. The Green Acres Academy. The NEXT School. Goregaon Sports Club.
+**08. How you get in**
+Applying takes 5 minutes. Getting in doesn't. Apply, aptitude test, screening call, a letter. Only 15 out of 100 will make it to the fellowship. Every campus, same bar.
 
-**Campuses for 2027**
-
-| City | Campus | Dates | Fee |
-|---|---|---|---|
-| Mumbai | Lower Parel, Chembur, Kandivali, [3 more] | [ ] | ₹40,000 |
-| Pune | Amanora, [3 more] | [ ] | ₹40,000 |
-
-**How you get in**
-Applying takes 5 minutes. Getting in doesn't.
-1. Apply.
-2. Aptitude test. Nothing to memorise.
-3. Screening call. We want to hear how you think.
-4. A letter. Selected or not. If not, come back next year.
-85 out of 100 won't make it. Every campus, same bar.
-
-**The flea market**
-Shop what the next generation built.
-Open to all. Bring family. The students set the prices. You decide what sells out.
+**09. For parents**
+Who: teenagers in grades 6 to 12. Format: day scholar, home every evening. Timings: 11 am to 4 pm, for 10 days. Campuses: 5 in Mumbai, 1 in Pune. Dates: announced soon. Lunch: bring a tiffin, or opt into our meal plan. Supervision: 1 mentor for every 9 students. Seed capital: given to every team; what the team earns is theirs. Fee: ₹40,000.
 
 **Close**
 Average is crowded.
 [Apply for Summer 2027]
 
 **Form**
-Student name, grade, school, parent's phone, city, preferred campus.
+Student name, grade, school, parent's phone, city, preferred campus (the six campuses above, or "Not sure yet").
 
 ---
 
@@ -318,7 +297,7 @@ IIT Bombay alumni who build this for fun.
 | Fee | ₹40,000. |
 
 **How you get in**
-Same four steps. 85 out of 100 won't make it.
+Same four steps. Only 15 out of 100 will make it to the fellowship.
 
 **Close**
 Four days. One campus. Limited rooms.
@@ -374,7 +353,7 @@ The Houses of Goa team, founded by architect Gerard da Cunha.
 | Fee | ₹40,000. |
 
 **How you get in**
-Same four steps. 85 out of 100 won't make it.
+Same four steps. Only 15 out of 100 will make it to the fellowship.
 
 **Close**
 Four days. One coast. Limited rooms.
@@ -460,7 +439,7 @@ Student name, age, grade, school, board, city, parent name, phone number, email.
 - Corners: video cards, mentor cards, FAQ items and About cards are rounded (soft frame, video inset). Buttons and section blocks stay square.
 - Mentors: each in its own rounded card, two rows that slide together. No count label.
 - 10. FAQs on Home (content/faq.ts), built only from facts in this file and content/programs.ts.
-- About Us (/about): what BeOutlier is, the vision, how it started (Last Summer, the orientation where 70 came against 25 expected, 45 teenagers, the flea market), the numbers, the three levels, the founding team (Saurabh Bhutoria: product, student experience and brand; Ishan Dubey: sales and partnerships), advisors and the mentors. Team, advisors, the orientation and host schools come from BeOutlier's One Pager (content/about.ts). Founder photos: initials until real photos are added.
+- About Us (/about): what BeOutlier is, the vision, how it started (Last Summer, the orientation where 70 came against 25 expected, 45 teenagers, the flea market), the numbers, the three levels, the founding team (Saurabh Bhutoria: product, student experience and brand; Ishan Dubey: sales and partnerships) and the mentors (advisors removed 27 November 2026). Team, the orientation and host schools come from BeOutlier's One Pager (content/about.ts). Founder photos: initials until real photos are added.
 
 **Programs:** all three houses are ₹40,000. Founders Fellowship is a day scholar program; Robotics Fellowship and Design and Architecture Fellowship are residential. "Residential" is the format, never part of the name.
 

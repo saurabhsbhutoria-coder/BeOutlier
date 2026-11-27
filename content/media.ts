@@ -152,3 +152,29 @@ export const parentTestimonials: VideoSlot[] = [
   { src: "/media/parents/parent-hastak.mp4", poster: "/media/parents/parent-hastak.jpg" },
   { src: "/media/parents/parent-jiana.mp4", poster: "/media/parents/parent-jiana.jpg" },
 ];
+
+/**
+ * Founders Fellowship page (rebuilt 27 November 2026). All BeOutlier footage:
+ * hero from DesktopVideosFlea 2025.mp4 (letterbox bars cropped), phone hero
+ * is the Home flea market loop, stills from Flea 2025 and Summer 2025.
+ */
+export const foundersHero = {
+  desktop: { mp4: "/media/founders/hero-desktop.mp4", poster: "/media/founders/hero-desktop.jpg" },
+  mobile: { mp4: "/media/home/hero-mobile.mp4", poster: "/media/home/hero-mobile-poster.jpg" },
+};
+
+export const foundersMedia = {
+  /** Students bargaining with vendors in the wholesale market (reel, 26 November 2026), with sound */
+  marketReel: { mp4: "/media/founders/market-reel.mp4", poster: "/media/founders/market-reel.jpg", width: 720, height: 1280, hasAudio: true },
+  /** "13 yr old entrepreneurs building startups" reel (Instagram export), black ending trimmed, with sound */
+  pitchReel: { mp4: "/media/founders/pitch-reel.mp4", poster: "/media/founders/pitch-reel.jpg", width: 720, height: 1280, hasAudio: true },
+  mentor: { src: "/media/founders/summer-mentor.jpg", alt: "A mentor working through an idea with two students", width: 1600, height: 750 },
+  team: { src: "/media/founders/summer-team.jpg", alt: "A team of students working through their brand together", width: 1600, height: 750 },
+  session: { src: "/media/founders/summer-session.jpg", alt: "A student and a mentor at a session", width: 1600, height: 750 },
+  flea: [
+    { src: "/media/founders/flea-2025-3.jpg", alt: "Students selling their product to visitors at the flea market", width: 1600, height: 750 },
+    { src: "/media/founders/flea-2025-7.jpg", alt: "Jars a team made, on their stall at the flea market", width: 1600, height: 750 },
+    { src: "/media/founders/flea-2025-1.jpg", alt: "A student explaining her product to a visitor", width: 1600, height: 750 },
+    { src: "/media/founders/flea-2025-13.jpg", alt: "Every team together at the flea market", width: 1600, height: 750 },
+  ],
+};

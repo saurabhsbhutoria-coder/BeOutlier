@@ -8,7 +8,7 @@ const FULL = [
   { title: "A letter.", text: "Selected or not. If not, come back next year." },
 ];
 
-/** The four admission steps beside the "85 out of 100" selection graphic. */
+/** The four admission steps beside the "Only 15 out of 100" selection graphic. */
 export function AdmissionSteps({
   variant = "full",
   extraLine,

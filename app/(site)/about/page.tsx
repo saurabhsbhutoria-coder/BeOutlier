@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow, Section, Stack } from "@/components/ui/bits";
 import { MentorRail } from "@/components/sections/MentorRail";
-import { advisors, foundingTeam, hostSchools, levels, numbers, vision, type TeamMember } from "@/content/about";
+import { foundingTeam, hostSchools, levels, numbers, vision, type TeamMember } from "@/content/about";
 import { peopleFor } from "@/content/people";
 import { site } from "@/content/site";
 
@@ -131,22 +131,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
-        {advisors.length ? (
-          <div className="mt-16">
-            <p className="label flex items-center gap-2.5">
-              <span className="dot" aria-hidden="true" />
-              Advisors
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {advisors.map((a) => (
-                <li key={a.name} className="rounded-2xl bg-linen px-6 py-5">
-                  <p className="text-lg font-semibold leading-tight">{a.name}</p>
-                  <p className="mt-1 text-sm text-ink-muted">{a.role}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
       </Section>
 
       {/* Mentors */}

@@ -43,7 +43,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Where and when?",
-    a: `${f.houseName}: campuses in Mumbai and Pune, going home every evening, dates announced soon. ${e.houseName}: ${e.venue}, ${lowerFirst(e.datesLine)}, residential. ${d.houseName}: ${d.venue}, ${lowerFirst(d.datesLine)}, residential.`,
+    a: `${f.houseName}: five campuses in Mumbai and one in Pune, going home every evening, dates announced soon. ${e.houseName}: ${e.venue}, ${lowerFirst(e.datesLine)}, residential. ${d.houseName}: ${d.venue}, ${lowerFirst(d.datesLine)}, residential.`,
   },
   {
     q: "Is it safe for my child to stay away from home?",
