@@ -134,13 +134,14 @@ export const programs: Program[] = [
     route: "/founders",
     season: "summer-2027",
     // Summer 2027 campuses (27 November 2026). Students pick any one. Dates to be announced.
+    // Photos from each school's official website (27 November 2026). Green Acres has none, so its card shows the drawn stand in.
     campuses: [
-      { id: "mumbai-lower-parel", city: "Mumbai", name: "DSB International School", area: "Lower Parel", maps: maps("DSB International School Lower Parel Mumbai"), dates: null, fee: 40000 },
+      { id: "mumbai-lower-parel", city: "Mumbai", name: "DSB International School", area: "Lower Parel", maps: maps("DSB International School Lower Parel Mumbai"), photo: "/media/campuses/dsb-lower-parel.jpg", dates: null, fee: 40000 },
       { id: "mumbai-chembur", city: "Mumbai", name: "The Green Acres Academy", area: "Chembur", maps: maps("The Green Acres Academy, Chembur", "ChIJqykV-6XI5zsRkRHImal9IDQ"), dates: null, fee: 40000 },
-      { id: "mumbai-kandivali", city: "Mumbai", name: "Chatrabhuj Narsee School", area: "Kandivali", maps: maps("Chatrabhuj Narsee School Kandivali Mumbai"), dates: null, fee: 40000 },
-      { id: "mumbai-mulund", city: "Mumbai", name: "JBCN International School", area: "Mulund", maps: maps("JBCN International School Mulund Mumbai"), dates: null, fee: 40000 },
-      { id: "mumbai-navi-mumbai", city: "Mumbai", name: "Goldcrest International", area: "Vashi, Navi Mumbai", maps: maps("Goldcrest International, Navi Mumbai"), dates: null, fee: 40000 },
-      { id: "pune-amanora", city: "Pune", name: "Chatrabhuj Narsee School", area: "Amanora", maps: maps("Chatrabhuj Narsee School Pune"), dates: null, fee: 40000 },
+      { id: "mumbai-kandivali", city: "Mumbai", name: "Chatrabhuj Narsee School", area: "Kandivali", maps: maps("Chatrabhuj Narsee School Kandivali Mumbai"), photo: "/media/campuses/cns-kandivali.jpg", dates: null, fee: 40000 },
+      { id: "mumbai-mulund", city: "Mumbai", name: "JBCN International School", area: "Mulund", maps: maps("JBCN International School Mulund Mumbai"), photo: "/media/campuses/jbcn-mulund.jpg", dates: null, fee: 40000 },
+      { id: "mumbai-navi-mumbai", city: "Mumbai", name: "Goldcrest International", area: "Vashi, Navi Mumbai", maps: maps("Goldcrest International, Navi Mumbai"), photo: "/media/campuses/goldcrest-vashi.jpg", dates: null, fee: 40000 },
+      { id: "pune-amanora", city: "Pune", name: "Chatrabhuj Narsee School", area: "Amanora", maps: maps("Chatrabhuj Narsee School Pune"), photo: "/media/campuses/cns-amanora.jpg", dates: null, fee: 40000 },
     ],
     image: {
       src: "/media/founders/flea-market-jars.jpg",

@@ -226,7 +226,7 @@ People who have built things. 1 mentor for every 9 students. [Founders mentors, 
 **06. Campuses for Summer 2027** (students pick any one; exact dates to be announced; ₹40,000 at every campus)
 Mumbai: DSB International School, Lower Parel. The Green Acres Academy, Chembur. Chatrabhuj Narsee School, Kandivali. JBCN International School, Mulund. Goldcrest International, Vashi, Navi Mumbai.
 Pune: Chatrabhuj Narsee School, Amanora.
-Each card links to the school on Google Maps (links checked 27 November 2026, in content/programs.ts). School photos: a drawn stand in until BeOutlier supplies or approves a photo for each school.
+Each card links to the school on Google Maps (links checked 27 November 2026, in content/programs.ts). School photos (public/media/campuses, added 27 November 2026 with BeOutlier's go ahead): one from each school's official website (DSB Euro Campus building, CNS Kandivali aerial, JBCN Mulund interior render, Goldcrest lab, CNS Amanora building). The Green Acres site has no campus photo, so its card keeps the drawn stand in until BeOutlier sends one.
 Previously hosted at: DSB International School. The Green Acres Academy. The NEXT School. Goregaon Sports Club.
 
 **07. What you take home**
